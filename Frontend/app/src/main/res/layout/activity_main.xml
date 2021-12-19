@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/home"
+        android:id="@+id/home_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -26,7 +26,9 @@
         app:labelVisibilityMode="labeled"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-    />
+    >
+
+    </android.support.design.widget.BottomNavigationView>
 
 
 </LinearLayout>
