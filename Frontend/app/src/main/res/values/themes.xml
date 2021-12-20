@@ -7,4 +7,12 @@
         <item name="colorAccent">@color/teal_200</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="mission">
+        <item name="android:textSize">
+            36sp
+        </item>
+        <item name="android:textColor">
+            #0C6B66
+        </item>
+    </style>
 </resources>

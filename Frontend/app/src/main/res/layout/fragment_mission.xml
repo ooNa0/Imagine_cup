@@ -5,10 +5,66 @@
     android:layout_height="match_parent"
     tools:context=".fragment.MissionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="미션화면" />
+        android:orientation="vertical">
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/mission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/bebasneue_regular"
+            android:gravity="top"
+            android:text="@string/mission"
+            android:textAppearance="@style/mission" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="@string/active"
+                android:background="@drawable/button_background"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:paddingRight="100dp"
+                android:paddingLeft="100dp"
+                android:layout_marginBottom="30dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/or"
+                android:textSize="40dp"
+                android:fontFamily="@font/bebasneue_regular"
+                android:layout_marginBottom="30dp"
+                android:textAppearance="@style/mission" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:background="@drawable/button_background"
+                android:text="@string/game"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:paddingRight="105dp"
+                android:paddingLeft="105dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>
