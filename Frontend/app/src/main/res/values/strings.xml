@@ -7,4 +7,5 @@
     <string name="game">Game</string>
     <string name="or">OR</string>
     <string name="do_something">Do Something</string>
+    <string name="start_trial">Start Trial</string>
 </resources>
