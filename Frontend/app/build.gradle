@@ -32,7 +32,7 @@ android {
      * the build tools by default.
      */
 
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "28.0.2"
 
     /**
      * The defaultConfig block encapsulates default settings and entries for all
@@ -55,13 +55,15 @@ android {
         minSdkVersion 15
 
         // Specifies the API level used to test the app.
-        targetSdkVersion 31
+        targetSdkVersion 28
 
         // Defines the version number of your app.
         versionCode 1
 
         // Defines a user-friendly version name for your app.
         versionName "1.0"
+
+        multiDexEnabled true
     }
 
     /**
