@@ -1,12 +1,12 @@
 package com.example.myapplication;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.LinearLayout;
+import androidx.support.annotation.NonNull;
+import androidx.support.design.widget.BottomNavigationView;
+import androidx.support.v4.app.Fragment;
+import androidx.support.v7.app.AppCompatActivity;
+import androidx.os.Bundle;
+import androidx.view.MenuItem;
+import androidx.widget.LinearLayout;
 
 import com.example.myapplication.fragment.HomeFragment;
 import com.example.myapplication.fragment.MissionFragment;
