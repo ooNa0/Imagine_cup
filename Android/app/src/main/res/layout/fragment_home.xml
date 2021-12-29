@@ -4,11 +4,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="6">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="10dp">
+        <ImageButton
+            android:id="@+id/emergency_call"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/phone"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/emergency_call" />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="@string/emergency_call"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="10sp"/>
+        </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+        <TextView
+            android:id="@+id/emotion_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80"
+            android:textSize="45sp"
+            android:layout_gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/emotion_score"
+                android:textSize="10sp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/character_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="350dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="@string/today_question"
+        android:textSize="25sp"
+        android:drawableLeft="@drawable/mail"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+    </Button>
+    </LinearLayout>
 
+</LinearLayout>
 </FrameLayout>

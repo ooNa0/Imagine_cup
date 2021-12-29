@@ -7,7 +7,8 @@
         <entry key="app/src/main/res/font/font.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12907608695652173" />
         <entry key="app/src/main/res/layout/activity_mission.xml" value="0.12907608695652173" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.12907608695652173" />
+        <entry key="app/src/main/res/layout/activity_pedometer.xml" value="0.2884963768115942" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3614163870753573" />
         <entry key="app/src/main/res/layout/fragment_mission.xml" value="0.12907608695652173" />
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.12907608695652173" />
         <entry key="app/src/main/res/layout/fragment_record.xml" value="0.12907608695652173" />

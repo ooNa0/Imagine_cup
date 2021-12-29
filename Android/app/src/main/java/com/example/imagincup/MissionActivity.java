@@ -4,13 +4,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.example.imagincup.Pedometer;
 
 public class MissionActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageButton imageButton;
+    private Button startButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +35,15 @@ public class MissionActivity extends AppCompatActivity {
 
         imageButton = findViewById(R.id.activity_mission_imageButton);
         imageButton.setImageResource(R.drawable.hamburger);
+
+        startButton = findViewById(R.id.mission_start_button);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Pedometer.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
