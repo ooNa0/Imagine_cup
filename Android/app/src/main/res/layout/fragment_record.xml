@@ -5,10 +5,24 @@
     android:layout_height="match_parent"
     tools:context=".fragment.RecordFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/bebasneue_regular"
+            android:gravity="top"
+            android:text="@string/record"
+            android:textAppearance="@style/mission"
+            tools:targetApi="jelly_bean"
+            android:layout_marginStart="22dp" />
+
+    </LinearLayout>
 
 </FrameLayout>
