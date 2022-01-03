@@ -11,4 +11,9 @@
     <string name="emotion_score">Emotion Score</string>
     <string name="emergency_call">Emergency call</string>
     <string name="today_question">Today Question</string>
+    <string name="setting_up_push_notifications">Setting Up Push Notifications</string>
+    <string name="re_fill_the_questionnaire">Re-fill the questionnaire</string>
+    <string name="to_leave">To Leave</string>
+    <string name="set_answer_time">Set answer time</string>
+    <string name="my_page">My Page</string>
 </resources>

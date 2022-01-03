@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/Theme.AppCompat"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:weightSum="8"
+    >
 
     <LinearLayout
         android:id="@+id/home_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="7"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,8 +26,7 @@
         app:itemIconTint="@android:color/black"
         app:itemTextColor="@android:color/black"
         app:labelVisibilityMode="labeled"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_weight="1"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
