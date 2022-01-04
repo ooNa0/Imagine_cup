@@ -11,8 +11,11 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
     }
 
     buildTypes {
@@ -31,6 +34,15 @@ android {
 
 dependencies {
 
+    //오류 2
+    //implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+
+    'org.slf4j:slf4j-nop:1.7.25'
+    // 오류
+    //implementation 'io.grpc:grpc-okhttp:1.7.0'
+    //implementation 'com.squareup.okhttp3:okhttp:3.0.1'
+
+    implementation 'com.azure:azure-cosmos:4.24.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
