@@ -4,15 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
-import com.azure.cosmos.CosmosAsyncClient;
-import com.azure.cosmos.CosmosClient;
-import com.azure.cosmos.CosmosClientBuilder;
-import com.azure.cosmos.CosmosDatabase;
-import com.azure.cosmos.models.CosmosDatabaseResponse;
+import com.example.imagincup.back.AzureAsyncTask;
 import com.example.imagincup.fragment.HomeFragment;
 import com.example.imagincup.fragment.MissionFragment;
 import com.example.imagincup.fragment.MyPageFragment;
@@ -29,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 등록된 디바이스인지 확인
+        
         init();
         SettingListener();
         bottomNavigationView.setSelectedItemId(R.id.tab_home);
@@ -54,13 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.tab_records:
+                    //new AzureAsyncTask().execute();
                     changeFragment(new RecordFragment());
-                    //new CosmosAsyncTask().execute();
-                    try {
-                        getStartDatabase();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
                     return true;
 
                 case R.id.tab_mission:
@@ -77,38 +73,5 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, fragment).commit();
-    }
-
-    private void getStartDatabase() throws Exception{
-
-        String ACCOUNT_HOST = "https://imagine-cup.documents.azure.com:443/";
-        String ACCOUNT_KEY = "kIvXotbe07IrUvzVQskbyX8dcNybQvjTnxLqVu39xUHiYs6MDyNcYwLpT8vUoTN0SU5DpUXaWbr3A689idzWrA==";
-
-        // 비동기
-//        CosmosAsyncClient cosmosAsyncClient = new CosmosClientBuilder()
-//                .endpoint(ACCOUNT_HOST)
-//                .key(ACCOUNT_KEY)
-//                .buildAsyncClient();
-
-        System.out.println("Checking database 2222222222222222222222222222222222222222222");
-        // 동기
-        CosmosClient cosmosClient = new CosmosClientBuilder()
-                .endpoint(ACCOUNT_HOST)
-                .key(ACCOUNT_KEY)
-                .buildClient();
-
-        System.out.println("Checking database 111111111111111111111111");
-        // 컨테이너 참조 및 데베 생성
-//        cosmosAsyncClient.createDatabaseIfNotExists("testDBcreate^^")
-//                .map(databaseResponse -> cosmosAsyncClient.getDatabase(databaseResponse.getProperties().getId()))
-//                .subscribe(database -> System.out.printf("Created database '%s'.%n", database.getId()));
-
-        CosmosDatabaseResponse databaseResponse = cosmosClient.createDatabaseIfNotExists("testDBcreate");
-        System.out.println("Checking database12321312312312313213");
-        CosmosDatabase database = cosmosClient.getDatabase(databaseResponse.getProperties().getId());
-        System.out.println("Checking database444444444444444444444422");
-
-        System.out.println("Checking database " + database.getId() + " completed!\n");
-
     }
 }
