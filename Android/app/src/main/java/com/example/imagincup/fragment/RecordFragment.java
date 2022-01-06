@@ -8,9 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.azure.cosmos.CosmosAsyncClient;
-import com.azure.cosmos.CosmosClient;
-import com.azure.cosmos.CosmosClientBuilder;
 import com.example.imagincup.R;
 
 /**
@@ -65,29 +62,5 @@ public class RecordFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_record, container, false);
-    }
-
-    private void getStartData() throws Exception{
-
-        String ACCOUNT_HOST = "https://imagine-cup.documents.azure.com:443/";
-        String ACCOUNT_KEY = "FRATiAMOprn8AcscBe5JGsxF1ewPFDiNm8aUeT7iEHAcorV5KWKKWQzTAvMQOcySICb2Aa9kzJ2EgsfemHffQQ";
-
-        // 비동기
-        CosmosAsyncClient cosmosAsyncClient = new CosmosClientBuilder()
-                .endpoint(ACCOUNT_HOST)
-                .key(ACCOUNT_KEY)
-                .buildAsyncClient();
-
-        // 동기
-        CosmosClient cosmosClient = new CosmosClientBuilder()
-                .endpoint(ACCOUNT_HOST)
-                .key(ACCOUNT_KEY)
-                .buildClient();
-
-        // 컨테이너 참조 및 데베 생성
-        cosmosAsyncClient.createDatabaseIfNotExists("testDBcreate^^")
-                // TIP: Our APIs are Reactor Core based, so try to chain your calls
-                .map(databaseResponse -> cosmosAsyncClient.getDatabase(databaseResponse.getProperties().getId()))
-                .subscribe(database -> System.out.printf("Created database '%s'.%n", database.getId()));
     }
 }
