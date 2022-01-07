@@ -24,7 +24,7 @@
             android:gravity="center"
             android:paddingTop="10dp">
         <ImageButton
-            android:id="@+id/emergency_call"
+            android:id="@+id/home_emergency_call"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/phone"
