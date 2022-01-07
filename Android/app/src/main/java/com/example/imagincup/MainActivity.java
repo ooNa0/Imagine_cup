@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
-import com.example.imagincup.back.AzureAsyncTask;
 import com.example.imagincup.fragment.HomeFragment;
 import com.example.imagincup.fragment.MissionFragment;
 import com.example.imagincup.fragment.MyPageFragment;
@@ -28,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 등록된 디바이스인지 확인
-        
         init();
         SettingListener();
         bottomNavigationView.setSelectedItemId(R.id.tab_home);
@@ -55,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.tab_records:
-                    //new AzureAsyncTask().execute();
                     changeFragment(new RecordFragment());
                     return true;
 
