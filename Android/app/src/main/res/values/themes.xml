@@ -15,4 +15,12 @@
             #0C6B66
         </item>
     </style>
+    <style name="record">
+        <item name="android:textSize">
+            30sp
+        </item>
+        <item name="android:textColor">
+            #0C6B66
+        </item>
+    </style>
 </resources>
