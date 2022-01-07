@@ -16,4 +16,5 @@
     <string name="to_leave">To Leave</string>
     <string name="set_answer_time">Set answer time</string>
     <string name="my_page">My Page</string>
+    <string name="step_count">Step Count :</string>
 </resources>
