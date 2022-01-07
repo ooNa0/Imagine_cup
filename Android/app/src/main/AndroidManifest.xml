@@ -23,6 +23,8 @@
             android:name=".activity.mission.Record"
             android:exported="true" />
         <activity
+            android:allowBackup="true"
+            android:supportsRtl="true"
             android:name=".activity.mission.Camera"
             android:exported="true" />
         <activity
@@ -32,6 +34,7 @@
             android:name=".MissionActivity"
             android:exported="true" />
         <activity
+            android:allowBackup="true"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
