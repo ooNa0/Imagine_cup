@@ -9,4 +9,7 @@ public final class Constants {
     public static final String DATABASE_EXIST = "exist";
     //public static final String DATABASE_PERSONID = "PersonId";
 
+    public static final Integer DAY_RECORD_FRAGMENT = 0;
+    public static final Integer MONTH_RECORD_FRAGMENT = 1;
+
 }
