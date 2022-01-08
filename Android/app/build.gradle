@@ -13,11 +13,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    packagingOptions {
-        resources.excludes.add("META-INF/*")
-    }
-
     buildTypes {
         release {
             minifyEnabled false

@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
@@ -45,19 +45,21 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/icon_month"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bebasneue_regular"
-                android:paddingRight="18dp"
-                android:gravity="top"
-                android:text=""
-                android:textAppearance="@style/record"
-                tools:targetApi="jelly_bean"
-                android:layout_marginStart="22dp" />
+            <ImageButton
+                android:id="@+id/select_day_and_month"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/hamburger"/>
 
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
 
     </LinearLayout>
 
