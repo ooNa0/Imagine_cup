@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+<!--    <ImageView-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/logo"-->
+<!--        android:layout_gravity="center"-->
+<!--        />-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="name">
+    </TextView>
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:maxLength="8"
+        android:singleLine = "true">
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="해당 입력한 값은 나중에 ??이의 이름입니다.">
+    </TextView>
+
+
+    <Button
+        android:id="@+id/start_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:onClick="onclick">
+
+    </Button>
+
+</LinearLayout>

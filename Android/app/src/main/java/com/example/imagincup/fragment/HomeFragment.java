@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.imagincup.AnswerActivity;
 import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
 
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private ImageButton callButton;
+    private Button questionButton;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -81,6 +83,14 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        questionButton = view.findViewById(R.id.today_question_button);
+        questionButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AnswerActivity.class);
+                startActivity(intent);
+            }
+        });
         callButton = view.findViewById(R.id.home_emergency_call);
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,5 +102,5 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
+}
 }
