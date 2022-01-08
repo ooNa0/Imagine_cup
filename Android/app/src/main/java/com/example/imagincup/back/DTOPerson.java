@@ -2,19 +2,19 @@ package com.example.imagincup.back;
 
 public class DTOPerson {
 
-    private Integer PersonId;
-    private String PersonName;
-    private Integer PersonDepressionScore;
-    private String PersonDevice;
+    private Integer PersonId; // PK
+    private String PersonName; // 이름
+    private Integer PersonDepressionScore; // 우울증 점수
+    private String PersonDevice; // 디바이스 식별
     private Integer RecordID;
-    private Integer ScoreID;
+    //private Integer ScoreID;
 
     public DTOPerson(Integer PersonId, String PersonName, Integer PersonDepressionScore, String PersonDevice, Integer RecordID){
         this.PersonId = PersonId;
         this.PersonName = PersonName;
         this.PersonDepressionScore = PersonDepressionScore;
         this.PersonDevice = PersonDevice;
-        this.RecordID = RecordID;
+        //this.RecordID = RecordID;
     }
 
     public Integer getPersonId(){
