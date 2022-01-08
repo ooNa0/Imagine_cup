@@ -83,7 +83,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         questionButton = view.findViewById(R.id.today_question_button);
         questionButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -92,17 +91,16 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-//        callButton = view.findViewById(R.id.home_emergency_call);
-//        callButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:988"));
-//                startActivity(intent);
-//            }
-//        });
+        callButton = view.findViewById(R.id.home_emergency_call);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:988"));
+                startActivity(intent);
+            }
+        });
         // Inflate the layout for this fragment
         return view;
     }
-
+}
 }

@@ -6,12 +6,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.imagincup.Pedometer;
+import com.example.imagincup.activity.mission.Camera;
+import com.example.imagincup.activity.mission.Music;
+import com.example.imagincup.activity.mission.Pedometer;
+import com.example.imagincup.activity.mission.Record;
 
 public class MissionActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -40,7 +44,10 @@ public class MissionActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Pedometer.class);
+//                Intent intent = new Intent(getApplicationContext(), Pedometer.class);
+                Intent intent = new Intent(getApplicationContext(),Camera.class);
+//                Intent intent = new Intent(getApplicationContext(), Record.class);
+//                Intent intent = new Intent(getApplicationContext(), Music.class);
                 startActivity(intent);
             }
         });
