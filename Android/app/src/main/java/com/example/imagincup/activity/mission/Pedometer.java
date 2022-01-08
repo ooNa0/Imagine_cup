@@ -11,10 +11,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
 
 import com.example.imagincup.R;
 
@@ -25,7 +28,10 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener{
 
     private TextView pedometerText;
     private Button pedometerResetButton;
+    private TextView completion;
+    private Toolbar toolbar;
     private int currentSteps = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +42,16 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener{
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         stepCountSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
 
-        pedometerResetButton = findViewById(R.id.pedometer_reset_button);
-        pedometerResetButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                // 현재 걸음 수 초기화
-                currentSteps = 0;
-                pedometerText.setText(String.valueOf(currentSteps));
-            }
-        });
+        pedometerResetButton = findViewById(R.id.pedometer_button);
+        pedometerResetButton.setEnabled(false);
         pedometerText = findViewById(R.id.pedometer_count);
+
+        toolbar = findViewById(R.id.pedometer_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
+
     }
 
     @Override
@@ -81,10 +87,31 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener{
                 pedometerText.setText(String.valueOf(currentSteps));
             }
         }
+        pedometerResetButton.setEnabled(setButtonEnabled(pedometerText));
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    private boolean setButtonEnabled(TextView text){
+            int pedometerCount = Integer.parseInt(text.getText().toString());
+            if(pedometerCount >= 50){
+                return true;
+            }
+            return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                // 액티비티 이동
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
