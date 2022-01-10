@@ -3,13 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/drawable/button_background.xml" value="0.32760416666666664" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/drawable/card_background.xml" value="0.3546875" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.32760416666666664" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/drawable/icon_on_off.xml" value="0.2833333333333333" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_day_answer.xml" value="0.25" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_intro.xml" value="0.3802083333333333" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_main.xml" value="0.18009118541033434" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_mission.xml" value="0.25" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_pedometer.xml" value="0.37447916666666664" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_mission.xml" value="0.37447916666666664" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_my_page.xml" value="0.37447916666666664" />
-        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_record.xml" value="0.37447916666666664" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_recode_day.xml" value="0.33645833333333336" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_record.xml" value="0.2" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_record_day.xml" value="0.334375" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/fragment_record_month.xml" value="0.33" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/layout_card_day_record.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.16510416666666666" />
         <entry key="app/src/main/res/drawable/mypage_background_box.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/font/font.xml" value="0.17916666666666667" />
