@@ -24,13 +24,14 @@
         android:textSize="25sp"
         android:layout_weight="1"
         android:textColor="@color/white"/>
+
     <ImageView
-        android:layout_marginTop="50sp"
-        android:layout_marginBottom="50sp"
         android:id="@+id/camera_imageview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"/>
+        android:layout_width="323dp"
+        android:layout_height="318dp"
+        android:layout_marginTop="30sp"
+        android:layout_marginBottom="30sp"
+        android:layout_weight="7" />
     <Button
         android:background="@drawable/button_background"
         android:layout_width="match_parent"

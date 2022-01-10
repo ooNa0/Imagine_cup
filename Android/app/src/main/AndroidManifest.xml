@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
@@ -17,6 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".activity.survey.SurveyActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.mission.Music"
             android:exported="true" />
@@ -33,10 +37,10 @@
             android:name=".activity.mission.Record"
             android:exported="true" />
         <activity
-            android:allowBackup="true"
-            android:supportsRtl="true"
             android:name=".activity.mission.Camera"
-            android:exported="true" />
+            android:allowBackup="true"
+            android:exported="true"
+            android:supportsRtl="true" />
         <activity
             android:name=".activity.mission.Pedometer"
             android:exported="true" />
