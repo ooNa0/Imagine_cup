@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.survey.CompleteActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complete"
+        android:textSize="62sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="150sp"/>
+
+    <ImageView
+        android:layout_marginTop="56sp"
+        android:layout_width="match_parent"
+        android:layout_height="85sp"
+        android:src="@drawable/complete"
+        android:contentDescription="Complete" />
+
+    <TextView
+        android:layout_marginTop="56sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#9E8F8F"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thank you for \n your participation"/>
+
+    <Button
+        android:id="@+id/complete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:textColor="@color/white"
+        android:background="@drawable/survey_next_button"
+        android:paddingRight="105sp"
+        android:paddingLeft="105sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_marginTop="50sp"
+        />
+</LinearLayout>
