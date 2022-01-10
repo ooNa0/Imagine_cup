@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".activity.survey.CompleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.survey.SurveyActivity"
             android:exported="false" />
         <activity
