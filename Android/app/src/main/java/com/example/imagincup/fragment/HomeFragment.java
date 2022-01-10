@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
+import com.example.imagincup.activity.survey.SurveyActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private ImageButton callButton;
+    private Button todayQuestionButton;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -89,7 +91,15 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        // Inflate the layout for this fragment
+
+        todayQuestionButton = view.findViewById(R.id.home_today_question_button);
+        todayQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SurveyActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
