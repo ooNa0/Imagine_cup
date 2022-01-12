@@ -19,4 +19,13 @@
     <string name="set_answer_time">Set answer time</string>
     <string name="my_page">My Page</string>
     <string name="step_count">Step Count :</string>
+    <string name="question">12.20 Question</string>
+    <string name="go_misson">Go Mission</string>
+    <string name="this_day">This Day</string>
+    <string name="daily_mission_achievement">Mission</string>
+    <string name="emotion">Emotion</string>
+    <string name="depression_scale_month">monthly depression scale</string>
+    <string name="depression_scale_day">weekly depression scale</string>
+
+    <string name="check_misson">✔</string>
 </resources>
