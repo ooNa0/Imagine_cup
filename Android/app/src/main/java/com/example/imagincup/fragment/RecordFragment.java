@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 
 import com.example.imagincup.Constants;
 import com.example.imagincup.R;
+import com.example.imagincup.back.RecycleViewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +35,7 @@ public class RecordFragment extends Fragment {
     private FragmentTransaction fragmentTransaction;
     private DayRecordFragment dayRecordFragment;
     private MonthRecordFragment monthRecordragment;
-    private boolean isDay = true;
+    private boolean isDay = false;
 
     public RecordFragment() {
         // Required empty public constructor
