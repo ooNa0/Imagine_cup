@@ -30,10 +30,10 @@ public class PersonTableAsyncTask extends AsyncTask<String,Void,String> {
             resultSet = statement.executeQuery(Constants.QUERY_SELECT_PERSON_DATABASE);
             while (resultSet.next()){
                 if(params[0].equals(resultSet.getString("PersonDevice"))){
-                    resultMessage = Constants.DATABASE_EXIST;
+                    //resultMessage = Constants.DATABASE_EXIST;
                     new InsertPersonData(resultSet);
                     ConnectionSingleton.close();
-                    return Constants.DATABASE_EXIST;
+                    //return Constants.DATABASE_EXIST;
                 }
             }
         }
@@ -44,9 +44,9 @@ public class PersonTableAsyncTask extends AsyncTask<String,Void,String> {
             // 시간 나면 코드 클래스로
             if (resultSet != null) try { resultSet.close(); } catch(SQLException ex) {}
             if (statement != null) try { statement.close(); } catch(SQLException ex) {}
-            try { ConnectionSingleton.close(); } catch(SQLException ex) {}
+            try { ConnectionSingleton.close(); connection.close();} catch(SQLException ex) {}
         }
-        Log.d("============", resultMessage);
+        Log.d("=================================", resultMessage);
         return resultMessage;
     }
 
