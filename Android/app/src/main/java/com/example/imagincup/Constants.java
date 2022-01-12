@@ -6,7 +6,9 @@ public final class Constants {
 
     public static final String QUERY_SELECT_PERSON_DATABASE = "select * from Person";
 
-    public static final String DATABASE_EXIST = "exist";
+    public static final Integer RUNNING = 0;
+    public static final Integer DATABASE_EXIST = 1;
+    public static final Integer DATABASE_NOT_EXIST = 2;
     //public static final String DATABASE_PERSONID = "PersonId";
 
     public static final Integer DAY_RECORD_FRAGMENT = 0;
