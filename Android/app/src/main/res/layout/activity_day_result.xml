@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dip"
+    android:orientation="vertical"
+        android:layout_weight="1"
+    tools:context=".AnswerActivity">
+
+    <!-- arrow / chevron_big_left -->
+    <!--        android:id="@+id/arrow_chevr"-->
+    <!--        android:layout_width="24dp"-->
+    <!--        android:layout_height="24dp"-->
+    <!--        android:layout_alignParentLeft="true"-->
+    <!--        android:layout_marginLeft="22dp"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_marginTop="121dp"-->
+    <!--        android:clipToOutline="true"-->
+    <!--        android:background="@drawable/arrow_chevr"-->
+    <!--        />-->
+
+    <!-- 12.20 Question -->
+    <TextView
+        android:id="@+id/question_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="40dp"
+        android:text="12.20 Question"
+        android:fontFamily="@font/recordfont"
+        android:textAppearance="@style/question"
+        android:gravity="top"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="37dp">
+
+        <TextView
+            android:id="@+id/question_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/recordfont"
+            android:text="오늘은 어떤 기분이 들었나요?"
+            android:textAppearance="@style/question"
+            />
+
+        <TextView
+            android:id="@+id/some_id"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="나는 오늘 너무 머리가 아팠다. 눈도 아프다 왜냐하면 아프기 때문이다. 선인장에 물 주지만 다시 뱉어버리는 구린장"
+            android:textAppearance="@style/question_answer"
+            android:fontFamily="@font/recordfont"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            card_view:cardCornerRadius="12dp"
+            card_view:cardElevation="5dp"
+            card_view:contentPadding="10dp"
+            android:elevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/this_day"
+                    android:layout_marginVertical="10dp"
+                    android:textAppearance="@style/this_day"
+                    />
+
+                <View
+                    android:id="@+id/color_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/color_line"
+                    />
+
+                <View
+                    android:background="@drawable/color_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp">
+
+                    <!-- ✔ -->
+                    <TextView
+                        android:id="@+id/check_misson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/check_misson"
+                        android:textAppearance="@style/check_misson"
+                        app:layout_constraintBottom_toBottomOf="@+id/daily_mission_achievement_chart"
+                        app:layout_constraintEnd_toEndOf="@+id/daily_mission_achievement_chart"
+                        app:layout_constraintStart_toStartOf="@+id/daily_mission_achievement_chart"
+                        app:layout_constraintTop_toTopOf="@+id/daily_mission_achievement_chart" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/daily_mission_achievement_chart"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        app:chart_labelsFont="@font/recordfont"
+                        app:chart_donutBackgroundColor="#70977F"
+                        app:chart_donutRoundCorners="true"
+                        app:chart_donutThickness="7dp"
+                        app:chart_donutTotal="100"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/daily_emotions_chart"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/daily_mission_achievement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/recordfont"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/daily_mission_achievement"
+                        android:textAppearance="@style/daily_mission_achievement"
+                        app:layout_constraintEnd_toEndOf="@+id/daily_mission_achievement_chart"
+                        app:layout_constraintStart_toStartOf="@+id/daily_mission_achievement_chart"
+                        app:layout_constraintTop_toBottomOf="@+id/daily_mission_achievement_chart" />
+
+                    <!-- 😀 -->
+                    <TextView
+                        android:id="@+id/emotion_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="😀"
+                        android:textAppearance="@style/emotion_icon"
+                        app:layout_constraintBottom_toTopOf="@+id/emotion_parcent"
+                        app:layout_constraintLeft_toLeftOf="@+id/daily_emotions_chart"
+                        app:layout_constraintRight_toRightOf="@+id/daily_emotions_chart"
+                        app:layout_constraintTop_toTopOf="@+id/daily_emotions_chart"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <!-- 90% -->
+                    <TextView
+                        android:id="@+id/emotion_parcent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="90%"
+                        android:textAppearance="@style/emotion_parcent"
+                        app:layout_constraintBottom_toBottomOf="@+id/daily_emotions_chart"
+                        app:layout_constraintLeft_toLeftOf="@+id/daily_emotions_chart"
+                        app:layout_constraintRight_toRightOf="@+id/daily_emotions_chart"
+                        app:layout_constraintTop_toBottomOf="@+id/emotion_icon"
+                        app:layout_constraintVertical_chainStyle="packed"/>
+
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:id="@+id/daily_emotions_chart"
+                        app:chart_labelsFont="@font/recordfont"
+                        app:chart_donutBackgroundColor="#eeeeee"
+                        app:chart_donutRoundCorners="true"
+                        app:chart_donutThickness="7dp"
+                        app:chart_donutTotal="780"
+                        app:layout_constraintLeft_toRightOf="@+id/daily_mission_achievement_chart"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/emotions"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/recordfont"
+                        android:text="@string/emotion"
+                        android:textAppearance="@style/daily_mission_achievement"
+                        app:layout_constraintEnd_toEndOf="@+id/daily_emotions_chart"
+                        app:layout_constraintStart_toStartOf="@+id/daily_emotions_chart"
+                        app:layout_constraintTop_toBottomOf="@+id/daily_emotions_chart" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/go_misson_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/recordfont"
+            android:layout_margin="20dp"
+            android:text="@string/go_misson"
+            android:textAppearance="@style/question"
+            android:background="@drawable/go_misson_button_background"
+            android:gravity="center"
+            android:layout_gravity="bottom|center"
+            android:layout_weight="0">
+
+        </Button>
+</LinearLayout>
+
+
+</ScrollView>
