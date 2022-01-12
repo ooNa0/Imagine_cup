@@ -54,6 +54,13 @@
 
         </LinearLayout>
 
+        <View
+            android:background="@drawable/color_line"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_height="0.5dp"
+            />
+
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
