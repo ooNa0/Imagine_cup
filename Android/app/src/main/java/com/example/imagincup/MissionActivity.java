@@ -45,9 +45,9 @@ public class MissionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(getApplicationContext(), Pedometer.class);
-                Intent intent = new Intent(getApplicationContext(),Camera.class);
-//                Intent intent = new Intent(getApplicationContext(), Record.class);
-//                Intent intent = new Intent(getApplicationContext(), Music.class);
+//                Intent intent = new Intent(getApplicationContext(),Camera.class);
+                Intent intent = new Intent(getApplicationContext(), Record.class);
+//                Intent intent = new    Intent(getApplicationContext(), Music.class);
                 startActivity(intent);
             }
         });
