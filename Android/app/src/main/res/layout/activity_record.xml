@@ -1,49 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.mission.Record">
-    <!--녹음내역들이 담길 리사이클러뷰-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="409dp"
-        android:layout_height="620dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recordLayout"
-        app:layout_constraintVertical_bias="0"
-        />
+    tools:context=".activity.mission.Record"
+    android:orientation="vertical">
 
-    <!--녹음 제어 레이아웃웃-->
-    <LinearLayout
-        android:id="@+id/recordLayout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/mission"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/bebasneue_regular"
+        android:gravity="top"
+        android:text="@string/mission"
+        android:textAppearance="@style/mission"
+        tools:targetApi="jelly_bean"
+        android:layout_marginStart="22dp"/>
+
+    <TextView
+        android:layout_marginTop="50sp"
+        android:id="@+id/record_text_time"
+        android:text="00:00"
+        android:textSize="40sp"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="40sp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/record_title"
+        android:text="Smile for \n5 seconds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <!--녹음 제어 레이아웃웃-->
 
         <!--녹음 실행 및 중지 버튼-->
         <ImageButton
+            android:layout_marginTop="40sp"
+            android:layout_gravity="center"
             android:id="@+id/audioRecordImageBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:padding="16dp"
-            android:src="@drawable/edit"/>
-
+            android:src="@drawable/mic"
+            app:tint="@color/black" />
         <TextView
-            android:id="@+id/audioRecordText"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="80sp"
+            android:textSize="15sp"
+            android:textColor="#C9C9C9"
+            android:id="@+id/record_text_button_notice"
+            android:gravity="center"
+            android:text="When you complete the mission, \nButton will appear."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="80sp"
+        android:drawableStart="@drawable/play"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#0C6B66"
+        android:id="@+id/record_button_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Play your laughing Sound"
+        android:textColor="@color/white"
+        android:paddingLeft="50sp"
+        android:paddingRight="50sp"
+        android:layout_marginBottom="15sp"
+        />
+        <Button
+            android:id="@+id/record_button_clear"
+            android:background="@drawable/button_background"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="녹음 시작"
-            android:textSize="24dp" />
+            android:text="Clear"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="#0C6B66"
+            android:textColor="@color/white"
+            />
 
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
