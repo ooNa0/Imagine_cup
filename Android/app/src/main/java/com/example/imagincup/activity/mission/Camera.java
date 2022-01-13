@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
 
 import java.io.File;
@@ -33,6 +34,7 @@ public class Camera extends AppCompatActivity {
 
     private Button pictureButton;
     private ImageView  imageView;
+    private Button clearButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +54,16 @@ public class Camera extends AppCompatActivity {
             }
         });
         imageView = findViewById(R.id.camera_imageview);
+
+        clearButton = findViewById(R.id.camera_button_clear);
+        clearButton.setVisibility(View.INVISIBLE);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -61,5 +73,8 @@ public class Camera extends AppCompatActivity {
             Bundle extras =data.getExtras();
             Bitmap bitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(bitmap);
+
+            pictureButton.setText("Retake");
+            clearButton.setVisibility(View.VISIBLE);
     }
 }

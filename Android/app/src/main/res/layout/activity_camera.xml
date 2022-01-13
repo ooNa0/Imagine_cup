@@ -8,35 +8,58 @@
     android:orientation="vertical"
     android:paddingLeft="30sp"
     android:paddingRight="30sp"
-    android:weightSum="10"
     android:backgroundTint="@color/gray"
     >
 
-    <Button
-        android:background="@drawable/button_background"
-        android:backgroundTint="@color/mission"
-        android:fontFamily="@font/font3"
-        android:layout_marginTop="50sp"
-        android:id="@+id/camera_button_take_picture"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/mission"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take a picture"
-        android:textSize="25sp"
-        android:layout_weight="1"
-        android:textColor="@color/white"/>
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/bebasneue_regular"
+        android:gravity="top"
+        android:text="@string/mission"
+        android:textAppearance="@style/mission"
+        tools:targetApi="jelly_bean" />
+
+    <TextView
+        android:text="Take a picture \nof smiling"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"/>
+
     <ImageView
-        android:layout_marginTop="50sp"
-        android:layout_marginBottom="50sp"
+        android:src="@drawable/cameradefault"
         android:id="@+id/camera_imageview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"/>
+        android:layout_width="310dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="30sp"
+        android:layout_marginBottom="30sp"
+        android:scaleType="fitXY"
+        android:layout_gravity="center" />
+        <Button
+            android:drawableStart="@drawable/camera"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#0C6B66"
+            android:id="@+id/camera_button_take_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Take a picture"
+            android:textColor="@color/white"
+            android:paddingLeft="100sp"
+            android:paddingRight="100sp"
+            android:layout_marginBottom="15sp"
+            />
     <Button
+        android:id="@+id/camera_button_clear"
         android:background="@drawable/button_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clear"
-        android:layout_weight="1"
         android:layout_marginBottom="50dp"
+        android:backgroundTint="#0C6B66"
+        android:textColor="@color/white"
         />
 </LinearLayout>

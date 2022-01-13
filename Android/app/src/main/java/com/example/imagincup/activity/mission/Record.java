@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.activity.mission.Adapter.Audio;
 
@@ -28,10 +30,12 @@ import java.util.Date;
 
 public class Record extends AppCompatActivity {
 
-    /**xml 변수*/
-    ImageButton audioRecordImageBtn;
-    TextView audioRecordText;
-
+    private TextView timeText;
+    private TextView missionTitle;
+    private TextView noticeText;
+    private Button clearButton;
+    private ImageButton recordButton;
+    private Button playButton;
     /**오디오 파일 관련 변수*/
     // 오디오 권한
     private String recordPermission = Manifest.permission.RECORD_AUDIO;
@@ -48,9 +52,6 @@ public class Record extends AppCompatActivity {
     private Boolean isPlaying = false;
     ImageView playIcon;
 
-    /** 리사이클러뷰 */
-    private Audio audioAdapter;
-    private ArrayList<Uri> audioList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,84 +61,57 @@ public class Record extends AppCompatActivity {
         init();
     }
 
-    // xml 변수 초기화
-    // 리사이클러뷰 생성 및 클릭 이벤트
-    private void init() {
-        audioRecordImageBtn = findViewById(R.id.audioRecordImageBtn);
-        audioRecordText = findViewById(R.id.audioRecordText);
-
-        audioRecordImageBtn.setOnClickListener(new Button.OnClickListener() {
+    private void init(){
+        timeText = findViewById(R.id.record_text_time);
+        missionTitle = findViewById(R.id.record_title);
+        noticeText = findViewById(R.id.record_text_button_notice);
+        clearButton = findViewById(R.id.record_button_clear);
+        clearButton.setVisibility(View.GONE);
+        clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(isRecording) {
-                    // 현재 녹음 중 O
-                    // 녹음 상태에 따른 변수 아이콘 & 텍스트 변경
-                    isRecording = false; // 녹음 상태 값
-                    audioRecordImageBtn.setImageDrawable(getResources().getDrawable(R.drawable.edit, null)); // 녹음 상태 아이콘 변경
-                    audioRecordText.setText("녹음 시작"); // 녹음 상태 텍스트 변경
-                    stopRecording();
-                    // 녹화 이미지 버튼 변경 및 리코딩 상태 변수값 변경
-                } else {
-                    // 현재 녹음 중 X
-                    /*절차
-                     *       1. Audio 권한 체크
-                     *       2. 처음으로 녹음 실행한건지 여부 확인
-                     * */
-                    if(checkAudioPermission()) {
-                        // 녹음 상태에 따른 변수 아이콘 & 텍스트 변경
-                        isRecording = true; // 녹음 상태 값
-                        audioRecordImageBtn.setImageDrawable(getResources().getDrawable(R.drawable.mail, null)); // 녹음 상태 아이콘 변경
-                        audioRecordText.setText("녹음 중"); // 녹음 상태 텍스트 변경
-                        startRecording();
-                    }
-                }
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
-
-        // 리사이클러뷰
-        RecyclerView audioRecyclerView = findViewById(R.id.recyclerview);
-
-        audioList = new ArrayList<>();
-        audioAdapter = new Audio(this, audioList);
-        audioRecyclerView.setAdapter(audioAdapter);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        audioRecyclerView.setLayoutManager(mLayoutManager);
-
-        // 커스텀 이벤트 리스너 4. 액티비티에서 커스텀 리스너 객체 생성 및 전달
-        audioAdapter.setOnItemClickListener(new Audio.OnIconClickListener() {
+        playButton = findViewById(R.id.record_button_play);
+        playButton.setVisibility(View.GONE);
+        playButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-
-                String uriName = String.valueOf(audioList.get(position));
-
-                /*음성 녹화 파일에 대한 접근 변수 생성;
-                     (ImageView)를 붙여줘서 View 객체를 형변환 시켜줌.
-                     전역변수로 한 이유는
-                    * */
-
+            public void onClick(View v) {
+                String uriName = String.valueOf(audioUri);
                 File file = new File(uriName);
-
                 if(isPlaying){
-                    // 음성 녹화 파일이 여러개를 클릭했을 때 재생중인 파일의 Icon을 비활성화(비 재생중)으로 바꾸기 위함.
-                    if(playIcon == (ImageView)view){
-                        // 같은 파일을 클릭했을 경우
-                        stopAudio();
-                    } else {
-                        // 다른 음성 파일을 클릭했을 경우
-                        // 기존의 재생중인 파일 중지
-                        stopAudio();
+                    stopAudio();
+                    playButton.setCompoundDrawablesRelative(getDrawable(R.drawable.play),null,null,null);
 
-                        // 새로 파일 재생하기
-                        playIcon = (ImageView)view;
-                        playAudio(file);
-                    }
-                } else {
-                    playIcon = (ImageView)view;
+                } else{
                     playAudio(file);
+                    playButton.setCompoundDrawablesRelative(getDrawable(R.drawable.stop),null,null,null);
                 }
             }
         });
+        recordButton = findViewById(R.id.audioRecordImageBtn);
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isRecording){
+                    isRecording = false;
+                    recordButton.setImageDrawable(getDrawable(R.drawable.mic));
+                    noticeText.setVisibility(View.GONE);
+                    clearButton.setVisibility(View.VISIBLE);
+                    playButton.setVisibility(View.VISIBLE);
+                    stopRecording();
+                }
+                else{
+                    isRecording = true;
+                    recordButton.setImageDrawable(getDrawable(R.drawable.stop));
+                    startRecording();
+                }
+            }
+        });
+        checkAudioPermission();
+
     }
 
     // 오디오 파일 권한 체크
@@ -186,14 +160,6 @@ public class Record extends AppCompatActivity {
         //      - File Path를 알면 File을  인스턴스를 만들어 사용할 수 있기 때문
         audioUri = Uri.parse(audioFileName);
 
-
-        // 데이터 ArrayList에 담기
-        audioList.add(audioUri);
-
-
-        // 데이터 갱신
-        audioAdapter.notifyDataSetChanged();
-
     }
 
     // 녹음 파일 재생
@@ -208,7 +174,6 @@ public class Record extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        playIcon.setImageDrawable(getResources().getDrawable(R.drawable.hamburger, null));
         isPlaying = true;
 
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -222,7 +187,6 @@ public class Record extends AppCompatActivity {
 
     // 녹음 파일 중지
     private void stopAudio() {
-        playIcon.setImageDrawable(getResources().getDrawable(R.drawable.home_fill, null));
         isPlaying = false;
         mediaPlayer.stop();
     }
