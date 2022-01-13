@@ -13,4 +13,5 @@
     <color name="mission_button">#CC82DBD7</color>
     <color name="mypage_background">#6682DBD7</color>
     <color name="mission">#523B9C91</color>
+    <color name="transparent">#00000000</color>
 </resources>

@@ -23,4 +23,202 @@
             #0C6B66
         </item>
     </style>
+    <style name="question">
+        <item name="android:textSize">
+            20sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #00332D
+        </item>
+    </style>
+    <style name="question_answer">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #00332D
+        </item>
+    </style>
+    <style name="go_misson">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:textColor">
+            #00332D
+        </item>
+    </style>
+    <style name="this_day">
+        <item name="android:textSize">
+            14sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #788481
+        </item>
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+        <item name="android:shadowDx">
+            0
+        </item>
+        <item name="android:shadowDy">
+            4
+        </item>
+        <item name="android:shadowRadius">
+            4
+        </item>
+    </style>
+    <style name="daily_mission_achievement">
+        <item name="android:textSize">
+            14sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #00332D
+        </item>
+    </style>
+    <style name="depression_scale">
+        <item name="android:textSize">
+            14sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #445A55
+        </item>
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+        <item name="android:shadowDx">
+            0
+        </item>
+        <item name="android:shadowDy">
+            4
+        </item>
+        <item name="android:shadowRadius">
+            4
+        </item>
+    </style>
+    <style name="percent">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #FF0404
+        </item>
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+        <item name="android:shadowDx">
+            0
+        </item>
+        <item name="android:shadowDy">
+            4
+        </item>
+        <item name="android:shadowRadius">
+            4
+        </item>
+    </style>
+    <style name="arrow">
+        <item name="android:textSize">
+            20sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #FF0404
+        </item>
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+        <item name="android:shadowDx">
+            0
+        </item>
+        <item name="android:shadowDy">
+            4
+        </item>
+        <item name="android:shadowRadius">
+            4
+        </item>
+    </style>
+    <style name="check_misson">
+        <item name="android:textSize">
+            36sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #000000
+        </item>
+    </style>
+    <style name="emotion_parcent">
+        <item name="android:textSize">
+            16sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #295E59
+        </item>
+    </style>
+    <style name="emotion_icon">
+        <item name="android:textSize">
+            17sp
+        </item>
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+        <item name="android:shadowDx">
+            0
+        </item>
+        <item name="android:shadowDy">
+            4
+        </item>
+        <item name="android:shadowRadius">
+            4
+        </item>
+    </style>
+    <style name="month_text">
+        <item name="android:textSize">
+            10sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #445A55
+        </item>
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+        <item name="android:shadowDx">
+            0
+        </item>
+        <item name="android:shadowDy">
+            4
+        </item>
+        <item name="android:shadowRadius">
+            4
+        </item>
+    </style>
 </resources>
