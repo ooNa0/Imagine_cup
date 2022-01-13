@@ -72,9 +72,7 @@ public class RecordFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_record, container, false);
 
         changeDayMonthButton = view.findViewById(R.id.select_day_and_month);
@@ -83,21 +81,18 @@ public class RecordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (isDay == true){
-                    changeDayMonthButton.setBackgroundResource(R.drawable.cal);
                     FragmentChange(Constants.DAY_RECORD_FRAGMENT);
-                    //changeDayMonthButton.setImageResource(R.drawable.adult_lion);
+                    changeDayMonthButton.setBackgroundResource(R.drawable.calendar);
                     isDay = false;
                 }else {
-                    changeDayMonthButton.setBackgroundResource(R.drawable.hamburger);
                     FragmentChange(Constants.MONTH_RECORD_FRAGMENT);
-                    //imageView.setImageResource(R.drawable.baby_lion);
+                    changeDayMonthButton.setBackgroundResource(R.drawable.hamburger);
                     isDay = true;
                 }
             }
         });
-
         FragmentChange(Constants.DAY_RECORD_FRAGMENT);
-
+        changeDayMonthButton.setBackgroundResource(R.drawable.calendar);
         return view;
     }
 
@@ -107,17 +102,6 @@ public class RecordFragment extends Fragment {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, childFragment).commit();
     }
-
-//    public void onClick(View view) {
-//        switch (view.getId()){
-//            case R.id.select_month: // 0
-//                FragmentChange(Constants.DAY_RECORD_FRAGMENT);
-//                break;
-//            case R.id.select_day_and_month:
-//                FragmentChange(Constants.MONTH_RECORD_FRAGMENT);
-//                break;
-//        }
-//    }
 
     private void FragmentChange(int fragment){
         fragmentTransaction = getChildFragmentManager().beginTransaction();
