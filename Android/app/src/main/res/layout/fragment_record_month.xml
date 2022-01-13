@@ -95,6 +95,7 @@
                     android:id="@+id/depression_scale_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:text="@string/depression_scale_day"
                     android:textAppearance="@style/depression_scale"
                     android:layout_marginTop="10dp"
@@ -103,7 +104,7 @@
                 <com.github.mikephil.charting.charts.HorizontalBarChart
                     android:id="@+id/weekly_score"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp">
+                    android:layout_height="300dp">
 
                 </com.github.mikephil.charting.charts.HorizontalBarChart>
             </LinearLayout>
