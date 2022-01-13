@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.imagincup">
-
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-feature android:name="android.hardware.camera2" />
 
@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET"/>
-
+  
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,6 +28,15 @@
             android:name=".activity.mission.Music"
             android:exported="true" />
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AnswerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.mission.Record"
             android:exported="true" />
         <activity
@@ -42,8 +51,7 @@
             android:name=".MissionActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
-            android:allowBackup="true"
+            android:name=".IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

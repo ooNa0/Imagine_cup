@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    card_view:cardBackgroundColor="#e9e9e9"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="3dp"
+    card_view:contentPadding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/card_item_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="21"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            card_view:layout_constraintBaseline_toBaselineOf="@+id/card_item_day_"
+            card_view:layout_constraintStart_toStartOf="parent" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/card_item_day_"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_toEndOf="@+id/card_item_day"-->
+<!--            android:text="st"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            card_view:layout_constraintStart_toEndOf="@+id/card_item_day"-->
+<!--            card_view:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/card_item_detail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_item_day_"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:paddingLeft="5sp"
+            android:singleLine="true"
+            android:text="오늘의 식욕은 어떠셨나요????????????????????????????????????"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/card_item_day" />
+
+        <TextView
+            android:id="@+id/card_item_emotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="😀"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="114dp"-->
+<!--        android:layout_weight="7"-->
+<!--        android:orientation="horizontal">-->
+
+
+
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/card_item_text"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:padding="10dp">-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/card_item_day"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_alignParentTop="true"-->
+        <!--                android:text="20"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textSize="20sp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/card_item_day_"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_alignParentTop="true"-->
+        <!--                android:layout_toEndOf="@+id/card_item_day"-->
+        <!--                android:text="일"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textSize="20sp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/card_item_detail"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_below="@+id/card_item_day_"-->
+        <!--                android:ellipsize="end"-->
+        <!--                android:paddingLeft="5sp"-->
+        <!--                android:singleLine="true"-->
+        <!--                android:text="오늘의 식욕은 어떠셨나요????????????????????????"-->
+        <!--                android:textColor="@color/black" />-->
+
+        <!--        </RelativeLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="156dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="3"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/card_item_emotion"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_toRightOf="@+id/card_item_text"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:text="zbzb"-->
+        <!--                android:textColor="@color/black" />-->
+        <!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+
+</androidx.cardview.widget.CardView>
