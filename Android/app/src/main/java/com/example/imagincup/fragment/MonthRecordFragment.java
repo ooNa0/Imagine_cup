@@ -68,7 +68,22 @@ public class MonthRecordFragment extends Fragment {
             values.add(new Entry(i, val));
         }
 
-        LineDataSet set1 = new LineDataSet(values, "DataSet 1");
+//        final ArrayList<String> xVal = new ArrayList<>();
+//        xVal.add("last month");
+//        xVal.add("this month");
+
+//        XAxis xl1 = lineChart.getXAxis();
+//        xl1.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xl1.setDrawAxisLine(false);
+//        xl1.setDrawGridLinesBehindData(false);
+//        xl1.setDrawGridLines(false);
+//        xl1.setTextSize(15f);
+//        xl1.setTextColor(Color.parseColor("#445A55"));
+//        IndexAxisValueFormatter xaxisFormatter = new IndexAxisValueFormatter(xVal);
+//        xl1.setValueFormatter(xaxisFormatter);
+//        xl1.setGranularity(1);
+
+        LineDataSet set1 = new LineDataSet(values, "monthly");
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1); // add the data sets
@@ -83,6 +98,13 @@ public class MonthRecordFragment extends Fragment {
         set1.setDrawFilled(true);
         Drawable drawable = ContextCompat.getDrawable(getActivity(), R.drawable.gradient);
         set1.setFillDrawable(drawable);
+
+        lineChart.getRenderer().getPaintRender().setShader(
+                new LinearGradient(0, 10, 10, 10, Color.parseColor("#00cfcce3"), Color.parseColor("#99C5C4"), Shader.TileMode.CLAMP));
+        //barChart.getMeasuredWidth()
+
+
+        lineChart.setViewPortOffsets(150, 10, 150, 0);
 
         //확대
         lineChart.setTouchEnabled(false);
@@ -99,12 +121,9 @@ public class MonthRecordFragment extends Fragment {
         // 아래 색상 나타내는 거 숨기기
         lineChart.getLegend().setEnabled(false);
 
+        lineChart.animateXY(0, 1000);
         // set data
         lineChart.setData(data);
-
-
-
-
 
         HorizontalBarChart barChart = (HorizontalBarChart)view.findViewById(R.id.weekly_score);
 
@@ -119,37 +138,21 @@ public class MonthRecordFragment extends Fragment {
         points.add(new BarEntry(6f, 50));
 
         // Create a data set
-        BarDataSet dataSet = new BarDataSet(points, "emotions");
+        BarDataSet dataSet = new BarDataSet(points, "weekly");
         // 막대 위의 값
 
-
-//        BarDataSet set2 = new BarDataSet(yVals1, "DataSet 1");
-//        ArrayList<IBarDataSet> dataSetss = new ArrayList<IBarDataSet>();
-//        //dataSets.add(set2);
-//        BarData data2 = new BarData(dataSetss);
-//        data2.setValueTextSize(10f);
-//        data2.setBarWidth(.9f);
-//        barChart.setData(data2);
-//        barChart.getLegend().setEnabled(false);
-
-//        dataSet = new BarDataSet(points, "emotions1");
-//        ArrayList<IBarDataSet> dataSetss = new ArrayList<IBarDataSet>();
-//        //dataSets.add(dataSet);
-//        BarData datas = new BarData(dataSetss);
-//        datas.setValueTextSize(10f);
-//        datas.setBarWidth(.9f);
-//        barChart.setData(datas);
-
-
-        dataSet.setDrawIcons(true);
+        dataSet.setDrawIcons(false);
         dataSet.setDrawValues(true);
-        //dataSet.setColor(Color.parseColor("#88BEB7"));
-        //dataSet.setGradientColor(Color.parseColor("#88BEB7"), Color.parseColor("#63A697"));
+
         BarData barData = new BarData(dataSet);
         // 바 너비
         barData.setBarWidth(0.35f);
         // 테이터 형식 백분율로
-        barData.setValueFormatter(new PercentFormatter());
+        //barData.setValueFormatter(new PercentFormatter());
+
+        // barData.setDrawValues(true);
+        // barChart.setDrawValueAboveBar(true);
+
         // 데이터 적용
         barChart.setData(barData);
 
@@ -168,10 +171,12 @@ public class MonthRecordFragment extends Fragment {
 
         XAxis xl = barChart.getXAxis();
         xl.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xl.setDrawAxisLine(true);
+        xl.setDrawAxisLine(false);
         xl.setDrawGridLines(false);
-        IndexAxisValueFormatter xaxisFormatter = new IndexAxisValueFormatter(xVals);
-        xl.setValueFormatter(xaxisFormatter);
+        xl.setTextSize(15f);
+        xl.setTextColor(Color.parseColor("#CCCCCC"));
+        IndexAxisValueFormatter xaxisFormatter1 = new IndexAxisValueFormatter(xVals);
+        xl.setValueFormatter(xaxisFormatter1);
         xl.setGranularity(1);
 
         // 최댓값
@@ -193,26 +198,15 @@ public class MonthRecordFragment extends Fragment {
 
 
         // Design
-
-
         RoundedHorizontalBarChartRenderer roundedBarChartRenderer= new RoundedHorizontalBarChartRenderer(barChart , barChart.getAnimator(), barChart.getViewPortHandler());
         roundedBarChartRenderer.setmRadius(20f);
         barChart.setRenderer(roundedBarChartRenderer);
 
-        //barChart.getAxisRight().setEnabled(false);
-        //YAxis yAxis_left = barChart.getAxisLeft();
-        //yAxis_left.setAxisMinimum(0);
-
         barData.setValueTextSize(140f);
-        //barData.setValueTextColor(Color.parseColor("#CCCCCC"));
 
-        //Paint mPaint = barChart.getRenderer().getPaintRender();
-        //mPaint.setShader(new SweepGradient(10,100,Color.parseColor("#88BEB7"),Color.parseColor("#63A697")));
-
-        //Color.parseColor("#63A697")
         barChart.getRenderer().getPaintRender().setShader(
                 new LinearGradient(0, 0, 1000, 1000, Color.parseColor("#88BEB7"), Color.parseColor("#39655B"), Shader.TileMode.CLAMP));
-//, barChart.getMeasuredWidth()
+        //barChart.getMeasuredWidth()
         // hor 에서는 안댐
         //dataSet.setGradientColor(Color.parseColor("#00cfcce3"),Color.parseColor("#CCCCCC"));
 

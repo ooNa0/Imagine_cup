@@ -17,6 +17,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -61,18 +62,75 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
             card_view:cardCornerRadius="12dp"
             card_view:cardElevation="5dp"
             card_view:contentPadding="10dp"
             android:elevation="15dp">
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/monthly_score"
-                android:layout_width="match_parent"
-                android:layout_height="210dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            </com.github.mikephil.charting.charts.LineChart>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- Line -->
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="15dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/line_gradient"
+                    />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/monthly_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                </com.github.mikephil.charting.charts.LineChart>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/sads"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@drawable/color_line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/month_text_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month_text_last"
+                    android:layout_marginRight="80dp"
+                    android:textAppearance="@style/month_text"
+                    />
+
+                <TextView
+                    android:id="@+id/month_text_this"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month_text_this"
+                    android:textAppearance="@style/month_text"
+                    />
+            </LinearLayout>
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 

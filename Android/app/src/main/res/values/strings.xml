@@ -24,8 +24,9 @@
     <string name="this_day">This Day</string>
     <string name="daily_mission_achievement">Mission</string>
     <string name="emotion">Emotion</string>
-    <string name="depression_scale_month">monthly depression scale</string>
-    <string name="depression_scale_day">weekly depression scale</string>
-
+    <string name="depression_scale_month">Monthly depression scale</string>
+    <string name="depression_scale_day">Weekly depression scale</string>
     <string name="check_misson">✔</string>
+    <string name="month_text_last">last month</string>
+    <string name="month_text_this">this month</string>
 </resources>

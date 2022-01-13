@@ -198,4 +198,27 @@
             4
         </item>
     </style>
+    <style name="month_text">
+        <item name="android:textSize">
+            10sp
+        </item>
+        <item name="android:letterSpacing">
+            0.01
+        </item>
+        <item name="android:textColor">
+            #445A55
+        </item>
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+        <item name="android:shadowDx">
+            0
+        </item>
+        <item name="android:shadowDy">
+            4
+        </item>
+        <item name="android:shadowRadius">
+            4
+        </item>
+    </style>
 </resources>
