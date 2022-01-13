@@ -49,8 +49,7 @@
                 android:id="@+id/select_day_and_month"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#FFFFFF"
-                android:src="@drawable/hamburger"/>
+                android:background="#FFFFFF"/>
 
         </LinearLayout>
 
