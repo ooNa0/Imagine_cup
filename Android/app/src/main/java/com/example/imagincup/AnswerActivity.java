@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutionException;
 public class AnswerActivity extends AppCompatActivity implements View.OnClickListener {
 
     // progressdialog
-    private ProgressDialog progressDialog = new ProgressDialog(this);
+    private ProgressDialog progressDialog;
 
     // 텍스트
     private TextView dayTextView;
@@ -49,7 +49,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
     private Button goMissionButton;
 
     private String answer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +75,7 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         goMissionButton.setOnClickListener(this);
 
         // progressDialog
+        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("ProgressDialog running...");
         progressDialog.setCancelable(true);
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal);
@@ -180,6 +180,7 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
                break;
             }
         }
+        progressDialog.dismiss();
     }
 
     public void SwitchVisibility(boolean isExistText){
