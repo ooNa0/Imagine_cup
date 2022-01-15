@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.android.volley.toolbox.HttpResponse;
+import com.example.imagincup.AnswerActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,9 +21,6 @@ import java.net.URL;
 public class EmotionAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
     private JSONObject responseJson = null;
-
-
-    //ProgressDialog asyncDialog = new ProgressDialog(ProgressDialogActivity.this);
 
     public EmotionAsyncTask() {
         super();
