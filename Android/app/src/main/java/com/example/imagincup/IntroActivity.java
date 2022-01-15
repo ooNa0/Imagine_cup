@@ -36,13 +36,12 @@ public class IntroActivity extends AppCompatActivity {
             if(result != Constants.DATABASE_EXIST) {
                 // 인트로 실행 후 바로 MainActivity로 넘어감.
                 intent = new Intent(getApplicationContext(), MainActivity.class);
-                Thread.currentThread().interrupt();
             }
             else {
                 // 회원가입 페이지로 이동
                 intent = new Intent(getApplicationContext(), SignupActivity.class);
-                Thread.currentThread().interrupt();
             }
+            Thread.currentThread().interrupt();
             startActivity(intent);
             finish();
         } catch (InterruptedException e) {
@@ -54,56 +53,18 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message message) {
             result = message.what;
-//            if (message.what != Constants.RUNNING) {
-//                Log.d("-----------------------------------", String.valueOf(message.what));
-//                Log.d("-----------------------------------", String.valueOf(Constants.DATABASE_EXIST));
-//                Log.d("-----------------------------------", String.valueOf(message.what != Constants.DATABASE_EXIST));
-//                if(message.what != Constants.DATABASE_EXIST) {
-//                    // 인트로 실행 후 바로 MainActivity로 넘어감.
-//                    intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    Thread.currentThread().interrupt();
-//                }
-//                else {
-//                    // 회원가입 페이지로 이동
-//                    //intent = new Intent(getApplicationContext(), SignupActivity.class);
-//                    Thread.currentThread().interrupt();
-//                }
-//                startActivity(intent);
-//                finish();
-//            }
             }
         };
 
     @Override
     protected void onStart() {
         super.onStart();
-        //DeviceID = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-//        asyncTask = new PersonTableAsyncTask().execute(DeviceID);
-//        while(true){
-//            Log.d("aa", String.valueOf(asyncTask.getStatus()));
-//            if(asyncTask.getStatus()== AsyncTask.Status.FINISHED) {
-//                try {
-//                    result = asyncTask.get();
-//                    // 처음 입장시
-//                    if (!result.equals(Constants.DATABASE_EXIST)) {
-//                        // 회원가입 페이지로 이동
-//                        intent = new Intent(getApplicationContext(), SignupActivity.class);
-//                    } else {
-//                        // 인트로 실행 후 바로 MainActivity로 넘어감.
-//                        intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    }
-//                    startActivity(intent);
-//                    finish();
-//                    break;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
+
     }
 
     protected void onResume(){
         super.onResume();
+        //handler.postDelayed(r, 4000);
     }
 
     @Override

@@ -31,9 +31,11 @@ public class IntroThread extends Thread {
 
     @Override
     public void run() {
+
         message = new Message();
         message.what = Constants.RUNNING;
         try {
+            //Thread.sleep(6000);
             connection = ConnectionSingleton.getConnection();
             //if(connection == null) { resultMessage = "Check Your Internet Access!"; }
             statement = connection.createStatement();
