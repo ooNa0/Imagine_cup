@@ -1,5 +1,6 @@
 package com.example.imagincup;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,9 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class AnswerActivity extends AppCompatActivity implements View.OnClickListener {
+
+    // progressdialog
+    private ProgressDialog progressDialog = new ProgressDialog(this);
 
     // 텍스트
     private TextView dayTextView;
@@ -70,6 +74,11 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
         saveButton.setOnClickListener(this);
         goMissionButton.setOnClickListener(this);
+
+        // progressDialog
+        progressDialog.setMessage("ProgressDialog running...");
+        progressDialog.setCancelable(true);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal);
 
         // data set
 
@@ -139,6 +148,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
                 //new AnalyzeSentiment();
 
                 //answer = answerEditText.getText();
+
+                progressDialog.show();
 
                 JSONObject data = null;
                 try {
