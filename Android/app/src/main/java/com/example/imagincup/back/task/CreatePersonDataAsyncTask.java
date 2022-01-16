@@ -1,10 +1,11 @@
-package com.example.imagincup.back;
+package com.example.imagincup.back.task;
 
 import android.os.AsyncTask;
 import android.provider.Settings;
 import android.util.Log;
 
 import com.example.imagincup.Constants;
+import com.example.imagincup.back.ConnectionSingleton;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.imagincup.Constants;
+import com.example.imagincup.back.DTO.DTOPerson;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
