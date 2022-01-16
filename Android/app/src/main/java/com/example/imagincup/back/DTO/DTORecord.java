@@ -1,9 +1,9 @@
-package com.example.imagincup.back;
+package com.example.imagincup.back.DTO;
 
 public class DTORecord {
 
     private Integer RecordID;
-    // 날짜
+    //private m// 날짜 DATETIME('NOW')
     private String Question; // 질문
     private String Answer; // 답변
     private Integer PersonID; // 유저 id
@@ -20,6 +20,12 @@ public class DTORecord {
         this.Mission = Mission;
         this.Emotion = Emotion;
     }
+
+//    public static String getToDay(){
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //시간 정보가 필요한 경우
+//        return sdf.format(new Date());
+//    }
 
     public Integer getRecordID(){
         return RecordID;

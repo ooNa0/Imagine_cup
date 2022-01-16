@@ -1,4 +1,4 @@
-package com.example.imagincup.back;
+package com.example.imagincup.back.DTO;
 
 public class DTOPerson {
 
