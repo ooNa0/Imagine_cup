@@ -16,7 +16,8 @@ import com.example.imagincup.back.PersonTableAsyncTask;
 import java.util.concurrent.ExecutionException;
 
 public class IntroActivity extends AppCompatActivity {
-    private AsyncTask<String, Void, String> asyncTask;
+
+    private Handler handler = new Handler();
     private String DeviceID;
     private int result;
     private Intent intent;
@@ -28,33 +29,50 @@ public class IntroActivity extends AppCompatActivity {
 
         DeviceID = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        IntroThread introThread = new IntroThread(handler, DeviceID);
-        introThread.start();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                IntroThread introThread = new IntroThread(DeviceID);
+                introThread.start();
+                try {
+                    introThread.join();
+                } catch (InterruptedException exception) {
+                    exception.printStackTrace();
+                }
+                result = introThread.getResult();
+                if(result == Constants.DATABASE_EXIST) {
+                    // 인트로 실행 후 바로 MainActivity로 넘어감.
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                }
+                else {
+                    // 회원가입 페이지로 이동
+                    intent = new Intent(getApplicationContext(), SignupActivity.class);
+                }
+                startActivity(intent);
+                finish();
+            }
+        },1000);
 
-        try {
-            introThread.join();
-            if(result != Constants.DATABASE_EXIST) {
-                // 인트로 실행 후 바로 MainActivity로 넘어감.
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-            }
-            else {
-                // 회원가입 페이지로 이동
-                intent = new Intent(getApplicationContext(), SignupActivity.class);
-            }
-            Thread.currentThread().interrupt();
-            startActivity(intent);
-            finish();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        IntroThread introThread = new IntroThread(DeviceID);
+//        introThread.start();
+//        try {
+//            introThread.join(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        result = introThread.getResult();
+//            if(result == Constants.DATABASE_EXIST) {
+//                // 인트로 실행 후 바로 MainActivity로 넘어감.
+//                intent = new Intent(getApplicationContext(), MainActivity.class);
+//            }
+//            else {
+//                // 회원가입 페이지로 이동
+//                intent = new Intent(getApplicationContext(), SignupActivity.class);
+//            }
+//            startActivity(intent);
+//            finish();
     }
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message message) {
-            result = message.what;
-            }
-        };
 
     @Override
     protected void onStart() {
@@ -64,7 +82,6 @@ public class IntroActivity extends AppCompatActivity {
 
     protected void onResume(){
         super.onResume();
-        //handler.postDelayed(r, 4000);
     }
 
     @Override

@@ -1,12 +1,11 @@
 package com.example.imagincup.back;
 
-import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.Settings;
 import android.util.Log;
 
 import com.example.imagincup.Constants;
+import com.example.imagincup.back.DTO.DTOPerson;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,42 +15,32 @@ import java.sql.Statement;
 public class IntroThread extends Thread {
 
     private String resultMessage = "";
-    private Connection connection = null;
+    private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
     private String DeviceID;
-    private Message message;
+    private Integer resultStateNumber;
 
-    private Handler handler;
-
-    public IntroThread(Handler handler, String DeviceID) {
-        this.handler = handler;
+    public IntroThread(String DeviceID) {
         this.DeviceID = DeviceID;
     }
 
     @Override
     public void run() {
-
-        message = new Message();
-        message.what = Constants.RUNNING;
+        resultStateNumber = Constants.RUNNING;
         try {
-            //Thread.sleep(6000);
             connection = ConnectionSingleton.getConnection();
             //if(connection == null) { resultMessage = "Check Your Internet Access!"; }
             statement = connection.createStatement();
             resultSet = statement.executeQuery(Constants.QUERY_SELECT_PERSON_DATABASE);
             while (resultSet.next()){
                 if(DeviceID.equals(resultSet.getString("PersonDevice"))){
-                    //resultMessage = Constants.DATABASE_EXIST;
                     new InsertPersonData(resultSet);
-                    //ConnectionSingleton.close();
-                    message.what = Constants.DATABASE_EXIST;
-                    handler.sendEmptyMessage(message.what);
-                    Thread.currentThread().interrupt();
+                    resultStateNumber = Constants.DATABASE_EXIST;
                     break;
                 }
                 else{
-                    message.what = Constants.DATABASE_NOT_EXIST;
+                    resultStateNumber = Constants.DATABASE_NOT_EXIST;
                 }
             }
         }
@@ -64,20 +53,15 @@ public class IntroThread extends Thread {
             if (statement != null) try { statement.close(); } catch(SQLException ex) {}
             try { ConnectionSingleton.close();} catch(SQLException ex) {}
         }
-        handler.sendEmptyMessage(message.what);
-        Thread.currentThread().interrupt();
-        Log.d("=================================", String.valueOf(message.what));
-        Log.d("-------------------", resultMessage);
+    }
+
+    public int getResult(){
+        return resultStateNumber;
     }
     class InsertPersonData {
-
         InsertPersonData(ResultSet resultSet) throws SQLException {
             new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"), resultSet.getInt("RecordID"));
-//        dtoPerson.setPersonId(resultSet.getInt("PersonId"));
-//        dtoPerson.setPersonName(resultSet.getString("PersonName"));
-//        dtoPerson.setPersonDepressionScore(resultSet.getInt("PersonDepressionScore"));
-//        dtoPerson.setPersonDevice(resultSet.getString("PersonDevice"));
-//        dtoPerson.setRecordId(resultSet.getInt("RecordID"));
         }
     }
+
 }
