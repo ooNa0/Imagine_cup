@@ -1,9 +1,11 @@
 package com.example.imagincup.back.DTO;
 
+import java.sql.Date;
+
 public class DTORecord {
 
     private Integer RecordID;
-    //private m// 날짜 DATETIME('NOW')
+    private Date date;// 날짜 DATETIME('NOW')
     private String Question; // 질문
     private String Answer; // 답변
     private Integer PersonID; // 유저 id
@@ -23,7 +25,6 @@ public class DTORecord {
 
 //    public static String getToDay(){
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //시간 정보가 필요한 경우
 //        return sdf.format(new Date());
 //    }
 

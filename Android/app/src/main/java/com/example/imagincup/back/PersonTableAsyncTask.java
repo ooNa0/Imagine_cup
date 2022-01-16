@@ -31,10 +31,8 @@ public class PersonTableAsyncTask extends AsyncTask<String,Void,String> {
             resultSet = statement.executeQuery(Constants.QUERY_SELECT_PERSON_DATABASE);
             while (resultSet.next()){
                 if(params[0].equals(resultSet.getString("PersonDevice"))){
-                    //resultMessage = Constants.DATABASE_EXIST;
                     new InsertPersonData(resultSet);
                     ConnectionSingleton.close();
-                    //return Constants.DATABASE_EXIST;
                 }
             }
         }
