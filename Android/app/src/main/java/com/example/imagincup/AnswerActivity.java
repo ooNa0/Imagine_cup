@@ -3,6 +3,7 @@ package com.example.imagincup;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,7 +16,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.task.EmotionAsyncTask;
+import com.example.imagincup.back.task.InsertRecordDataAsyncTask;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -54,10 +57,15 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
     private String answer;
 
+    private DTOPerson dtoPerson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_result);
+
+        Intent intent = getIntent();
+        dtoPerson = (DTOPerson)intent.getSerializableExtra("Person");
 
         dayTextView = findViewById(R.id.question_day);
         questionTextView = findViewById(R.id.question_);
@@ -88,8 +96,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
-
-
 
         SwitchVisibility(false);
 
@@ -164,14 +170,13 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
                 SwitchVisibility(true);
                 answerTextView.setText(answerEditText.getText());
-
                 JSONObject data = null;
                 try {
-                    data = new EmotionAsyncTask().execute().get();
 
-                    //Log.d("a", data.getString("sentiment"));
+                    String task = new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId(), dtoPerson.getRecordId()).get();
+
+                    data = new EmotionAsyncTask().execute().get();
                     JSONObject parcent = data.getJSONObject("confidenceScores");
-                    //Log.d("double", String.valueOf(parcent.getDouble(data.getString("sentiment"))));
                     if(data.getString("sentiment").equals("positive")){
                         emotionIconTextView.setText("😀");
                     }
@@ -191,8 +196,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             }
             case R.id.go_misson_button:
             {
-                //MainActivity.class
-                //
                 //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, fragment).commit();
                 Intent intent = new Intent(this, MissionActivity.class);
 

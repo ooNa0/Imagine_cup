@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.example.imagincup.Constants;
 import com.example.imagincup.back.ConnectionSingleton;
+import com.example.imagincup.back.DAO;
+import com.example.imagincup.back.IntroThread;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreatePersonDataAsyncTask  extends AsyncTask<String,Void,String> {
+public class CreatePersonDataAsyncTask extends AsyncTask<String,Void,String> {
     private String resultMessage = "";
     private Connection connection;
     private int resultSet;

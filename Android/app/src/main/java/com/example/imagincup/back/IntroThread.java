@@ -18,8 +18,11 @@ public class IntroThread extends Thread {
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
+    private ResultSet resultData;
     private String DeviceID;
     private Integer resultStateNumber;
+
+    private DTOPerson dtoPerson;
 
     public IntroThread(String DeviceID) {
         this.DeviceID = DeviceID;
@@ -58,9 +61,13 @@ public class IntroThread extends Thread {
     public int getResult(){
         return resultStateNumber;
     }
+    public DTOPerson getResultDataSet(){
+        return dtoPerson;
+    }
+
     class InsertPersonData {
         InsertPersonData(ResultSet resultSet) throws SQLException {
-            new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"), resultSet.getInt("RecordID"));
+            dtoPerson = new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"), resultSet.getInt("RecordID"));
         }
     }
 

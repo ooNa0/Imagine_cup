@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.imagincup.back.IntroThread;
 import com.example.imagincup.back.task.CreatePersonDataAsyncTask;
 
 public class SignupActivity extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
 
         // 검사지 넣기!!!!!!!!!!!!!!!
 
-        intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent = new Intent(getApplicationContext(), IntroActivity.class);
         startActivity(intent);
         finish();
     }
