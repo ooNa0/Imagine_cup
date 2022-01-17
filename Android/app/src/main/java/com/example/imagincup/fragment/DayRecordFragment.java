@@ -1,19 +1,16 @@
 package com.example.imagincup.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imagincup.R;
-import com.example.imagincup.back.DTORecord;
+import com.example.imagincup.back.DTO.DTORecord;
 import com.example.imagincup.back.RecycleViewAdapter;
 //import com.example.imagincup.back.RecycleViewAdapter;
 

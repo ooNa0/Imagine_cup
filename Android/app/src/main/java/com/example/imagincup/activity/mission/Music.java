@@ -20,10 +20,10 @@ public class Music extends YouTubeBaseActivity {
     //객체 선언
     private static String API_KEY = "AIzaSyC6FF8AVtTVOo1P2SaLMUM79zIGH5pvsJg";
     private static String VIDEO_ID = "Gqfk5sr9fpw";
-    private static String TAG = "Music";
+    private static String TAG = "YOUTUBE";
 
     YouTubePlayerView youTubePlayerView;
-    YouTubePlayer.OnInitializedListener listener;
+    YouTubePlayer player;
     Button playButton;
 
 
@@ -31,27 +31,74 @@ public class Music extends YouTubeBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
-
+        initPlayer();
         playButton = findViewById(R.id.youtubeBtn);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playVideo();
+            }
+        });
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youTubePlayerView);
-        listener = new YouTubePlayer.OnInitializedListener() {
+
+    }
+
+    private void playVideo(){
+        if(player != null){
+            if(player.isPlaying()){
+                player.pause();
+            }
+            player.cueVideo(VIDEO_ID);
+        }
+    }
+
+    private void initPlayer(){
+        youTubePlayerView = findViewById(R.id.youTubePlayerView);
+        youTubePlayerView.initialize(API_KEY,new YouTubePlayer.OnInitializedListener(){
+
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo(VIDEO_ID);
+                player = youTubePlayer;
+
+                player.setPlayerStateChangeListener(new YouTubePlayer.PlayerStateChangeListener() {
+                    @Override
+                    public void onLoading() {
+
+                    }
+
+                    @Override
+                    public void onLoaded(String s) {
+                        Log.d(TAG,"onLoaded: " + s);
+                        player.play();
+                    }
+
+                    @Override
+                    public void onAdStarted() {
+
+                    }
+
+                    @Override
+                    public void onVideoStarted() {
+
+                    }
+
+                    @Override
+                    public void onVideoEnded() {
+
+                    }
+
+                    @Override
+                    public void onError(YouTubePlayer.ErrorReason errorReason) {
+                        Log.d(TAG, "onError : " + errorReason);
+                    }
+                });
             }
 
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
-            }
-        };
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                youTubePlayerView.initialize(API_KEY,listener);
+                Log.d(TAG,"onFailure : " +  youTubeInitializationResult);
             }
         });
-
     }
 
 

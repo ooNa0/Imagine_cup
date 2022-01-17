@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.imagincup">
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -31,7 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".AnswerActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SignupActivity"
             android:exported="false" />

@@ -8,12 +8,14 @@ import android.os.AsyncTask;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.fragment.HomeFragment;
 import com.example.imagincup.fragment.MissionFragment;
 import com.example.imagincup.fragment.MyPageFragment;
@@ -25,10 +27,19 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout home_layout;
     BottomNavigationView bottomNavigationView;
 
+    private DTOPerson dtoPerson;
+    private Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        Intent intent = getIntent();
+        dtoPerson = (DTOPerson)intent.getSerializableExtra("Person");
+        bundle.putSerializable("Person", dtoPerson);
+
 
         init();
         SettingListener();
@@ -71,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeFragment(Fragment fragment){
+        fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, fragment).commit();
     }
 
