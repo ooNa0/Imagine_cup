@@ -1,6 +1,8 @@
-package com.example.imagincup.back;
+package com.example.imagincup.back.DTO;
 
-public class DTOPerson {
+import java.io.Serializable;
+
+public class DTOPerson implements Serializable {
 
     private Integer PersonId; // PK
     private String PersonName; // 이름
@@ -16,6 +18,8 @@ public class DTOPerson {
         this.PersonDevice = PersonDevice;
         //this.RecordID = RecordID;
     }
+
+    public DTOPerson(){}
 
     public Integer getPersonId(){
         return PersonId;

@@ -1,9 +1,12 @@
 package com.example.imagincup;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import com.example.imagincup.back.EmotionAsyncTask;
+import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.task.EmotionAsyncTask;
+import com.example.imagincup.back.task.InsertRecordDataAsyncTask;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -22,9 +28,10 @@ import com.github.mikephil.charting.data.PieEntry;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class AnswerActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Toolbar toolbar;
 
     // progressdialog
     private ProgressDialog progressDialog;
@@ -50,10 +57,15 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
     private String answer;
 
+    private DTOPerson dtoPerson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_result);
+
+        Intent intent = getIntent();
+        dtoPerson = (DTOPerson)intent.getSerializableExtra("Person");
 
         dayTextView = findViewById(R.id.question_day);
         questionTextView = findViewById(R.id.question_);
@@ -76,9 +88,18 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
         // progressDialog
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("ProgressDialog running...");
         progressDialog.setCancelable(true);
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal);
+
+        // back
+        toolbar = findViewById(R.id.activity_answer_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
+        SwitchVisibility(false);
+
+
 
         // data set
 
@@ -89,12 +110,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         PieDataSet dataSet = new PieDataSet(yValues,"emotions");
         //ataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         //dataSet.setColor(getResources().getColor(R.color.black));
-        int[] colors = {Color.rgb(153, 193, 12), Color.rgb(179, 130, 76)};
-
         //dataSet.setGradientColor(Color.parseColor("88BEB7"), Color.parseColor("26746C"));
-
         dataSet.setColors(getResources().getColor(R.color.mission_button), getResources().getColor(R.color.white_gray));
-
         PieData data = new PieData(dataSet);
 
         // 퍼센트 지우기
@@ -145,19 +162,17 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         {
             case R.id.save_answer:
             {
-                //new AnalyzeSentiment();
-
-                //answer = answerEditText.getText();
-
                 progressDialog.show();
 
+                SwitchVisibility(true);
+                answerTextView.setText(answerEditText.getText());
                 JSONObject data = null;
                 try {
-                    data = new EmotionAsyncTask().execute().get();
 
-                    Log.d("a", data.getString("sentiment"));
+                    String task = new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId(), dtoPerson.getRecordId()).get();
+
+                    data = new EmotionAsyncTask().execute().get();
                     JSONObject parcent = data.getJSONObject("confidenceScores");
-                    Log.d("double", String.valueOf(parcent.getDouble(data.getString("sentiment"))));
                     if(data.getString("sentiment").equals("positive")){
                         emotionIconTextView.setText("😀");
                     }
@@ -172,23 +187,51 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
+                progressDialog.dismiss();
                 break;
             }
             case R.id.go_misson_button:
             {
+                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, fragment).commit();
+                Intent intent = new Intent(this, MissionActivity.class);
+
+                //Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, new MissionFragment()).commit();
+                finish();
                break;
             }
         }
-        progressDialog.dismiss();
     }
 
     public void SwitchVisibility(boolean isExistText){
         if(isExistText){
+            // 만약에 텍스트가 존재한다면, editText가 보이지 말아야 한다면
+            answerEditText.setVisibility(View.GONE);
+            saveButton.setVisibility(View.INVISIBLE);
+            answerTextView.setVisibility(View.VISIBLE);
+            resultLinearLayout.setVisibility(View.VISIBLE);
+            goMissionButton.setVisibility(View.VISIBLE);
 
         }
         else{
+            answerEditText.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.VISIBLE);
+            answerTextView.setVisibility(View.GONE);
+            resultLinearLayout.setVisibility(View.GONE);
+            goMissionButton.setVisibility(View.GONE);
 
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

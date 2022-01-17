@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ import com.example.imagincup.AnswerActivity;
 import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.activity.survey.SurveyActivity;
+import com.example.imagincup.back.DTO.DTOPerson;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,9 +51,11 @@ public class HomeFragment extends Fragment {
     private ImageButton callButton;
     private Button questionButton;
 
+    private DTOPerson dtoPerson;
+    private Bundle bundle;
+
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -64,6 +68,7 @@ public class HomeFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
+
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -75,6 +80,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        bundle = getArguments();
+        dtoPerson = (DTOPerson) bundle.getSerializable("Person");
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -90,6 +99,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnswerActivity.class);
+                intent.putExtra("Person", dtoPerson);
                 startActivity(intent);
             }
         });
