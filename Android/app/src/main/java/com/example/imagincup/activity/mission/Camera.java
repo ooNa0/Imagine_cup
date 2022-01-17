@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.imagincup.MainActivity;
+import com.example.imagincup.MissionActivity;
 import com.example.imagincup.R;
 
 import java.io.File;
@@ -27,20 +28,19 @@ import java.util.Date;
 
 public class Camera extends AppCompatActivity {
 
-    private final int REQUEST_IMAGE_CAPTURE = 1;
-    private final int RESULT_OK = 1;
-    private  final int REQUEST_TAKE_PHOTO = 1;
-    String currentPhotoPath;
-
     private Button pictureButton;
     private ImageView  imageView;
     private Button clearButton;
+
+    private boolean isDone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         init();
+        Intent intent = getIntent();
+        isDone = intent.getBooleanExtra("is_done",false);
     }
 
 
@@ -60,8 +60,11 @@ public class Camera extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                isDone = true;
+                Intent intent = new Intent();
+                intent.putExtra("is_done",true);
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }
