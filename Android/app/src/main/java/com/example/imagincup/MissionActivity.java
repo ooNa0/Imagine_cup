@@ -17,6 +17,7 @@ import com.example.imagincup.activity.mission.Camera;
 import com.example.imagincup.activity.mission.Music;
 import com.example.imagincup.activity.mission.Pedometer;
 import com.example.imagincup.activity.mission.Record;
+import com.example.imagincup.model.MissionState;
 
 import java.util.Random;
 import java.util.Timer;
@@ -27,40 +28,41 @@ public class MissionActivity extends AppCompatActivity {
     private ImageButton imageButton;
     private Button startButton;
 
-    private boolean isDone;
-    private boolean isSet;
+    private Boolean isDone;
+    private Boolean isSet;
+    private Boolean isClear;
+
     private int missionNumber;
     private Intent intent;
 
     private int DAY = 86400000;
+    private String TAG = "MISSION_STATE";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission);
 
-        isDone = false;
-        isSet = false;
-
         init();
         Timer timer = new Timer();
         timer.schedule(initState(),0,DAY);
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode){
-            case 1:
-                Intent i = getIntent();
-                isDone = i.getBooleanExtra("is_done",true);
-                break;
-        }
-        Log.d("MISSION", String.valueOf(isDone));
+        isDone = MissionState.getInstance().getDone();
+        isSet = MissionState.getInstance().getIsSet();
+        Log.d(TAG, "isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
     }
 
     private void init(){
+        isDone = MissionState.getInstance().getDone();
+        isSet = MissionState.getInstance().getIsSet();
+        isClear = false;
+
+        Log.d(TAG, "isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
+
         toolbar = findViewById(R.id.activity_mission_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -74,6 +76,7 @@ public class MissionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     if(!isSet){
+                        MissionState.getInstance().setIsSet(true);
                         Random random = new Random();
                         missionNumber = random.nextInt(4);
                     }
@@ -82,7 +85,6 @@ public class MissionActivity extends AppCompatActivity {
                         startActivity(intent);
                         return;
                     }
-                    missionNumber = 1;
                     switch (missionNumber){
                         case 0 :
                             intent = new Intent(getApplicationContext(), Pedometer.class);
@@ -108,6 +110,7 @@ public class MissionActivity extends AppCompatActivity {
                             break;
                     }
             }
+
         });
     }
 
@@ -115,8 +118,8 @@ public class MissionActivity extends AppCompatActivity {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                isDone = false;
-                isSet = false;
+                MissionState.getInstance().setDone(false);
+                MissionState.getInstance().setIsSet(false);
             }
         };
 
