@@ -1,6 +1,7 @@
 package com.example.imagincup;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.imagincup.back.IntroThread;
 import com.example.imagincup.back.task.CreatePersonDataAsyncTask;
+
+import java.util.concurrent.ExecutionException;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -39,12 +42,18 @@ public class SignupActivity extends AppCompatActivity {
 //        String now = dataformat.format(nowDate);
 //        entryTime=now;
 
-        new CreatePersonDataAsyncTask().execute(name, DeviceID);
+        try {
+            String result = new CreatePersonDataAsyncTask().execute(name, DeviceID).get();
 
+            intent = new Intent(getApplicationContext(), IntroActivity.class);
+            startActivity(intent);
+            finish();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // 검사지 넣기!!!!!!!!!!!!!!!
 
-        intent = new Intent(getApplicationContext(), IntroActivity.class);
-        startActivity(intent);
-        finish();
     }
 }
