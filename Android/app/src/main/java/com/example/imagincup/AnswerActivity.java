@@ -110,12 +110,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         PieDataSet dataSet = new PieDataSet(yValues,"emotions");
         //ataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         //dataSet.setColor(getResources().getColor(R.color.black));
-        int[] colors = {Color.rgb(153, 193, 12), Color.rgb(179, 130, 76)};
-
         //dataSet.setGradientColor(Color.parseColor("88BEB7"), Color.parseColor("26746C"));
-
         dataSet.setColors(getResources().getColor(R.color.mission_button), getResources().getColor(R.color.white_gray));
-
         PieData data = new PieData(dataSet);
 
         // 퍼센트 지우기
