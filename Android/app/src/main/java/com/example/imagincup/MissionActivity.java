@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,18 +18,46 @@ import com.example.imagincup.activity.mission.Music;
 import com.example.imagincup.activity.mission.Pedometer;
 import com.example.imagincup.activity.mission.Record;
 
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MissionActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageButton imageButton;
     private Button startButton;
+
+    private boolean isDone;
+    private boolean isSet;
+    private int missionNumber;
+    private Intent intent;
+
+    private int DAY = 86400000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission);
 
-        init();
+        isDone = false;
+        isSet = false;
 
+        init();
+        Timer timer = new Timer();
+        timer.schedule(initState(),0,DAY);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 1:
+                Intent i = getIntent();
+                isDone = i.getBooleanExtra("is_done",true);
+                break;
+        }
+        Log.d("MISSION", String.valueOf(isDone));
     }
 
     private void init(){
@@ -44,13 +73,54 @@ public class MissionActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), Pedometer.class);
-//                Intent intent = new Intent(getApplicationContext(),Camera.class);
-//                Intent intent = new Intent(getApplicationContext(), Record.class);
-                Intent intent = new    Intent(getApplicationContext(), Music.class);
-                startActivity(intent);
+                    if(!isSet){
+                        Random random = new Random();
+                        missionNumber = random.nextInt(4);
+                    }
+                    if(isDone){
+                        intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
+                        return;
+                    }
+                    missionNumber = 1;
+                    switch (missionNumber){
+                        case 0 :
+                            intent = new Intent(getApplicationContext(), Pedometer.class);
+                            intent.putExtra("is_done",isDone);
+                            startActivityForResult(intent,0000);
+                            break;
+                        case 1:
+                            intent = new Intent(getApplicationContext(),Camera.class);
+                            intent.putExtra("is_done",isDone);
+                            startActivityForResult(intent,1111);
+                            break;
+
+                        case 2:
+                            intent = new Intent(getApplicationContext(), Record.class);
+                            intent.putExtra("is_done",isDone);
+                            startActivityForResult(intent,2222);
+                            break;
+
+                        case 3:
+                            intent = new Intent(getApplicationContext(), Music.class);
+                            intent.putExtra("is_done",isDone);
+                            startActivityForResult(intent,3333);
+                            break;
+                    }
             }
         });
+    }
+
+    private TimerTask initState(){
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                isDone = false;
+                isSet = false;
+            }
+        };
+
+        return timerTask;
     }
 
     @Override
