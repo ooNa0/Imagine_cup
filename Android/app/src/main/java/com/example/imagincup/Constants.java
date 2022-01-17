@@ -9,7 +9,7 @@ public final class Constants {
     public static final Integer RUNNING = 0;
     public static final Integer DATABASE_EXIST = 1;
     public static final Integer DATABASE_NOT_EXIST = 2;
-    //public static final String DATABASE_PERSONID = "PersonId";
+    public static final String DATABASE_PERSON_TABLENAME = "Person";
 
     public static final Integer DAY_RECORD_FRAGMENT = 0;
     public static final Integer MONTH_RECORD_FRAGMENT = 1;
