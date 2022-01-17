@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -20,6 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 
 
 import com.example.imagincup.R;
+import com.example.imagincup.model.MissionState;
 
 public class Pedometer extends AppCompatActivity implements SensorEventListener{
 
@@ -44,6 +46,15 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener{
 
         pedometerResetButton = findViewById(R.id.pedometer_button);
         pedometerResetButton.setEnabled(false);
+        pedometerResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MissionState.getInstance().setDone(true);
+                Intent intent = new Intent();
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        });
         pedometerText = findViewById(R.id.pedometer_count);
 
         toolbar = findViewById(R.id.pedometer_toolbar);

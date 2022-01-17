@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import com.example.imagincup.MainActivity;
 import com.example.imagincup.MissionActivity;
 import com.example.imagincup.R;
+import com.example.imagincup.model.MissionState;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,15 +33,12 @@ public class Camera extends AppCompatActivity {
     private ImageView  imageView;
     private Button clearButton;
 
-    private boolean isDone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         init();
-        Intent intent = getIntent();
-        isDone = intent.getBooleanExtra("is_done",false);
     }
 
 
@@ -60,9 +58,8 @@ public class Camera extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isDone = true;
+                MissionState.getInstance().setDone(true);
                 Intent intent = new Intent();
-                intent.putExtra("is_done",true);
                 setResult(RESULT_OK,intent);
                 finish();
             }

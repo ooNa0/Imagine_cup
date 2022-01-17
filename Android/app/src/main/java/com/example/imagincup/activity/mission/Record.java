@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.activity.mission.Adapter.Audio;
+import com.example.imagincup.model.MissionState;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,8 +71,10 @@ public class Record extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                MissionState.getInstance().setDone(true);
+                Intent intent = new Intent();
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
         playButton = findViewById(R.id.record_button_play);
