@@ -62,7 +62,7 @@ public class EmotionAsyncTask extends AsyncTask<String, Void, JSONObject> {
             JSONArray jsonArray = new JSONArray();
             JSONObject json = new JSONObject();
             json.put("id", "1");
-            json.put("text", "TI wonder what my head will look like now, happy and hard.");
+            json.put("text", params[0]);
             jsonArray.put(json);
             jsonObject.put("documents", jsonArray);
 
