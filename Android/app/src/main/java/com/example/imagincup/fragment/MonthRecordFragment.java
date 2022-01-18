@@ -23,7 +23,9 @@ import androidx.fragment.app.Fragment;
 import com.db.williamchart.Tooltip;
 
 import com.db.williamchart.view.LineChartView;
+import com.example.imagincup.Constants;
 import com.example.imagincup.R;
+import com.example.imagincup.back.DTO.DTOPerson;
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.buffer.BarBuffer;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -55,6 +57,17 @@ import java.util.stream.Collectors;
 public class MonthRecordFragment extends Fragment {
 
     private LineChart lineChart;
+
+    private DTOPerson dtoPerson;
+    private Bundle bundle;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        bundle = getArguments();
+        dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -102,7 +115,6 @@ public class MonthRecordFragment extends Fragment {
         lineChart.getRenderer().getPaintRender().setShader(
                 new LinearGradient(0, 10, 10, 10, Color.parseColor("#00cfcce3"), Color.parseColor("#99C5C4"), Shader.TileMode.CLAMP));
         //barChart.getMeasuredWidth()
-
 
         lineChart.setViewPortOffsets(150, 10, 150, 0);
 
@@ -214,11 +226,6 @@ public class MonthRecordFragment extends Fragment {
 
         barChart.invalidate();
         return view;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

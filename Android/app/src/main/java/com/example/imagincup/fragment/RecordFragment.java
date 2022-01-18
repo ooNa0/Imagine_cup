@@ -53,6 +53,9 @@ public class RecordFragment extends Fragment {
     private DTOPerson dtoPerson;
     private Bundle bundle;
 
+    private String selectYear;
+    private String selectMonth;
+
     private SimpleDateFormat monthDataFormat = new SimpleDateFormat("MMMM", Locale.US);
     private DateFormat format = new SimpleDateFormat("MM");
 
@@ -73,10 +76,11 @@ public class RecordFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        selectYear = SetYear();
+        selectMonth = SetMonth();
+
         bundle = getArguments();
         dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
-        Log.d("==========1----------------------", String.valueOf(bundle));
-        Log.d("==========-11-3333--------------------", String.valueOf(dtoPerson));
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -100,8 +104,9 @@ public class RecordFragment extends Fragment {
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
                         String convertDate = String.valueOf(year) + "-" + String.valueOf(month) + "-" + "12";
                         try {
-                            Date date = format.parse(convertDate);
-                            SetDateValue(String.valueOf(year), monthDataFormat.format(date));
+                            selectYear = String.valueOf(year);
+                            selectMonth = monthDataFormat.format(format.parse(convertDate));
+                            SetDateValue(selectYear, selectMonth);
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -121,7 +126,7 @@ public class RecordFragment extends Fragment {
             }
         });
 
-        SetDateValue(SetYear(), SetMonth());
+        SetDateValue(selectYear, selectMonth);
 
         dayRecordFragment = new DayRecordFragment();
         monthRecordragment = new MonthRecordFragment();
@@ -155,11 +160,10 @@ public class RecordFragment extends Fragment {
     private void FragmentChange(Fragment fragment){
 
         bundle.putSerializable("Person", dtoPerson);
+        bundle.putString("Year", selectYear);
+        bundle.putString("Month", selectMonth);
         //fragment.setArguments(bundle);
         //bundle.putSerializable(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
-        //fragment.setArguments(bundle);
-
-
         //Bundle putBundle = new Bundle();
         //putBundle.putSerializable("Person", dtoPerson);
         fragment.setArguments(bundle);
