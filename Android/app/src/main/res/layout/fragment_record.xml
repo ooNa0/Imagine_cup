@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/record"
+            android:id="@+id/record_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -29,16 +29,28 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/month"
+            <Button
+                android:id="@+id/month_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bebasneue_regular"
                 android:gravity="top"
-                android:text="DECEMBER"
+                android:background="@android:color/transparent"
+                android:text=""
                 android:textAppearance="@style/record"
-                tools:targetApi="jelly_bean"
-                android:layout_marginStart="22dp" />
+                android:layout_marginStart="22dp">
+            </Button>
+
+<!--            <TextView-->
+<!--                android:id="@+id/month"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/bebasneue_regular"-->
+<!--                android:gravity="top"-->
+<!--                android:text="DECEMBER"-->
+<!--                android:textAppearance="@style/record"-->
+<!--                tools:targetApi="jelly_bean"-->
+<!--                android:layout_marginStart="22dp" />-->
 
             <View
                 android:layout_width="0dp"
