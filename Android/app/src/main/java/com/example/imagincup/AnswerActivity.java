@@ -56,6 +56,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
     private Button goMissionButton;
 
     private String answer;
+    private String emotionIcon;
+    private String emotionParcent;
 
     private DTOPerson dtoPerson;
 
@@ -99,23 +101,115 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
         SwitchVisibility(false);
 
+        PieCharManagement(0, 50, emotionIcon);
+    }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.save_answer:
+            {
+                progressDialog.show();
+                answer = String.valueOf(answerEditText.getText());
+                answerTextView.setText(answer);
+                JSONObject data = null;
+                try {
+                    data = new EmotionAsyncTask().execute(answer).get();
+                    JSONObject parcent = data.getJSONObject("confidenceScores");
+                    if(data.getString("sentiment").equals("positive")){
+                        emotionIcon = "😀";
+                    }
+                    else if(data.getString("sentiment").equals("negative")){
+                        emotionIcon = "😢";
+                    }
+                    else{
+                        emotionIcon = "😶";
+                    }
+                    String task = new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId().toString(), answer, emotionIcon).get();
+                    //emotionIconTextView.setText(emotionIcon);
+                    emotionParcent =  String.format("%.0f", parcent.getDouble(data.getString("sentiment"))*100);
+                    //emtionParcentTextView.setText(emotionParcent + '%');
+                    PieCharManagement(Constants.MISSION_DEFAULT, Integer.parseInt(emotionParcent), emotionIcon);
+                    SwitchVisibility(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+                break;
+            }
+            case R.id.go_misson_button:
+            {
+                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, fragment).commit();
+                Intent intent = new Intent(this, MissionActivity.class);
+
+                //Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, new MissionFragment()).commit();
+                finish();
+               break;
+            }
+        }
+    }
+
+    public void SwitchVisibility(boolean isExistText){
+        if(isExistText){
+            // 만약에 텍스트가 존재한다면, editText가 보이지 말아야 한다면
+            answerEditText.setVisibility(View.GONE);
+            saveButton.setVisibility(View.INVISIBLE);
+            answerTextView.setVisibility(View.VISIBLE);
+            resultLinearLayout.setVisibility(View.VISIBLE);
+            goMissionButton.setVisibility(View.VISIBLE);
+        }
+        else{
+            answerEditText.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.VISIBLE);
+            answerTextView.setVisibility(View.GONE);
+            resultLinearLayout.setVisibility(View.GONE);
+            goMissionButton.setVisibility(View.GONE);
+
+        }
+    }
+
+    public void PieCharManagement(int isMissionComplete, int parcent, String icon){
 
         // data set
 
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
-        yValues.add(new PieEntry(90,""));
-        yValues.add(new PieEntry(10,""));
+        yValues.add(new PieEntry(parcent,""));
+        yValues.add(new PieEntry(100 - parcent,""));
 
         PieDataSet dataSet = new PieDataSet(yValues,"emotions");
+        emotionIconTextView.setText(icon);
+        emtionParcentTextView.setText(String.valueOf(parcent) + '%');
         //ataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         //dataSet.setColor(getResources().getColor(R.color.black));
         //dataSet.setGradientColor(Color.parseColor("88BEB7"), Color.parseColor("26746C"));
         dataSet.setColors(getResources().getColor(R.color.mission_button), getResources().getColor(R.color.white_gray));
         PieData data = new PieData(dataSet);
 
+
+        ArrayList<PieEntry> yValueMission = new ArrayList<PieEntry>();
+        yValueMission.add(new PieEntry(100,""));
+
+        PieDataSet dataSetMission = new PieDataSet(yValueMission,"mission");
+        if(isMissionComplete == Constants.MISSION_COMPLETE)
+        {
+            dataSetMission.setColor(getResources().getColor(R.color.lite_blue));
+            checkMissonTextView.setText("✔??");
+        }
+        else if(isMissionComplete == Constants.MISSION_DEFAULT){
+            dataSetMission.setColor(getResources().getColor(R.color.white_gray));
+            checkMissonTextView.setText("-");
+        }
+        else{
+            // 미션 실패
+        }
+        PieData dataMission = new PieData(dataSetMission);
+
         // 퍼센트 지우기
         data.setDrawValues(false);
+        dataMission.setDrawValues(false);
 
         //////////// design
 
@@ -152,76 +246,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         pieEmotionChart.animateY(1000, Easing.EaseInOutCubic);
         pieChart.animateY(1000, Easing.EaseInOutCubic);
 
-        pieEmotionChart.setData(data);
+        pieEmotionChart.setData(dataMission);
         pieChart.setData(data);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.save_answer:
-            {
-                progressDialog.show();
-
-                SwitchVisibility(true);
-                answerTextView.setText(answerEditText.getText());
-                JSONObject data = null;
-                try {
-
-                    String task = new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId(), dtoPerson.getRecordId()).get();
-
-                    data = new EmotionAsyncTask().execute().get();
-                    JSONObject parcent = data.getJSONObject("confidenceScores");
-                    if(data.getString("sentiment").equals("positive")){
-                        emotionIconTextView.setText("😀");
-                    }
-                    else if(data.getString("sentiment").equals("negative")){
-                        emotionIconTextView.setText("😢");
-                    }
-                    else{
-                        emotionIconTextView.setText("😶");
-                    }
-                    emtionParcentTextView.setText(String.valueOf(parcent.getDouble(data.getString("sentiment"))*100) + '%');
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                progressDialog.dismiss();
-                break;
-            }
-            case R.id.go_misson_button:
-            {
-                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, fragment).commit();
-                Intent intent = new Intent(this, MissionActivity.class);
-
-                //Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, new MissionFragment()).commit();
-                finish();
-               break;
-            }
-        }
-    }
-
-    public void SwitchVisibility(boolean isExistText){
-        if(isExistText){
-            // 만약에 텍스트가 존재한다면, editText가 보이지 말아야 한다면
-            answerEditText.setVisibility(View.GONE);
-            saveButton.setVisibility(View.INVISIBLE);
-            answerTextView.setVisibility(View.VISIBLE);
-            resultLinearLayout.setVisibility(View.VISIBLE);
-            goMissionButton.setVisibility(View.VISIBLE);
-
-        }
-        else{
-            answerEditText.setVisibility(View.VISIBLE);
-            saveButton.setVisibility(View.VISIBLE);
-            answerTextView.setVisibility(View.GONE);
-            resultLinearLayout.setVisibility(View.GONE);
-            goMissionButton.setVisibility(View.GONE);
-
-        }
     }
 
     @Override
