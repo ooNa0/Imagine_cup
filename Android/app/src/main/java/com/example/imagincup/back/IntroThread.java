@@ -8,6 +8,7 @@ import com.example.imagincup.Constants;
 import com.example.imagincup.back.DTO.DTOPerson;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,7 +33,7 @@ public class IntroThread extends Thread {
     public void run() {
         resultStateNumber = Constants.RUNNING;
         try {
-            connection = ConnectionSingleton.getConnection();
+            connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);//ConnectionSingleton.getConnection();
             //if(connection == null) { resultMessage = "Check Your Internet Access!"; }
             statement = connection.createStatement();
             resultSet = statement.executeQuery(Constants.QUERY_SELECT_PERSON_DATABASE);
@@ -54,8 +55,10 @@ public class IntroThread extends Thread {
             // 시간 나면 코드 클래스로
             if (resultSet != null) try { resultSet.close(); } catch(SQLException ex) {}
             if (statement != null) try { statement.close(); } catch(SQLException ex) {}
-            try { ConnectionSingleton.close();} catch(SQLException ex) {}
+            if (connection != null) try { connection.close(); } catch(SQLException ex) {}
+            //try { ConnectionSingleton.close();} catch(SQLException ex) {}
         }
+        Log.d("?????????????????????????????????????????????????????", resultMessage);
     }
 
     public int getResult(){
@@ -67,8 +70,7 @@ public class IntroThread extends Thread {
 
     class InsertPersonData {
         InsertPersonData(ResultSet resultSet) throws SQLException {
-            dtoPerson = new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"), resultSet.getInt("RecordID"));
+            dtoPerson = new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"));
         }
     }
-
 }
