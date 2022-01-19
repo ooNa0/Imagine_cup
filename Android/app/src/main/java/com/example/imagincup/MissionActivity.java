@@ -85,6 +85,7 @@ public class MissionActivity extends AppCompatActivity {
                         startActivity(intent);
                         return;
                     }
+                    missionNumber  = 2;
                     switch (missionNumber){
                         case 0 :
                             intent = new Intent(getApplicationContext(), Pedometer.class);
