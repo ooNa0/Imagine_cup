@@ -24,13 +24,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.imagincup.AnswerActivity;
+import com.example.imagincup.Constants;
 import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.activity.survey.SurveyActivity;
 import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.IntroThread;
+import com.example.imagincup.back.task.SumDepressionThread;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,10 +54,13 @@ public class HomeFragment extends Fragment {
 
     private ImageButton callButton;
     private Button questionButton;
+    private TextView scoreTextView;
 
     private DTOPerson dtoPerson;
     private Bundle bundle;
+    private Integer resultSum;
 
+    private SumDepressionThread sumDepressionThread;
 
     public HomeFragment() {
     }
@@ -80,26 +87,36 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        bundle = getArguments();
-        dtoPerson = (DTOPerson) bundle.getSerializable("Person");
-
+        //bundle = getArguments();
+        //dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
         if (getArguments() != null) {
+            dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
+        sumDepressionThread.start();
+        try {
+            sumDepressionThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        resultSum = sumDepressionThread.getSumScore();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        scoreTextView = view.findViewById(R.id.emotion_score);
+        scoreTextView.setText(String.valueOf(resultSum));
         questionButton = view.findViewById(R.id.home_today_question_button);
         questionButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnswerActivity.class);
-                intent.putExtra("Person", dtoPerson);
+                intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
                 startActivity(intent);
             }
         });
@@ -112,7 +129,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-    
         return view;
     }
 }

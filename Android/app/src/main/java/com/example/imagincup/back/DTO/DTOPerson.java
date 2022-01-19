@@ -8,10 +8,10 @@ public class DTOPerson implements Serializable {
     private String PersonName; // 이름
     private Integer PersonDepressionScore; // 우울증 점수
     private String PersonDevice; // 디바이스 식별
-    private Integer RecordID;
+    //private Integer RecordID;
     //private Integer ScoreID;
 
-    public DTOPerson(Integer PersonId, String PersonName, Integer PersonDepressionScore, String PersonDevice, Integer RecordID){
+    public DTOPerson(Integer PersonId, String PersonName, Integer PersonDepressionScore, String PersonDevice){
         this.PersonId = PersonId;
         this.PersonName = PersonName;
         this.PersonDepressionScore = PersonDepressionScore;
@@ -46,7 +46,7 @@ public class DTOPerson implements Serializable {
         this.PersonDevice = PersonDevice;
     }
 
-    public Integer getRecordId(){
-        return RecordID;
-    }
+//    public Integer getRecordId(){
+//        return RecordID;
+//    }
 }

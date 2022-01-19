@@ -52,7 +52,7 @@
             android:id="@+id/emotion_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="80"
+            android:text="0"
             android:textSize="45sp"
             android:layout_gravity="center" />
             <TextView

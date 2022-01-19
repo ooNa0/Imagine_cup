@@ -10,6 +10,7 @@ public class Survey {
     private RadioButton btn2;
     private RadioButton btn3;
     private RadioButton btn4;
+    private Integer score;
 
     public Survey(String question, RadioButton btn1, RadioButton btn2, RadioButton btn3, RadioButton btn4) {
         this.question = question;
@@ -22,6 +23,9 @@ public class Survey {
     public Survey(String question) {
         this.question = question;
     }
+
+    public Integer getScore() { return score;}
+    public void setScore(Integer score) { this.score = score;}
 
     public String getQuestion() {
         return question;
