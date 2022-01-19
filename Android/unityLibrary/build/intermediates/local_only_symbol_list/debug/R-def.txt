@@ -1,0 +1,6 @@
+R_DEF: Internal format may change without notice
+local
+string game_view_content_description
+style BaseUnityTheme
+style UnityThemeSelector
+style UnityThemeSelector.Translucent

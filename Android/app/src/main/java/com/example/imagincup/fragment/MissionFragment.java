@@ -12,6 +12,8 @@ import android.widget.Button;
 
 import com.example.imagincup.MissionActivity;
 import com.example.imagincup.R;
+import com.unity3d.player.UnityPlayerActivity;
+import com.unity3d.player.UnityPlayerActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,8 +92,8 @@ public class MissionFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.game_button:
-                Intent gameIntent =new Intent(getActivity(), MissionActivity.class);
-                startActivity(gameIntent);
+                Intent intent = new Intent(getActivity(), UnityPlayerActivity.class);
+                startActivity(intent);
                 break;
         }
     }
