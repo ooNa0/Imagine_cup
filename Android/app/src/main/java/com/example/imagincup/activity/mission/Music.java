@@ -41,14 +41,17 @@ public class Music extends YouTubeBaseActivity {
         random = new Random();
         videoId = VIDEO_IDs[random.nextInt(3)];
         playButton = findViewById(R.id.youtubeBtn);
+        clearButton = findViewById(R.id.music_button_clear);
+        clearButton.setVisibility(View.INVISIBLE);
+
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playVideo(videoId);
+                clearButton.setVisibility(View.VISIBLE);
             }
         });
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youTubePlayerView);
-        clearButton = findViewById(R.id.music_button_clear);
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
