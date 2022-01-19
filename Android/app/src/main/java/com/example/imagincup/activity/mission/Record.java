@@ -12,8 +12,10 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +39,11 @@ public class Record extends AppCompatActivity {
     private Button clearButton;
     private ImageButton recordButton;
     private Button playButton;
+
+    // 안드로이드 타이머 기능
+    private Chronometer chronometer;
+    private long pauseOffset;
+
     /**오디오 파일 관련 변수*/
     // 오디오 권한
     private String recordPermission = Manifest.permission.RECORD_AUDIO;
@@ -63,7 +70,9 @@ public class Record extends AppCompatActivity {
     }
 
     private void init(){
-        timeText = findViewById(R.id.record_text_time);
+        pauseOffset = 0;
+        chronometer =  findViewById(R.id.record_chronometer);
+        chronometer.setBase(SystemClock.elapsedRealtime());
         missionTitle = findViewById(R.id.record_title);
         noticeText = findViewById(R.id.record_text_button_notice);
         clearButton = findViewById(R.id.record_button_clear);
@@ -71,6 +80,7 @@ public class Record extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chronometer.setBase(SystemClock.elapsedRealtime());
                 MissionState.getInstance().setDone(true);
                 Intent intent = new Intent();
                 setResult(RESULT_OK,intent);
@@ -87,7 +97,6 @@ public class Record extends AppCompatActivity {
                 if(isPlaying){
                     stopAudio();
                     playButton.setCompoundDrawablesRelative(getDrawable(R.drawable.play),null,null,null);
-
                 } else{
                     playAudio(file);
                     playButton.setCompoundDrawablesRelative(getDrawable(R.drawable.stop),null,null,null);
@@ -99,6 +108,7 @@ public class Record extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isRecording){
+                    chronometer.stop();
                     isRecording = false;
                     recordButton.setImageDrawable(getDrawable(R.drawable.mic));
                     noticeText.setVisibility(View.GONE);
@@ -107,6 +117,7 @@ public class Record extends AppCompatActivity {
                     stopRecording();
                 }
                 else{
+                    chronometer.start();
                     isRecording = true;
                     recordButton.setImageDrawable(getDrawable(R.drawable.stop));
                     startRecording();
