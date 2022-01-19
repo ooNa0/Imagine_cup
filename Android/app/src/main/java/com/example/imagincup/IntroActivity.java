@@ -42,22 +42,22 @@ public class IntroActivity extends AppCompatActivity {
                 introThread.start();
                 try {
                     introThread.join();
+                    result = introThread.getResult();
+                    if(result == Constants.DATABASE_EXIST) {
+                        // 인트로 실행 후 바로 MainActivity로 넘어감.
+                        dtoPerson = introThread.getResultDataSet();
+                        intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("Person", dtoPerson);
+                    }
+                    else {
+                        // 회원가입 페이지로 이동
+                        intent = new Intent(getApplicationContext(), SignupActivity.class);
+                    }
+                    startActivity(intent);
+                    finish();
                 } catch (InterruptedException exception) {
                     exception.printStackTrace();
                 }
-                result = introThread.getResult();
-                if(result == Constants.DATABASE_EXIST) {
-                    // 인트로 실행 후 바로 MainActivity로 넘어감.
-                    dtoPerson = introThread.getResultDataSet();
-                    intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("Person", dtoPerson);
-                }
-                else {
-                    // 회원가입 페이지로 이동
-                    intent = new Intent(getApplicationContext(), SignupActivity.class);
-                }
-                startActivity(intent);
-                finish();
             }
         },1000);
     }

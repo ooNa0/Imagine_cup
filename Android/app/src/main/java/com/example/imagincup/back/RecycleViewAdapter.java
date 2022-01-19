@@ -55,7 +55,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         holder.date.setText("Day " + item.getRecordDay());
         holder.question.setText(item.getQuestion()); // 질문
         holder.content.setText(item.getEmotion()); // 얼굴
-        if(item == null){
+        if(item.getAnswer() == null){
             cardView.setCardBackgroundColor(Color.parseColor("#CC82DBD7"));
         }
     }

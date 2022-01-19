@@ -37,6 +37,8 @@ public class DayRecordFragment extends Fragment{
     private String selectYear;
     private String selectMonth;
 
+    private RecycleViewAdapter adapter;
+
     public DayRecordFragment() { }
 
     //private Bundle bundle;
@@ -56,10 +58,14 @@ public class DayRecordFragment extends Fragment{
             recordDayThread.start();
             try {
                 recordDayThread.join();
+                Log.d("aaaaa2222222222-----------oooooooooookkkkkkkkkkkk", String.valueOf(listRecord));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
+            Log.d("aaaaaa0----------------------oooooooooookkkkkkkkkkkk", String.valueOf(listRecord));
+
+            adapter = new RecycleViewAdapter(getContext(), listRecord, 1, String.valueOf(dtoPerson.getPersonId()));
         }
         //listRecord = recordDayThread.getlistRecord();
     }
@@ -72,10 +78,7 @@ public class DayRecordFragment extends Fragment{
         linearLayoutManager = new LinearLayoutManager(this.getContext());
 
         if(dtoPerson != null){
-            //Log.d("aaaaaa0----------------------oooooooooookkkkkkkkkkkk", String.valueOf(dtoPerson));
-            //listRecord.add(dtoPerson);
 
-            RecycleViewAdapter adapter = new RecycleViewAdapter(getContext(), listRecord, 1, String.valueOf(dtoPerson.getPersonId()));
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(linearLayoutManager);

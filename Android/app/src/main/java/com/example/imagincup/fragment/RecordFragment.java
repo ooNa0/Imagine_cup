@@ -152,9 +152,9 @@ public class RecordFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        Fragment childFragment = new DayRecordFragment();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, childFragment).commit();
+//        Fragment childFragment = new DayRecordFragment();
+//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//        transaction.replace(R.id.fragment_container, childFragment).commit();
     }
 
     private void FragmentChange(Fragment fragment){
@@ -169,7 +169,7 @@ public class RecordFragment extends Fragment {
         fragment.setArguments(bundle);
 
         Log.d("==========1-22---------------------", String.valueOf(bundle));
-        Log.d("==========-11--222-------------------", String.valueOf(dtoPerson));
+
         getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
     }
