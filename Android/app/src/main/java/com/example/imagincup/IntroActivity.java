@@ -1,23 +1,16 @@
 package com.example.imagincup;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Message;
-import android.os.Parcelable;
 import android.provider.Settings;
-import android.util.Log;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.IntroThread;
-import com.example.imagincup.back.PersonTableAsyncTask;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.concurrent.ExecutionException;
 
 public class IntroActivity extends AppCompatActivity {
 

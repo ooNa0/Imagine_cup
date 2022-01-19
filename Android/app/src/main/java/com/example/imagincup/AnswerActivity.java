@@ -2,10 +2,7 @@ package com.example.imagincup;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.task.EmotionAsyncTask;
-import com.example.imagincup.back.task.InsertRecordDataAsyncTask;
+import com.example.imagincup.back.task.record.InsertRecordDataAsyncTask;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -60,6 +57,10 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
     private String emotionParcent;
 
     private DTOPerson dtoPerson;
+    private String dtoPersonID;
+
+    private String emotionState;
+    private JSONObject dataJSON;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_day_result);
 
         Intent intent = getIntent();
-        dtoPerson = (DTOPerson)intent.getSerializableExtra("Person");
+        dtoPerson = (DTOPerson)(intent.getSerializableExtra("Person"));
+        //dtoPersonID = (intent.getSerializableExtra("Person")).getPersonId();
 
         dayTextView = findViewById(R.id.question_day);
         questionTextView = findViewById(R.id.question_);
@@ -110,46 +112,53 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         {
             case R.id.save_answer:
             {
-                progressDialog.show();
+                //progressDialog.show();
                 answer = String.valueOf(answerEditText.getText());
                 answerTextView.setText(answer);
-                JSONObject data = null;
-                try {
-                    data = new EmotionAsyncTask().execute(answer).get();
-                    JSONObject parcent = data.getJSONObject("confidenceScores");
-                    if(data.getString("sentiment").equals("positive")){
-                        emotionIcon = "😀";
-                    }
-                    else if(data.getString("sentiment").equals("negative")){
-                        emotionIcon = "😢";
-                    }
-                    else{
-                        emotionIcon = "😶";
-                    }
-                    String task = new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId().toString(), answer, emotionIcon).get();
-                    //emotionIconTextView.setText(emotionIcon);
-                    emotionParcent =  String.format("%.0f", parcent.getDouble(data.getString("sentiment"))*100);
-                    //emtionParcentTextView.setText(emotionParcent + '%');
-                    PieCharManagement(Constants.MISSION_DEFAULT, Integer.parseInt(emotionParcent), emotionIcon);
-                    SwitchVisibility(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                progressDialog.dismiss();
+                ManageEmotionState();
+                //progressDialog.dismiss();
                 break;
             }
             case R.id.go_misson_button:
             {
-                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, fragment).commit();
                 Intent intent = new Intent(this, MissionActivity.class);
-
-                //Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-                //getSupportFragmentManager().beginTransaction().replace(R.id.home_layout, new MissionFragment()).commit();
                 finish();
                break;
             }
         }
+    }
+
+    private void ManageEmotionState(){
+        dataJSON = null;
+        try {
+            dataJSON = new EmotionAsyncTask().execute(answer).get();
+            emotionParcent =  String.format("%.0f", dataJSON.getJSONObject("confidenceScores").getDouble(dataJSON.getString("sentiment"))*100);
+
+            emotionState = dataJSON.getString("sentiment");
+            emotionIcon = getEmotionStateIcon(emotionState);
+
+            new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId().toString(), answer, emotionState).get();
+
+            PieCharManagement(Constants.MISSION_DEFAULT, Integer.parseInt(emotionParcent), emotionIcon);
+            SwitchVisibility(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    String getEmotionStateIcon(String emotionStateString){
+        if(emotionStateString.equals("positive")){
+            return "😀";
+        }
+        else if(emotionStateString.equals("negative")){
+            return "😢";
+        }
+        else if(emotionStateString.equals("neutral")){
+            return "😶";
+        }
+        return "";
     }
 
     public void SwitchVisibility(boolean isExistText){
@@ -196,7 +205,7 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         if(isMissionComplete == Constants.MISSION_COMPLETE)
         {
             dataSetMission.setColor(getResources().getColor(R.color.lite_blue));
-            checkMissonTextView.setText("✔??");
+            checkMissonTextView.setText("✔");
         }
         else if(isMissionComplete == Constants.MISSION_DEFAULT){
             dataSetMission.setColor(getResources().getColor(R.color.white_gray));
