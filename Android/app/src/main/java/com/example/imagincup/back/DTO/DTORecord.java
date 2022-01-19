@@ -14,7 +14,7 @@ public class DTORecord {
     private String Emotion; // 감정분석 결과. 기본값:-, 긍정:, 부정:
     private Integer QuestionID; // 해당 질문이 몇번째 질문인지
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
 
 //    public DTORecord(Integer RecordID, Integer PersonID, String Question, Integer QuestionID, String Mission, String Answer, String Emotion){
 //        this.RecordID = RecordID;

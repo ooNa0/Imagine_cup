@@ -51,7 +51,7 @@ public class SelectRecordDayThread extends Thread {
     public void run() {
         try {
             Calendar cal = Calendar.getInstance();
-            date = dateFormat.parse(selectYear + "-" +selectMonth + "-" + "01");
+            date = dateFormat.parse(selectYear + "-" +selectMonth + "-" + "00");
             //Log.d("*********************************** ", selectYear + "-" + dateFormatInteger.format(date));
             //Log.d("*********************************** ", String.valueOf(dateFormatInteger.parse(selectYear + "-" + dateFormatInteger.format(date)) + "-" + "01"));
             //Log.d("*********************************** ", String.valueOf(dateFormatInteger.parse(selectYear + dateFormatInteger.format(date))));
@@ -70,9 +70,9 @@ public class SelectRecordDayThread extends Thread {
                     + endDate + "';";
             resultSet = statement.executeQuery(query);
             //SELECT SUM(AMOUNT) FROM TIME WHERE REGDATE > "2018-05-02" AND REGDATE < "2018-06-15";
+            Log.d("***********************************----------- ", query);
 
             while (resultSet.next()){
-                Log.d("***********************************----------- ", query);
                 Log.d("____________________________________", resultSet.getString("Emotion"));
                 Log.d("____________________________________", resultSet.getString("Emotion"));
                 listRecord.add(new DTORecord(
