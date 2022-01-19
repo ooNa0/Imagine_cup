@@ -1,7 +1,9 @@
 package com.example.imagincup.back;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.imagincup.AnswerActivity;
+import com.example.imagincup.Constants;
 import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.DTO.DTORecord;
@@ -49,15 +53,31 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
-        Log.d("aaaaaa1----------------------", String.valueOf(items));
         final DTORecord item = items.get(position);
-        Log.d("aaaaaa1----------------------", String.valueOf(item));
         holder.date.setText("Day " + item.getRecordDay());
         holder.question.setText(item.getQuestion()); // 질문
-        holder.content.setText(item.getEmotion()); // 얼굴
-        if(item.getAnswer() == null){
+        if(item.getAnswer() != null){
+            holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
             cardView.setCardBackgroundColor(Color.parseColor("#CC82DBD7"));
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Intent intent = new Intent(context, AnswerActivity.class);
+                    //intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, item);
+                    //((Activity) context).startActivityForResult(intent, RESULT_CODE);
+                }
+            });
         }
+    }
+
+    String getEmotionStateIcon(String emotionStateString){
+        if(emotionStateString.equals("positive")){
+            return "😀";
+        }
+        else if(emotionStateString.equals("negative")){
+            return "😢";
+        }
+        return "😶";
     }
 
     @Override

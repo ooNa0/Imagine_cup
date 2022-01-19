@@ -1,9 +1,10 @@
 package com.example.imagincup.back.DTO;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-public class DTORecord {
+public class DTORecord implements Serializable {
 
     private Integer RecordID;
     private Date RecordDate;// 날짜 DATETIME('NOW')

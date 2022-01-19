@@ -1,6 +1,5 @@
 package com.example.imagincup.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,13 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imagincup.Constants;
-import com.example.imagincup.IntroActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.DTO.DTORecord;
 import com.example.imagincup.back.RecycleViewAdapter;
-import com.example.imagincup.back.task.InsertSurveyThread;
-import com.example.imagincup.back.task.SelectRecordDayThread;
+import com.example.imagincup.back.task.record.SelectRecordDayThread;
 //import com.example.imagincup.back.RecycleViewAdapter;
 
 import java.util.ArrayList;
@@ -32,7 +29,7 @@ public class DayRecordFragment extends Fragment{
     private DTOPerson dtoPerson;
     private String personID;
 
-    private Thread recordDayThread;
+    private SelectRecordDayThread recordDayThread;
 
     private String selectYear;
     private String selectMonth;
@@ -54,20 +51,17 @@ public class DayRecordFragment extends Fragment{
             selectYear = getArguments().getString("Year");
             selectMonth = getArguments().getString("Month");
 
+            Log.d("-------------------", selectMonth);
+
             recordDayThread = new SelectRecordDayThread(personID, listRecord, selectYear, selectMonth);
             recordDayThread.start();
             try {
                 recordDayThread.join();
-                Log.d("aaaaa2222222222-----------oooooooooookkkkkkkkkkkk", String.valueOf(listRecord));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            Log.d("aaaaaa0----------------------oooooooooookkkkkkkkkkkk", String.valueOf(listRecord));
-
             adapter = new RecycleViewAdapter(getContext(), listRecord, 1, String.valueOf(dtoPerson.getPersonId()));
         }
-        //listRecord = recordDayThread.getlistRecord();
     }
 
     @Override
@@ -77,22 +71,13 @@ public class DayRecordFragment extends Fragment{
         recyclerView = view.findViewById(R.id.recyclerview);
         linearLayoutManager = new LinearLayoutManager(this.getContext());
 
+        Log.d("-------------------", String.valueOf(dtoPerson));
         if(dtoPerson != null){
-
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(linearLayoutManager);
         }
         Log.d("aaaaaa0----------------------", String.valueOf(dtoPerson));
-
-
-        //RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_id);
-        //RecycleViewAdapter recyclerViewAdapter = new RecycleViewAdapter(getContext(),listRecord);
-//        RecycleViewAdapter recyclerViewAdapter = new RecycleViewAdapter(getApplicationContext(),listRecord);
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-//        recyclerView.setLayoutManager(gridLayoutManager);
-//        recyclerView.setAdapter(recyclerViewAdapter);
-
         return view;
     }
 

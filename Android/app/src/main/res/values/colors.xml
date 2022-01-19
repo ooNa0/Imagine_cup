@@ -14,4 +14,6 @@
     <color name="mypage_background">#6682DBD7</color>
     <color name="mission">#523B9C91</color>
     <color name="transparent">#00000000</color>
+    <color name="DownBLUE">#3548e7</color>
+    <color name="UpRED">#fa3423</color>
 </resources>

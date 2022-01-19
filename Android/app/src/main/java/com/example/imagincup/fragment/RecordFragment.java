@@ -57,7 +57,10 @@ public class RecordFragment extends Fragment {
     private String selectMonth;
 
     private SimpleDateFormat monthDataFormat = new SimpleDateFormat("MMMM", Locale.US);
-    private DateFormat format = new SimpleDateFormat("MM");
+    private SimpleDateFormat monthIntegerFormat = new SimpleDateFormat("MM", Locale.US);
+    private SimpleDateFormat dayDataFormat = new SimpleDateFormat("dd", Locale.US);
+    private SimpleDateFormat yearDataFormat = new SimpleDateFormat("yyyy");
+    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     public RecordFragment() {
         // Required empty public constructor
@@ -107,6 +110,12 @@ public class RecordFragment extends Fragment {
                             selectYear = String.valueOf(year);
                             selectMonth = monthDataFormat.format(format.parse(convertDate));
                             SetDateValue(selectYear, selectMonth);
+                            if(isDay){
+                                FragmentChange(new MonthRecordFragment());
+                            }
+                            else{
+                                FragmentChange(new DayRecordFragment());
+                            }
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -152,9 +161,6 @@ public class RecordFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-//        Fragment childFragment = new DayRecordFragment();
-//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-//        transaction.replace(R.id.fragment_container, childFragment).commit();
     }
 
     private void FragmentChange(Fragment fragment){
@@ -162,6 +168,7 @@ public class RecordFragment extends Fragment {
         bundle.putSerializable("Person", dtoPerson);
         bundle.putString("Year", selectYear);
         bundle.putString("Month", selectMonth);
+        bundle.putString("Day", SetDay());
         //fragment.setArguments(bundle);
         //bundle.putSerializable(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
         //Bundle putBundle = new Bundle();
@@ -179,11 +186,11 @@ public class RecordFragment extends Fragment {
         recordButton.setText(month);
     }
 
+    String SetDay() {
+        return dayDataFormat.format(new Date());
+    }
     String SetMonth() {
         return monthDataFormat.format(new Date());
     }
-    String SetYear() {
-        SimpleDateFormat yearDataFormat = new SimpleDateFormat("yyyy");
-        return yearDataFormat.format(new Date());
-    }
+    String SetYear() { return yearDataFormat.format(new Date()); }
 }
