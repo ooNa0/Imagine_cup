@@ -8,12 +8,16 @@ android {
 
     defaultConfig {
         applicationId "com.example.imagincup"
-        minSdk 28
-        targetSdk 32
+        minSdk 26
+        targetSdk 30
         versionCode 1
         versionName "1.0"
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,14 +28,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '30.0.2'
-    compileSdkVersion 31
-    packagingOptions {
-        resources.excludes.add("META-INF/*")
-    }
 }
 
 dependencies {
+    implementation project(':unityLibrary')
     // Charts
     implementation 'com.diogobernardino:williamchart:3.10.1'
     implementation 'com.azure:azure-ai-textanalytics:5.1.4'

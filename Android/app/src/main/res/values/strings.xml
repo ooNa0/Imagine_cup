@@ -29,4 +29,5 @@
     <string name="check_misson">✔</string>
     <string name="month_text_last">last month</string>
     <string name="month_text_this">this month</string>
+    <string name="game_view_content_description">Game view</string>
 </resources>
