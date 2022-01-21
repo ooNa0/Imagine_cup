@@ -87,22 +87,23 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //bundle = getArguments();
         //dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
         if (getArguments() != null) {
             dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+            sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
+            sumDepressionThread.start();
+            try {
+                sumDepressionThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            resultSum = sumDepressionThread.getSumScore();
         }
 
-        sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
-        sumDepressionThread.start();
-        try {
-            sumDepressionThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        resultSum = sumDepressionThread.getSumScore();
+
     }
 
     @Override
@@ -116,6 +117,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnswerActivity.class);
+                intent.putExtra("isVisible", false); // 데베에 값이 존재하지 않을 경우
                 intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
                 startActivity(intent);
             }
