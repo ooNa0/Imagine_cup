@@ -50,8 +50,5 @@ public class SignupActivity extends AppCompatActivity {
         intent.putExtra("PersonID", resultPersonID);
         startActivity(intent);
         finish();
-
-        // 검사지 넣기!!!!!!!!!!!!!!!
-
     }
 }
