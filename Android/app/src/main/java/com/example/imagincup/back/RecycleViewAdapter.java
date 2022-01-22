@@ -55,7 +55,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         final DTORecord item = items.get(position);
-        holder.date.setText("Day " + item.getRecordDay());
+        holder.date.setText("Day " + item.getRecordDate());
         if(item.getAnswer() != null){
             holder.question.setText(item.getQuestion()); // 질문
             holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
@@ -68,9 +68,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     intent.putExtra(Constants.DATABASE_RECORD_TABLENAME, item);
                     intent.putExtra("isVisible", true);
                     context.startActivity(intent);
-                    //Intent intent = new Intent(context, AnswerActivity.class);
-                    //intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, item);
-                    //((Activity) context).startActivityForResult(intent, RESULT_CODE);
                 }
             });
         }

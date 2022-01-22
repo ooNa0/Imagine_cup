@@ -14,8 +14,10 @@ public class DTORecord implements Serializable {
     private String Mission; // 미션 달성 여부, 기본값:0, 달성:1, 실패:2
     private String Emotion; // 감정분석 결과. 기본값:-, 긍정:, 부정:
     private Integer QuestionID; // 해당 질문이 몇번째 질문인지
+    private Float EmotionScore;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd");
+    private SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd");
 
 //    public DTORecord(Integer RecordID, Integer PersonID, String Question, Integer QuestionID, String Mission, String Answer, String Emotion){
 //        this.RecordID = RecordID;
@@ -27,7 +29,7 @@ public class DTORecord implements Serializable {
 //        this.Emotion = Emotion;
 //    }
 
-    public DTORecord(Integer PersonID, String Question, Integer QuestionID, String Mission, String Answer, String Emotion, Date RecordDate){
+    public DTORecord(Integer PersonID, String Question, Integer QuestionID, String Mission, String Answer, String Emotion, Date RecordDate, Float EmotionScore){
         this.PersonID = PersonID;
         this.Question = Question;
         this.QuestionID = QuestionID;
@@ -35,6 +37,7 @@ public class DTORecord implements Serializable {
         this.Mission = Mission;
         this.Emotion = Emotion;
         this.RecordDate = RecordDate;
+        this.EmotionScore = EmotionScore;
     }
 
 //    public static String getToDay(){
@@ -82,8 +85,13 @@ public class DTORecord implements Serializable {
         this.Emotion = Emotion;
     }
 
-    public Date getRecordDate(){
-        return RecordDate;
+    public Float getEmotionScore(){ return EmotionScore; }
+    public void setEmotionScore(Float EmotionScore){
+        this.EmotionScore = EmotionScore;
+    }
+
+    public String getRecordDate(){
+        return dateFormatDay.format(RecordDate);
     }
     public String getRecordDay(){
         return dateFormat.format(RecordDate);

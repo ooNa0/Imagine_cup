@@ -69,13 +69,11 @@ public class DayRecordFragment extends Fragment{
         recyclerView = view.findViewById(R.id.recyclerview);
         linearLayoutManager = new LinearLayoutManager(this.getContext());
 
-        Log.d("-------------------", String.valueOf(dtoPerson));
         if(dtoPerson != null){
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(linearLayoutManager);
         }
-        Log.d("aaaaaa0----------------------", String.valueOf(dtoPerson));
         return view;
     }
 

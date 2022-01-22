@@ -34,7 +34,7 @@
                     android:id="@+id/question_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12.20 Question"
+                    android:text="Question"
                     android:fontFamily="@font/recordfont"
                     android:textAppearance="@style/question"
                     />
@@ -64,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="100dp"
+            android:textStyle="normal"
             android:background="@null"
             android:textAppearance="@style/question_answer"
             android:fontFamily="@font/recordfont"
