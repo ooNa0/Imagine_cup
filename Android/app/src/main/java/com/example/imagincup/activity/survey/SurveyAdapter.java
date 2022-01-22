@@ -57,79 +57,64 @@ public class SurveyAdapter extends RecyclerView.Adapter<SurveyAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.question.setText(mList.get(position).getQuestion());
         holder.group.getChildAt(position);
-//
-//        holder.group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                RadioButton checked_radiobutton = (RadioButton) group.findViewById(checkedId);
-//                Log.d("?????????????????????????????????????", String.valueOf(position));
-//                Log.d("????????????????-----??????????????", String.valueOf(mList.get(position)));
-//                Log.d("???????????????------????????????????", String.valueOf(mList.get(position).getQuestion()));
-//                Log.d("???????????????--23213?????????????", String.valueOf(checked_radiobutton.getId()));
-//                Log.d("???????????????--223123213???", String.valueOf(checkedId));
-//
-//                switch (checked_radiobutton.getId()){
-//                    case R.id.survey_radiobutton_1:
-//                        mList.get(position).setScore(0);
-//                        break;
-//                    case R.id.survey_radiobutton_2:
-//                        mList.get(position).setScore(1);
-//                        break;
-//                    case R.id.survey_radiobutton_3:
-//                        mList.get(position).setScore(2);
-//                        break;
-//                    case R.id.survey_radiobutton_4:
-//                        mList.get(position).setScore(3);
-//                        break;
-//                }
 
-//                switch (checked_radiobutton.getId()){
-//                    case R.id.survey_radiobutton_1:
-//                        if(position == 3 || position == 7 || position == 11 || position == 15){
-//                            mList.get(position).setScore(3);
-//                        }
-//                        else{
-//                            mList.get(position).setScore(0);
-//                        }
-//                        break;
-//                    case R.id.survey_radiobutton_2:
-//                        if(position == 3 || position == 7 || position == 11 || position == 15){
-//                            mList.get(position).setScore(2);
-//                        }
-//                        else{
-//                            mList.get(position).setScore(1);
-//                        }
-//                        break;
-//                    case R.id.survey_radiobutton_3:
-//                        if(position == 3 || position == 7 || position == 11 || position == 15){
-//                            mList.get(position).setScore(1);
-//                        }
-//                        else{
-//                            mList.get(position).setScore(2);
-//                        }
-//                        break;
-//                    case R.id.survey_radiobutton_4:
-//                        if(position == 3 || position == 7 || position == 11 || position == 15){
-//                            mList.get(position).setScore(0);
-//                        }
-//                        else{
-//                            mList.get(position).setScore(3);
-//                        }
-//                        break;
-//                }
-//
-//                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton));
-//                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.isChecked()));
-//                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.getId()));
-//                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.getAccessibilityClassName()));
-//                //store the clicked radiobutton
-//                //lastCheckedRB = checked_rb;
-//            }
-//        });
-//        mList.get(position).setBtn1(holder.btn1);
-//        mList.get(position).setBtn2(holder.btn2);
-//        mList.get(position).setBtn3(holder.btn3);
-//        mList.get(position).setBtn4(holder.btn4);
+        holder.group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton checked_radiobutton = (RadioButton) group.findViewById(checkedId);
+                Log.d("?????????????????????????????????????", String.valueOf(position));
+                Log.d("????????????????-----??????????????", String.valueOf(mList.get(position)));
+                Log.d("???????????????------????????????????", String.valueOf(mList.get(position).getQuestion()));
+                Log.d("???????????????--23213?????????????", String.valueOf(checked_radiobutton.getId()));
+                Log.d("???????????????--223123213???", String.valueOf(checkedId));
+
+                switch (checked_radiobutton.getId()){
+                    case R.id.survey_radiobutton_1:
+                        if(position == 3 || position == 7 || position == 11 || position == 15){
+                            mList.get(position).setScore(3);
+                        }
+                        else{
+                            mList.get(position).setScore(0);
+                        }
+                        break;
+                    case R.id.survey_radiobutton_2:
+                        if(position == 3 || position == 7 || position == 11 || position == 15){
+                            mList.get(position).setScore(2);
+                        }
+                        else{
+                            mList.get(position).setScore(1);
+                        }
+                        break;
+                    case R.id.survey_radiobutton_3:
+                        if(position == 3 || position == 7 || position == 11 || position == 15){
+                            mList.get(position).setScore(1);
+                        }
+                        else{
+                            mList.get(position).setScore(2);
+                        }
+                        break;
+                    case R.id.survey_radiobutton_4:
+                        if(position == 3 || position == 7 || position == 11 || position == 15){
+                            mList.get(position).setScore(0);
+                        }
+                        else{
+                            mList.get(position).setScore(3);
+                        }
+                        break;
+                }
+
+                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton));
+                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.isChecked()));
+                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.getId()));
+                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.getAccessibilityClassName()));
+                //store the clicked radiobutton
+                //lastCheckedRB = checked_rb;
+            }
+        });
+        mList.get(position).setBtn1(holder.btn1);
+        mList.get(position).setBtn2(holder.btn2);
+        mList.get(position).setBtn3(holder.btn3);
+        mList.get(position).setBtn4(holder.btn4);
     }
 
     @Override

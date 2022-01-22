@@ -102,18 +102,18 @@ public class SurveyActivity extends AppCompatActivity {
         surveyArrayList.add(survey7);
         surveyArrayList.add(survey8);
         surveyArrayList.add(survey9);
-        surveyArrayList.add(new Survey("I thought my life had been a failure."));
-//        surveyArrayList.add(survey10);
-//        surveyArrayList.add(survey11);
-//        surveyArrayList.add(survey12);
-//        surveyArrayList.add(survey13);
-//        surveyArrayList.add(survey14);
-//        surveyArrayList.add(survey15);
-//        surveyArrayList.add(survey16);
-//        surveyArrayList.add(survey17);
-//        surveyArrayList.add(survey18);
-//        surveyArrayList.add(survey19);
-//        surveyArrayList.add(survey20);
+        //surveyArrayList.add(new Survey("I thought my life had been a failure."));
+        surveyArrayList.add(survey10);
+        surveyArrayList.add(survey11);
+        surveyArrayList.add(survey12);
+        surveyArrayList.add(survey13);
+        surveyArrayList.add(survey14);
+        surveyArrayList.add(survey15);
+        surveyArrayList.add(survey16);
+        surveyArrayList.add(survey17);
+        surveyArrayList.add(survey18);
+        surveyArrayList.add(survey19);
+        surveyArrayList.add(survey20);
 
         surveyAdapter.notifyDataSetChanged();
     }
