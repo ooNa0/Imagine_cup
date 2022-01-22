@@ -2,13 +2,10 @@ package com.example.imagincup.back.task;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.provider.Settings;
 import android.util.Log;
 
 import com.example.imagincup.Constants;
 import com.example.imagincup.back.ConnectionSingleton;
-import com.example.imagincup.back.DAO;
-import com.example.imagincup.back.IntroThread;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
