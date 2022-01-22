@@ -31,19 +31,20 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     private int i;
     private CustomViewHolder viewHolder;
 
+    private DTOPerson dtoPerson;
     private String personID;
 
-    public RecycleViewAdapter(Context context, List<DTORecord> items, int i, String personID) {
-        this.personID = personID;
+    public RecycleViewAdapter(Context context, List<DTORecord> items, int i, DTOPerson dtoPerson) {
+        this.personID = dtoPerson.getPersonId().toString();
         this.context = context;
         this.items = items;
         this.i = i;
+        this.dtoPerson = dtoPerson;
     }
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_card_day_record, parent, false);
-
         cardView = view.findViewById(R.id.card_view);
         viewHolder = new CustomViewHolder(view);
 
@@ -54,17 +55,19 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         final DTORecord item = items.get(position);
-        holder.date.setText("Day " + item.getRecordDay());
-        holder.question.setText(item.getQuestion()); // 질문
+        holder.date.setText("Day " + item.getRecordDate());
         if(item.getAnswer() != null){
+            holder.question.setText(item.getQuestion()); // 질문
             holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
             cardView.setCardBackgroundColor(Color.parseColor("#CC82DBD7"));
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Intent intent = new Intent(context, AnswerActivity.class);
-                    //intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, item);
-                    //((Activity) context).startActivityForResult(intent, RESULT_CODE);
+                    Intent intent = new Intent(context, AnswerActivity.class);
+                    intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
+                    intent.putExtra(Constants.DATABASE_RECORD_TABLENAME, item);
+                    intent.putExtra("isVisible", true);
+                    context.startActivity(intent);
                 }
             });
         }

@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.imagincup.activity.survey.SurveyActivity;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.IntroThread;
 
@@ -40,6 +42,7 @@ public class IntroActivity extends AppCompatActivity {
                         // 인트로 실행 후 바로 MainActivity로 넘어감.
                         dtoPerson = introThread.getResultDataSet();
                         intent = new Intent(getApplicationContext(), MainActivity.class);
+                        //intent = new Intent(getApplicationContext(), SurveyActivity.class);
                         intent.putExtra("Person", dtoPerson);
                     }
                     else {

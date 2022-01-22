@@ -15,7 +15,7 @@ import java.sql.Statement;
 
 public class IntroThread extends Thread {
 
-    private String resultMessage = "";
+    private String resultMessage = "null";
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
@@ -56,7 +56,6 @@ public class IntroThread extends Thread {
             if (resultSet != null) try { resultSet.close(); } catch(SQLException ex) {}
             if (statement != null) try { statement.close(); } catch(SQLException ex) {}
             if (connection != null) try { connection.close(); } catch(SQLException ex) {}
-            //try { ConnectionSingleton.close();} catch(SQLException ex) {}
         }
         Log.d("?????????????????????????????????????????????????????", resultMessage);
     }
@@ -70,7 +69,7 @@ public class IntroThread extends Thread {
 
     class InsertPersonData {
         InsertPersonData(ResultSet resultSet) throws SQLException {
-            dtoPerson = new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"));
+            dtoPerson = new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"), resultSet.getInt("QuestionID"));
         }
     }
 }

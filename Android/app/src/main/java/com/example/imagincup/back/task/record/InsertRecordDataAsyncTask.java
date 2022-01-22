@@ -28,16 +28,18 @@ public class InsertRecordDataAsyncTask extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         try {
             connection = ConnectionSingleton.getConnection();
-            preparedStatement = connection.prepareStatement("insert into Record(PersonID, Date, Question, QuestionID, Answer, Mission, Emotion) values (?, ?, ?, ?, ?, ?, ?);");
+            preparedStatement = connection.prepareStatement("insert into Record(PersonID, Date, Question, QuestionID, Answer, Mission, Emotion, EmotionScore, DepressionScore) values (?, ?, ?, ?, ?, ?, ?, ?, ?);");
 
             Date sqlDate = new java.sql.Date(System.currentTimeMillis());
             preparedStatement.setInt(1, Integer.valueOf(params[0])); // person id
             preparedStatement.setDate(2, sqlDate); // 시간
-            preparedStatement.setString(3, "QuestionQuestion");
-            preparedStatement.setInt(4, 1); // 질문 번호
-            preparedStatement.setString(5, params[1]); // 대답
+            preparedStatement.setString(3, params[1]); // 질문
+            preparedStatement.setInt(4, Integer.parseInt(params[2])); // 질문 번호
+            preparedStatement.setString(5, params[3]); // 대답
             preparedStatement.setString(6, "-"); // 미션
-            preparedStatement.setString(7, params[2]); // 감정
+            preparedStatement.setString(7, params[4]); // 감정
+            preparedStatement.setFloat(8, Float.parseFloat(params[5])); // 감정 퍼센트
+            preparedStatement.setString(9, params[6]); // 우울 점수
 
             resultSet = preparedStatement.executeUpdate();
         }

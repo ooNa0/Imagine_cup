@@ -4,23 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.imagincup.IntroActivity;
 import com.example.imagincup.R;
 
 public class CompleteActivity extends AppCompatActivity {
+
+    Button doneButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete);
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Intent intent = new Intent(getApplicationContext(), CompleteActivity.class);
-        startActivity(intent);
-        finish();
+        doneButton = findViewById(R.id.complete_button);
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

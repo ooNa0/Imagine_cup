@@ -74,12 +74,12 @@ public class SelectRecordDayThread extends Thread {
 
             while (resultSet.next()){
                 Log.d("____________________________________", resultSet.getString("Emotion"));
-                Log.d("____________________________________", resultSet.getString("Emotion"));
+                Log.d("____________________________________", String.valueOf(resultSet.getFloat("EmotionScore")));
                 listRecord.add(new DTORecord(
                         resultSet.getInt("PersonID"), resultSet.getString("Question"),
                         resultSet.getInt("QuestionID"), resultSet.getString("Mission"),
                         resultSet.getString("Answer"), resultSet.getString("Emotion"),
-                        resultSet.getDate("Date")));
+                        resultSet.getDate("Date"), resultSet.getFloat("EmotionScore")));
             }
         }
         catch(Exception exception){
