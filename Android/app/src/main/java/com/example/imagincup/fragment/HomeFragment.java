@@ -1,21 +1,10 @@
 package com.example.imagincup.fragment;
 
 
-import static androidx.core.content.ContextCompat.checkSelfPermission;
-
-import android.Manifest;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -25,16 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.imagincup.AnswerActivity;
 import com.example.imagincup.Constants;
-import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
-import com.example.imagincup.activity.survey.SurveyActivity;
 import com.example.imagincup.back.DTO.DTOPerson;
-import com.example.imagincup.back.IntroThread;
+import com.example.imagincup.back.DTO.DTORecord;
 import com.example.imagincup.back.task.SumDepressionThread;
+import com.example.imagincup.back.task.answer.SelectAnswerExistThread;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,6 +44,8 @@ public class HomeFragment extends Fragment {
     private TextView scoreTextView;
 
     private DTOPerson dtoPerson;
+    private DTORecord dtoRecord = null;
+    private SelectAnswerExistThread selectAnswerExistThread;
     private Bundle bundle;
     private Integer resultSum;
 
@@ -102,8 +91,6 @@ public class HomeFragment extends Fragment {
             }
             resultSum = sumDepressionThread.getSumScore();
         }
-
-
     }
 
     @Override
@@ -111,13 +98,30 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         scoreTextView = view.findViewById(R.id.emotion_score);
-        scoreTextView.setText(String.valueOf(resultSum));
+        scoreTextView.setText(String.valueOf(resultSum*5/3));
         questionButton = view.findViewById(R.id.home_today_question_button);
         questionButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnswerActivity.class);
-                intent.putExtra("isVisible", false); // 데베에 값이 존재하지 않을 경우
+
+                // 데베 값이 존재하는지?
+                selectAnswerExistThread = new SelectAnswerExistThread(dtoPerson.getPersonId().toString(), dtoRecord);
+                selectAnswerExistThread.start();
+                try {
+                    selectAnswerExistThread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                dtoRecord = selectAnswerExistThread.getdtoRecord();
+                if(dtoRecord == null){
+                    intent.putExtra("isVisible", false); // 데베에 값이 존재하지 않을 경우
+                    // 해당 QuestioniD를 통해서 question값을 가져온다.
+                }
+                else{
+                    intent.putExtra(Constants.DATABASE_RECORD_TABLENAME, dtoRecord);
+                    intent.putExtra("isVisible", true);
+                }
                 intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
                 startActivity(intent);
             }
@@ -130,7 +134,10 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         return view;
+    }
+
+    public void SumDepression(){
+
     }
 }

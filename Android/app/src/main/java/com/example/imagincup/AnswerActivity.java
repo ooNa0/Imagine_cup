@@ -15,8 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.DTO.DTOQuestion;
 import com.example.imagincup.back.DTO.DTORecord;
 import com.example.imagincup.back.task.EmotionAsyncTask;
+import com.example.imagincup.back.task.SumDepressionThread;
+import com.example.imagincup.back.task.answer.SelectQuestionTextThread;
+import com.example.imagincup.back.task.answer.UpdatePersonAsyncTask;
+import com.example.imagincup.back.task.answer.UpdateSurveyScoreThread;
 import com.example.imagincup.back.task.record.InsertRecordDataAsyncTask;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -26,6 +31,7 @@ import com.github.mikephil.charting.data.PieEntry;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AnswerActivity extends AppCompatActivity implements View.OnClickListener {
@@ -60,12 +66,20 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
     private String emotionParcent;
     private DTORecord dtoRecord;
     private DTOPerson dtoPerson;
-    private Integer dtoPersonID;
 
     private String emotionState;
     private JSONObject dataJSON;
 
     private Boolean isVisible = false;
+    private Integer surveyID;
+    private Integer questionID;
+    private String questionText;
+
+    private SelectQuestionTextThread questionTextThread;
+    private DTOQuestion dtoQuestion;
+    private UpdateSurveyScoreThread updateSurveyScoreThread;
+    private SumDepressionThread sumDepressionThread;
+    private UpdatePersonAsyncTask updatePersonAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +89,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = getIntent();
         dtoPerson = (DTOPerson)(intent.getSerializableExtra("Person"));
         isVisible = intent.getBooleanExtra("isVisible", true);
-        dtoPersonID = dtoPerson.getPersonId();
 
         dayTextView = findViewById(R.id.question_day);
         questionTextView = findViewById(R.id.question_);
@@ -107,12 +120,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
-
         dtoRecord = (DTORecord) intent.getSerializableExtra(("Record"));
-        if(dtoRecord != null){
-            setPieElement(dtoRecord.getQuestion(), dtoRecord.getAnswer(), dtoRecord.getMission(), dtoRecord.getEmotion(), Double.valueOf(dtoRecord.getEmotionScore()), isVisible);
-            dayTextView.setText(dtoRecord.getRecordDay());
-        }
+        RecordSet(dtoRecord);
 
         SwitchVisibility(isVisible);
     }
@@ -125,6 +134,9 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             {
                 //progressDialog.show();
                 ManageEmotionState();
+                // person QuesrionID 하나 증가하고 저장하기
+                // 우울 측정 알고리즘
+                // 해당 질문의 survey값 우울증 값 score로 넣기
                 //progressDialog.dismiss();
                 break;
             }
@@ -138,6 +150,30 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    private void RecordSet(DTORecord dtoRecord){
+        if(dtoRecord != null){
+            setPieElement(this.dtoRecord.getQuestion(), this.dtoRecord.getAnswer(), this.dtoRecord.getMission(), this.dtoRecord.getEmotion(), Double.valueOf(this.dtoRecord.getEmotionScore()), isVisible);
+            dayTextView.setText(this.dtoRecord.getRecordDay() + " Question");
+        }
+        else{
+            Log.d("getQuestionTe-------------------getQuestionText", String.valueOf(dtoPerson.getQuestionID()));
+            // person QiestionID 값에 qustion table 의 값 가져옴
+            questionTextThread = new SelectQuestionTextThread(dtoPerson.getQuestionID(), surveyID, questionText);
+            questionTextThread.start();
+            try {
+                questionTextThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            dtoQuestion = questionTextThread.getdtoQuestion();
+            Log.d("getQuestionTextgetQuestionTextgetQuestionTextgetQuestionText", dtoQuestion.getQuestionText());
+            questionTextView.setText(dtoQuestion.getQuestionText());
+
+            dayTextView.setText(new SimpleDateFormat("MM.dd").format(System.currentTimeMillis()) + " Question");
+        }
+
+    }
+
     private void ManageEmotionState(){
         dataJSON = null;
         try {
@@ -148,18 +184,48 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             emotionParcent =  String.format("%.0f", dataJSON.getJSONObject("confidenceScores").getDouble(dataJSON.getString("sentiment"))*100);
             emotionState = dataJSON.getString("sentiment");
 
+            int depressionScore = CalculateDepressionScore(emotionState, dataJSON.getJSONObject("confidenceScores").
+                    getDouble(dataJSON.getString("sentiment"))*100);
+
+            updateSurveyScoreThread = new UpdateSurveyScoreThread(dtoPerson.getPersonId(), dtoQuestion.getSurveyID(), depressionScore);
+            updateSurveyScoreThread.start();
+            updateSurveyScoreThread.join();
+
             // 해당 감정에 대한 우울증 측정 알고리즘
             // 해당 질문에 대한 우울증 값 넣기
+
+            sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
+            sumDepressionThread.start();
+            sumDepressionThread.join();
+
+            dtoPerson.setPersonDepressionScore(sumDepressionThread.getSumScore());
+
+            new UpdatePersonAsyncTask().execute(dtoPerson.getPersonDepressionScore(), dtoPerson.getQuestionID()+1, dtoPerson.getPersonId());
+
+            // 다시 합산한거를 dtoperson우울증 스코어에 넣기
+            // 그 해당 값을 record에다가도 넣기
             // personDTO에 우울증 값 반영(저장된 우울증 값에 따라)
 
+            new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId().toString(), question, "1", answer, emotionState, emotionParcent, dtoPerson.getPersonDepressionScore().toString());
 
-            new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId().toString(), question, "1", answer, emotionState, emotionParcent, dtoPerson.getPersonDepressionScore().toString()).get();
-
-            setPieElement(question, answer, Constants.MISSION_DEFAULT, emotionState, Double.valueOf(emotionParcent), true);
+            setPieElement(question, answer, "-", emotionState, Double.valueOf(emotionParcent), true);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private int CalculateDepressionScore(String elementEmotionState, double elementDepressionScore){
+        if(elementEmotionState.equals("positive")){
+            return 0;
+        }
+        else if(elementEmotionState.equals("neutral")){
+            return 1;
+        }
+        if(elementDepressionScore < 50){
+            return 2;
+        }
+        return 3;
     }
 
     private void setPieElement(String elementQuestion, String elementAnswer, String elementMission, String elementEmotionState, Double elementEmotionParcent, Boolean elementIsVisiable){

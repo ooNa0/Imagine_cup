@@ -28,7 +28,7 @@ public class InsertRecordDataAsyncTask extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         try {
             connection = ConnectionSingleton.getConnection();
-            preparedStatement = connection.prepareStatement("insert into Record(PersonID, Date, Question, QuestionID, Answer, Mission, Emotion, EmotionScore, PersonDepressionScore) values (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            preparedStatement = connection.prepareStatement("insert into Record(PersonID, Date, Question, QuestionID, Answer, Mission, Emotion, EmotionScore, DepressionScore) values (?, ?, ?, ?, ?, ?, ?, ?, ?);");
 
             Date sqlDate = new java.sql.Date(System.currentTimeMillis());
             preparedStatement.setInt(1, Integer.valueOf(params[0])); // person id

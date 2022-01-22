@@ -69,7 +69,7 @@ public class IntroThread extends Thread {
 
     class InsertPersonData {
         InsertPersonData(ResultSet resultSet) throws SQLException {
-            dtoPerson = new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"));
+            dtoPerson = new DTOPerson(resultSet.getInt("PersonId"), resultSet.getString("PersonName"), resultSet.getInt("PersonDepressionScore"), resultSet.getString("PersonDevice"), resultSet.getInt("QuestionID"));
         }
     }
 }
