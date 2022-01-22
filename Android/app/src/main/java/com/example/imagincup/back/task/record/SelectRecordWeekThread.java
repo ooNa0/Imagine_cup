@@ -114,7 +114,7 @@ public class SelectRecordWeekThread extends Thread {
                 // "금";
                 break;
             case 7:
-                this.weekdate6 = score;
+                this.weekdate7 = score;
                 // "토";
                 break;
         }
