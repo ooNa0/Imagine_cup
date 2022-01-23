@@ -53,6 +53,18 @@ public class SurveyAdapter extends RecyclerView.Adapter<SurveyAdapter.CustomView
         return viewHolder;
     }
 
+//    public View getView(int position, View convertView, ViewGroup parent)
+//    {
+//        convertView = mInflater.inflate(R.layout.list_row, null);
+//
+//        TextView tvData = (TextView) convertView.findViewById(R.id.list_row_tv_data);
+//        ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.list_row_iv_photo);
+//
+//        // 데이터 세팅
+//
+//        return convertView;
+//    }
+
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.question.setText(mList.get(position).getQuestion());
@@ -62,12 +74,6 @@ public class SurveyAdapter extends RecyclerView.Adapter<SurveyAdapter.CustomView
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton checked_radiobutton = (RadioButton) group.findViewById(checkedId);
-                Log.d("?????????????????????????????????????", String.valueOf(position));
-                Log.d("????????????????-----??????????????", String.valueOf(mList.get(position)));
-                Log.d("???????????????------????????????????", String.valueOf(mList.get(position).getQuestion()));
-                Log.d("???????????????--23213?????????????", String.valueOf(checked_radiobutton.getId()));
-                Log.d("???????????????--223123213???", String.valueOf(checkedId));
-
                 switch (checked_radiobutton.getId()){
                     case R.id.survey_radiobutton_1:
                         if(position == 3 || position == 7 || position == 11 || position == 15){
@@ -102,13 +108,6 @@ public class SurveyAdapter extends RecyclerView.Adapter<SurveyAdapter.CustomView
                         }
                         break;
                 }
-
-                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton));
-                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.isChecked()));
-                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.getId()));
-                Log.d("00000000000000000000000000000000000000000000000", String.valueOf(checked_radiobutton.getAccessibilityClassName()));
-                //store the clicked radiobutton
-                //lastCheckedRB = checked_rb;
             }
         });
         mList.get(position).setBtn1(holder.btn1);
