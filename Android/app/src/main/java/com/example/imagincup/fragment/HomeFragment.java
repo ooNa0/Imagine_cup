@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.imagincup.AnswerActivity;
@@ -42,6 +43,7 @@ public class HomeFragment extends Fragment {
     private ImageButton callButton;
     private Button questionButton;
     private TextView scoreTextView;
+    private ImageView character;
 
     private DTOPerson dtoPerson;
     private DTORecord dtoRecord = null;
@@ -76,29 +78,23 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
-        if (getArguments() != null) {
-            dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
 
-            sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
-            sumDepressionThread.start();
-            try {
-                sumDepressionThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            resultSum = sumDepressionThread.getSumScore();
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        character = view.findViewById(R.id.home_character);
         scoreTextView = view.findViewById(R.id.emotion_score);
-        scoreTextView.setText(String.valueOf(resultSum*5/3));
+        if(Integer.parseInt(scoreTextView.getText().toString()) <= 20){
+            character.setImageDrawable(getResources().getDrawable(R.drawable.happy));
+        }
+        else if(Integer.parseInt(scoreTextView.getText().toString()) <= 40){
+            character.setImageDrawable(getResources().getDrawable(R.drawable.middle));
+        }
+        else{
+            character.setImageDrawable(getResources().getDrawable(R.drawable.sad));
+        }
         questionButton = view.findViewById(R.id.home_today_question_button);
         questionButton.setOnClickListener(new View.OnClickListener(){
             @Override

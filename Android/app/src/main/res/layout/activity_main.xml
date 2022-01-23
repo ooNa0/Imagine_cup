@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:weightSum="8"
     >
 
     <LinearLayout
@@ -14,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="7"
+        android:layout_weight="10"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,7 +25,6 @@
         app:itemIconTint="@android:color/black"
         app:itemTextColor="@android:color/black"
         app:labelVisibilityMode="labeled"
-        android:layout_weight="1"
         android:backgroundTint="@color/white"
         android:background="@color/change_gray"
         >
