@@ -47,7 +47,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_card_day_record, parent, false);
         cardView = view.findViewById(R.id.card_view);
         viewHolder = new CustomViewHolder(view);
-
         return viewHolder;
     }
 
@@ -56,21 +55,40 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         final DTORecord item = items.get(position);
         holder.date.setText("Day " + item.getRecordDate());
-        if(item.getAnswer() != null){
-            holder.question.setText(item.getQuestion()); // 질문
-            holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
+        holder.question.setText(item.getQuestion()); // 질문
+        holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
+        if(item.getEmotion().equals("positive")){
             cardView.setCardBackgroundColor(Color.parseColor("#CC82DBD7"));
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, AnswerActivity.class);
-                    intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
-                    intent.putExtra(Constants.DATABASE_RECORD_TABLENAME, item);
-                    intent.putExtra("isVisible", true);
-                    context.startActivity(intent);
-                }
-            });
         }
+        else if(item.getEmotion().equals("negative")){
+            cardView.setCardBackgroundColor(Color.parseColor("#FFD3CA"));
+        }
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                passRecordData(item);
+            }
+        });
+
+//        if(item.getAnswer() != null){
+//            holder.question.setText(item.getQuestion()); // 질문
+//            holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
+//            cardView.setCardBackgroundColor(Color.parseColor("#CC82DBD7"));
+//            cardView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    passRecordData(item);
+//                }
+//            });
+//        }
+    }
+
+    void passRecordData(DTORecord item){
+        Intent intent = new Intent(context, AnswerActivity.class);
+        intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
+        intent.putExtra(Constants.DATABASE_RECORD_TABLENAME, item);
+        intent.putExtra("isVisible", true);
+        context.startActivity(intent);
     }
 
     String getEmotionStateIcon(String emotionStateString){
