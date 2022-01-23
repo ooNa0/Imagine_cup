@@ -27,6 +27,8 @@
         app:itemTextColor="@android:color/black"
         app:labelVisibilityMode="labeled"
         android:layout_weight="1"
+        android:backgroundTint="@color/white"
+        android:background="@color/change_gray"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
