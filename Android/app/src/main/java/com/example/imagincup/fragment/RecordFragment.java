@@ -175,8 +175,6 @@ public class RecordFragment extends Fragment {
         //putBundle.putSerializable("Person", dtoPerson);
         fragment.setArguments(bundle);
 
-        Log.d("==========1-22---------------------", String.valueOf(bundle));
-
         getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
     }

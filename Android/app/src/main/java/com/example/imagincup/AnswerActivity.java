@@ -156,7 +156,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             dayTextView.setText(this.dtoRecord.getRecordDay() + " Question");
         }
         else{
-            Log.d("getQuestionTe-------------------getQuestionText", String.valueOf(dtoPerson.getQuestionID()));
             // person QiestionID 값에 qustion table 의 값 가져옴
             questionTextThread = new SelectQuestionTextThread(dtoPerson.getQuestionID(), surveyID, questionText);
             questionTextThread.start();
@@ -166,7 +165,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
                 e.printStackTrace();
             }
             dtoQuestion = questionTextThread.getdtoQuestion();
-            Log.d("getQuestionTextgetQuestionTextgetQuestionTextgetQuestionText", dtoQuestion.getQuestionText());
             questionTextView.setText(dtoQuestion.getQuestionText());
 
             dayTextView.setText(new SimpleDateFormat("MM.dd").format(System.currentTimeMillis()) + " Question");

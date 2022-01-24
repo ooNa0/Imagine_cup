@@ -5,13 +5,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.imagincup.Constants;
 import com.example.imagincup.MissionActivity;
 import com.example.imagincup.R;
+import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.task.SumDepressionThread;
 import com.unity3d.player.UnityPlayerActivity;
 import com.unity3d.player.UnityPlayerActivity;
 
@@ -34,6 +38,7 @@ public class MissionFragment extends Fragment implements View.OnClickListener{
     private View view;
     private Button activebtn;
     private Button gamebtn;
+    private DTOPerson dtoPerson;
 
     public MissionFragment() {
         // Required empty public constructor
@@ -68,10 +73,17 @@ public class MissionFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mission, container, false);
+
+        if (getArguments() != null) {
+            dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+            Log.d("이게 미션프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨", String.valueOf(dtoPerson));
+            Log.d("이게 미션프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨2", dtoPerson.getPersonDevice());
+            Log.d("이게 미션프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨3", String.valueOf(dtoPerson.getPersonId()));
+        }
 
         Button activeButton = view.findViewById(R.id.active_button);
         Button gameButton = view.findViewById(R.id.game_button);
@@ -88,6 +100,7 @@ public class MissionFragment extends Fragment implements View.OnClickListener{
         switch (button.getId()){
             case R.id.active_button:
                 Intent activeIntent =new Intent(getActivity(), MissionActivity.class);
+                activeIntent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
                 startActivity(activeIntent);
                 break;
 
