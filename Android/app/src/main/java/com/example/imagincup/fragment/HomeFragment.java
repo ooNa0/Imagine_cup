@@ -50,6 +50,7 @@ public class HomeFragment extends Fragment {
     private SelectAnswerExistThread selectAnswerExistThread;
     private Bundle bundle;
     private Integer resultSum;
+    private Integer depressionScore;
 
     private SumDepressionThread sumDepressionThread;
 
@@ -66,11 +67,11 @@ public class HomeFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
-
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        //args.putSerializable("Person", dtoPerson);
         fragment.setArguments(args);
         return fragment;
     }
@@ -78,7 +79,21 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
+        if (getArguments() != null) {
+            dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+            sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
+            sumDepressionThread.start();
+            try {
+                sumDepressionThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            resultSum = sumDepressionThread.getSumScore();
+            dtoPerson.setPersonDepressionScore(resultSum);
+        }
     }
 
     @Override
@@ -86,10 +101,13 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         character = view.findViewById(R.id.home_character);
         scoreTextView = view.findViewById(R.id.emotion_score);
-        if(Integer.parseInt(scoreTextView.getText().toString()) <= 20){
+        scoreTextView.setText(String.valueOf(dtoPerson.getPersonDepressionPercent()));
+
+        depressionScore = dtoPerson.getPersonDepressionScore();
+        if(depressionScore <= 20){
             character.setImageDrawable(getResources().getDrawable(R.drawable.happy));
         }
-        else if(Integer.parseInt(scoreTextView.getText().toString()) <= 40){
+        else if(depressionScore <= 40){
             character.setImageDrawable(getResources().getDrawable(R.drawable.middle));
         }
         else{
