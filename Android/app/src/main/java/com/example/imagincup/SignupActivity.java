@@ -40,7 +40,6 @@ public class SignupActivity extends AppCompatActivity {
 
         try {
             resultPersonID = new CreatePersonDataAsyncTask().execute(name, DeviceID).get();
-            Log.d("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", resultPersonID);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -48,6 +47,7 @@ public class SignupActivity extends AppCompatActivity {
         //intent = new Intent(getApplicationContext(), IntroActivity.class);
         intent = new Intent(getApplicationContext(), SurveyActivity.class);
         intent.putExtra("PersonID", resultPersonID);
+        //Log.d("헤이 ,,,,,,,,,,,,,,,,,,", resultPersonID);
         startActivity(intent);
         finish();
     }
