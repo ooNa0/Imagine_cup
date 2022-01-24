@@ -17,16 +17,21 @@ import com.example.imagincup.activity.mission.Camera;
 import com.example.imagincup.activity.mission.Music;
 import com.example.imagincup.activity.mission.Pedometer;
 import com.example.imagincup.activity.mission.Record;
+import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.task.UpdateMissionAsyncTask;
 import com.example.imagincup.model.MissionState;
 
+import java.text.SimpleDateFormat;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 public class MissionActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageButton imageButton;
     private Button startButton;
+    private DTOPerson dtoPerson;
 
     private Boolean isDone;
     private Boolean isSet;
@@ -42,6 +47,10 @@ public class MissionActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission);
+
+        Intent intent = getIntent();
+        dtoPerson = (DTOPerson)(intent.getSerializableExtra("Person"));
+        Log.d("????야 너 미션 dtoperson 받아와짐?", String.valueOf(dtoPerson));
 
         init();
         Timer timer = new Timer();
@@ -81,7 +90,13 @@ public class MissionActivity extends AppCompatActivity {
                         missionNumber = random.nextInt(4);
                     }
                     if(isDone){
+                        try {
+                            Log.d("??????????????????넣을 곳에 있는데 안되나요", new UpdateMissionAsyncTask().execute(new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()), String.valueOf(dtoPerson.getPersonId())).get());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         intent = new Intent(getApplicationContext(),MainActivity.class);
+                        intent.putExtra("Person", dtoPerson);
                         startActivity(intent);
                         return;
                     }
