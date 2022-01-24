@@ -1,5 +1,8 @@
 package com.example.imagincup.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +10,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.imagincup.Constants;
+import com.example.imagincup.IntroActivity;
 import com.example.imagincup.R;
+import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.task.person.DeletePersonThread;
+import com.example.imagincup.back.task.person.DeleteRecordThread;
+import com.example.imagincup.back.task.person.DeleteScoreThread;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +38,17 @@ public class MyPageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private View view;
+    private ImageView imageView;
+    private TextView nameTextView;
+    private TextView scoreTextView;
+    private Integer depressionScore;
+    private Button refillSurveyButton;
+    private Button leaveButton;
+    private DTOPerson dtoPerson;
+    private DeletePersonThread deletePersonThread;
+    private DeleteScoreThread deleteScoreThread;
+    private DeleteRecordThread deleteRecordThread;
 
     public MyPageFragment() {
         // Required empty public constructor
@@ -52,15 +76,76 @@ public class MyPageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_page, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_my_page, container, false);
+
+        imageView = view.findViewById(R.id.mypage_image_character);
+        nameTextView = view.findViewById(R.id.mypage_text_name);
+        scoreTextView = view.findViewById(R.id.mypage_text_score);
+        refillSurveyButton = view.findViewById(R.id.mypage_button_resign);
+        leaveButton = view.findViewById(R.id.mypage_button_survey);
+
+        refillSurveyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 회원탈퇴
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Confirm Deletion");
+                builder.setMessage("Are you sure you want to delete your account?");
+                // 버튼 추가 (Ok 버튼과 Cancle 버튼 )
+                builder.setPositiveButton("Delete account",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog,int which){
+                        deleteScoreThread = new DeleteScoreThread(dtoPerson.getPersonId());
+                        deleteRecordThread = new DeleteRecordThread(dtoPerson.getPersonId());
+                        deletePersonThread = new DeletePersonThread(dtoPerson.getPersonId());
+                        deleteScoreThread.start();
+                        deleteRecordThread.start();
+                        deletePersonThread.start();
+                        try {
+                            deleteScoreThread.join();
+                            deleteRecordThread.join();
+                            deletePersonThread.join();
+                            Toast.makeText(getActivity().getApplicationContext(),"delete your account complete", Toast.LENGTH_SHORT).show();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Intent intent = new Intent(getActivity(), IntroActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_SINGLE_TOP); // 스택에 쌓여있는 액티비티 비우기
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("Cancle", null);
+                builder.create().show(); //보이기
+            }
+        });
+
+        leaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        nameTextView.setText(dtoPerson.getPersonName());
+        scoreTextView.setText(dtoPerson.getPersonDepressionPercent() + "/100");
+
+        depressionScore = dtoPerson.getPersonDepressionScore();
+        if(depressionScore <= 20){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.happy));
+        }
+        else if(depressionScore <= 40){
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.middle));
+        }
+        else{
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.sad));
+        }
+        return view;
     }
 }
