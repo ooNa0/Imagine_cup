@@ -30,7 +30,7 @@ public class MissionActivity extends AppCompatActivity {
 
     private Boolean isDone;
     private Boolean isSet;
-    private Boolean isClear;
+    private String isClear;
 
     private int missionNumber;
     private Intent intent;
@@ -53,13 +53,16 @@ public class MissionActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         isDone = MissionState.getInstance().getDone();
         isSet = MissionState.getInstance().getIsSet();
+        if(resultCode == RESULT_OK){
+            isClear = "1";
+        }
         Log.d(TAG, "isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
     }
 
     private void init(){
         isDone = MissionState.getInstance().getDone();
         isSet = MissionState.getInstance().getIsSet();
-        isClear = false;
+        isClear = "0";
 
         Log.d(TAG, "isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
 
