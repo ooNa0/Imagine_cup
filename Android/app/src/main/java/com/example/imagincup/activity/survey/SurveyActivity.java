@@ -36,8 +36,8 @@ public class SurveyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
-        intent = getIntent();
-        personID = intent.getStringExtra("PersonID");
+        personID = getIntent().getStringExtra("PersonID");
+        //Log.d("받은 값입니다.", personID);
 
         RecyclerView recyclerView =(RecyclerView) findViewById(R.id.survey_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -61,6 +61,7 @@ public class SurveyActivity extends AppCompatActivity {
                     thread.join();
                     //progressDialog.dismiss();
                     Intent intent = new Intent(getApplicationContext(), CompleteActivity.class);
+                    intent.putExtra("PersonID", personID);
                     startActivity(intent);
                     finish();
                 } catch (InterruptedException e) {
