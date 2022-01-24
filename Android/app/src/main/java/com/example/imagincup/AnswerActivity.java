@@ -171,7 +171,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
             dayTextView.setText(new SimpleDateFormat("MM.dd").format(System.currentTimeMillis()) + " Question");
         }
-
     }
 
     private void ManageEmotionState(){

@@ -66,7 +66,6 @@ public class SurveyActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
         });
     }
@@ -102,7 +101,6 @@ public class SurveyActivity extends AppCompatActivity {
         surveyArrayList.add(survey7);
         surveyArrayList.add(survey8);
         surveyArrayList.add(survey9);
-        //surveyArrayList.add(new Survey("I thought my life had been a failure."));
         surveyArrayList.add(survey10);
         surveyArrayList.add(survey11);
         surveyArrayList.add(survey12);
