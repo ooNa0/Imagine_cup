@@ -70,6 +70,7 @@
         android:paddingRight="20dp">
 
       <Button
+          android:backgroundTint="@color/white_opacity"
           android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
           android:background="@drawable/button_background3"

@@ -23,6 +23,17 @@
             #5B2A0C
         </item>
     </style>
+    <style name="question_date">
+        <item name="android:textSize">
+            26sp
+        </item>
+        <item name="android:textStyle">
+            bold
+        </item>
+        <item name="android:textColor">
+            @color/brown
+        </item>
+    </style>
     <style name="question">
         <item name="android:textSize">
             20sp
@@ -45,9 +56,6 @@
         </item>
         <item name="android:textStyle">
             normal
-        </item>
-        <item name="android:textColor">
-            #5B2A0C
         </item>
     </style>
     <style name="go_misson">

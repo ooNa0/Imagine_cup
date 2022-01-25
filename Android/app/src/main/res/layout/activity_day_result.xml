@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:text="Question"
                     android:fontFamily="@font/recordfont"
-                    android:textAppearance="@style/question"
+                    android:textAppearance="@style/question_date"
                     />
 
             </androidx.appcompat.widget.Toolbar>
