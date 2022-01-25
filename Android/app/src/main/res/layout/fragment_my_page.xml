@@ -66,8 +66,10 @@
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
         android:orientation="vertical"
+        android:paddingTop="15dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
+
 
       <Button
           android:id="@+id/mypage_button_survey"
@@ -78,7 +80,6 @@
           android:padding="20dp"
           android:text="Depression test again"
           android:textAppearance="@style/my_page_button_text" />
-
       <Button
           android:id="@+id/mypage_button_resign"
           android:layout_width="match_parent"
@@ -88,7 +89,6 @@
           android:padding="20dp"
           android:text="Delete account"
           android:textAppearance="@style/my_page_button_text" />
-
       <Button
           android:id="@+id/mypage_button_about_us"
           android:layout_width="match_parent"
