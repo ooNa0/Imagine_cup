@@ -21,12 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:menu="@menu/bottom_nav_menu"
-        app:itemBackground="@color/gray"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
+        app:itemBackground="@color/brown"
+        app:itemIconTint="@color/background"
+        app:itemTextColor="@color/background"
         app:labelVisibilityMode="labeled"
-        android:backgroundTint="@color/white"
-        android:background="@color/change_gray"
+        android:backgroundTint="@color/brown"
+        android:background="@color/brown"
         android:layout_weight="1"
         >
 
