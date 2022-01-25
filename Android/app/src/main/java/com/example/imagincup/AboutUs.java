@@ -15,12 +15,13 @@ public class AboutUs extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.about_us_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("About Us");
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+
                 // 액티비티 이동
                 finish();
                 return true;
