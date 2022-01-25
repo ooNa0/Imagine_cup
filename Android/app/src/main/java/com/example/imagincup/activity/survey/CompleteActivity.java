@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.imagincup.IntroActivity;
+import com.example.imagincup.MainActivity;
 import com.example.imagincup.R;
 
 public class CompleteActivity extends AppCompatActivity {

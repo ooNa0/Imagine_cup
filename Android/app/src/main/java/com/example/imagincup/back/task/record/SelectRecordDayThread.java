@@ -52,9 +52,6 @@ public class SelectRecordDayThread extends Thread {
         try {
             Calendar cal = Calendar.getInstance();
             date = dateFormat.parse(selectYear + "-" +selectMonth + "-" + "00");
-            //Log.d("*********************************** ", selectYear + "-" + dateFormatInteger.format(date));
-            //Log.d("*********************************** ", String.valueOf(dateFormatInteger.parse(selectYear + "-" + dateFormatInteger.format(date)) + "-" + "01"));
-            //Log.d("*********************************** ", String.valueOf(dateFormatInteger.parse(selectYear + dateFormatInteger.format(date))));
 
             cal.setTime(date);
 

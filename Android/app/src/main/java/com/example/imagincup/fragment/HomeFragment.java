@@ -21,6 +21,7 @@ import com.example.imagincup.Constants;
 import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.DTO.DTORecord;
+import com.example.imagincup.back.ProgressDialog;
 import com.example.imagincup.back.task.SumDepressionThread;
 import com.example.imagincup.back.task.answer.SelectAnswerExistThread;
 
@@ -51,6 +52,9 @@ public class HomeFragment extends Fragment {
     private SelectAnswerExistThread selectAnswerExistThread;
     private Bundle bundle;
     private Integer resultSum;
+    private Integer depressionScore;
+
+    private ProgressDialog progressDialog;
 
     private SumDepressionThread sumDepressionThread;
 
@@ -67,11 +71,11 @@ public class HomeFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
-
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        //args.putSerializable("Person", dtoPerson);
         fragment.setArguments(args);
         return fragment;
     }
@@ -79,7 +83,25 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        progressDialog = ProgressDialog.getInstance();
+        //dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
+        if (getArguments() != null) {
+            dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+            Log.d("이게 홈프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨", String.valueOf(dtoPerson));
+            Log.d("이게 홈프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨2", dtoPerson.getPersonDevice());
+            Log.d("이게 홈프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨3", String.valueOf(dtoPerson.getPersonId()));
+            sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
+            sumDepressionThread.start();
+            try {
+                sumDepressionThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            resultSum = sumDepressionThread.getSumScore();
+            dtoPerson.setPersonDepressionScore(resultSum);
+        }
     }
 
     @Override
@@ -88,11 +110,13 @@ public class HomeFragment extends Fragment {
         character = view.findViewById(R.id.home_character);
         scoreTextView = view.findViewById(R.id.emotion_score);
         nickname = view.findViewById(R.id.home_nickname);
+        scoreTextView.setText(String.valueOf(dtoPerson.getPersonDepressionPercent()));
 
-        if(Integer.parseInt(scoreTextView.getText().toString()) <= 20){
+        depressionScore = dtoPerson.getPersonDepressionScore();
+        if(depressionScore <= 20){
             character.setImageDrawable(getResources().getDrawable(R.drawable.happy));
         }
-        else if(Integer.parseInt(scoreTextView.getText().toString()) <= 40){
+        else if(depressionScore <= 40){
             character.setImageDrawable(getResources().getDrawable(R.drawable.middle));
         }
         else{
@@ -103,7 +127,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnswerActivity.class);
-
+                progressDialog.show(getActivity());
                 // 데베 값이 존재하는지?
                 selectAnswerExistThread = new SelectAnswerExistThread(dtoPerson.getPersonId().toString(), dtoRecord);
                 selectAnswerExistThread.start();
@@ -122,6 +146,7 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("isVisible", true);
                 }
                 intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
+                progressDialog.dismiss();
                 startActivity(intent);
             }
         });

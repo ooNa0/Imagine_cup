@@ -42,7 +42,6 @@ public class IntroActivity extends AppCompatActivity {
                         // 인트로 실행 후 바로 MainActivity로 넘어감.
                         dtoPerson = introThread.getResultDataSet();
                         intent = new Intent(getApplicationContext(), MainActivity.class);
-                        //intent = new Intent(getApplicationContext(), SurveyActivity.class);
                         intent.putExtra("Person", dtoPerson);
                     }
                     else {

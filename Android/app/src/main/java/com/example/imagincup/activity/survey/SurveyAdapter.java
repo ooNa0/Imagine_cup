@@ -53,17 +53,10 @@ public class SurveyAdapter extends RecyclerView.Adapter<SurveyAdapter.CustomView
         return viewHolder;
     }
 
-//    public View getView(int position, View convertView, ViewGroup parent)
-//    {
-//        convertView = mInflater.inflate(R.layout.list_row, null);
-//
-//        TextView tvData = (TextView) convertView.findViewById(R.id.list_row_tv_data);
-//        ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.list_row_iv_photo);
-//
-//        // 데이터 세팅
-//
-//        return convertView;
-//    }
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, @SuppressLint("RecyclerView") int position) {

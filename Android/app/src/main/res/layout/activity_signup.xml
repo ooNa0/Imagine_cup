@@ -33,8 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="
-Write a name for your character">
+        android:text="Write a name for your character">
     </TextView>
 
 
