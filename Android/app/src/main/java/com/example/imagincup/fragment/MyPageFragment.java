@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imagincup.AboutUs;
 import com.example.imagincup.Constants;
 import com.example.imagincup.IntroActivity;
 import com.example.imagincup.R;
@@ -47,6 +48,7 @@ public class MyPageFragment extends Fragment {
     private Button refillSurveyButton;
     private Button leaveButton;
     private Button deleteUserButton;
+    private Button aboutUs;
     private DTOPerson dtoPerson;
     private DeletePersonThread deletePersonThread;
     private DeleteScoreThread deleteScoreThread;
@@ -96,6 +98,7 @@ public class MyPageFragment extends Fragment {
         leaveButton = view.findViewById(R.id.mypage_button_leave);
         refillSurveyButton = view.findViewById(R.id.mypage_button_survey);
         deleteUserButton = view.findViewById(R.id.mypage_button_resign);
+        aboutUs = view.findViewById(R.id.mypage_button_about_us);
 
         deleteUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +173,15 @@ public class MyPageFragment extends Fragment {
         else{
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.areyousuresad));
         }
+
+        aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AboutUs.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 }
