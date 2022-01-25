@@ -11,10 +11,11 @@
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/drawable/selector_survey_radio_button3.xml" value="0.1453125" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/drawable/selector_survey_radio_button4.xml" value="0.1453125" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/drawable/survey_next_button.xml" value="0.1453125" />
+        <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/font/font.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_about_us.xml" value="0.4" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_camera.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_complete.xml" value="0.12916666666666668" />
-        <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_day_result.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_day_result.xml" value="0.264" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_intro.xml" value="0.152" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_main.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/activity_mission.xml" value="0.2" />
@@ -30,7 +31,7 @@
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/fragment_record_day.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/fragment_record_month.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/item_audio.xml" value="0.12916666666666668" />
-        <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/item_survey.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/item_survey.xml" value="0.176" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/layout_card_day_record.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/hyunjin/Desktop/ImagineCup/project/Android/app/src/main/res/layout/layout_progress_dialog.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/drawable/arrow_chevr.xml" value="0.48854166666666665" />
@@ -44,11 +45,10 @@
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/drawable/line.xml" value="0.33" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/drawable/line_gradient.xml" value="0.38051282051282054" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/font/font.xml" value="0.5026041666666666" />
-        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_about_us.xml" value="0.425" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_camera.xml" value="0.47239583333333335" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_complete.xml" value="0.401268115942029" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_day_answer.xml" value="0.33" />
-        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_day_result.xml" value="0.25" />
+        <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_day_result.xml" value="0.22" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_intro.xml" value="0.3802083333333333" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/na0/Desktop/ImagineCup/Android/app/src/main/res/layout/activity_mission.xml" value="0.25" />

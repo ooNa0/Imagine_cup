@@ -71,14 +71,14 @@
 
       <Button
           android:backgroundTint="@color/white_opacity"
+          android:text="Exit"
+          android:id="@+id/mypage_button_leave"
           android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
           android:background="@drawable/button_background3"
-          android:text="Exit"
-          android:id="@+id/mypage_button_leave"
-          android:gravity="center_vertical"
           android:layout_width="match_parent"
-          android:layout_height="65dp"
+          android:gravity="center_vertical"
+          android:layout_height="65dp"/>
           />
 
       <Button
