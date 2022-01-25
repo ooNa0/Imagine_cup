@@ -23,12 +23,13 @@
         tools:targetApi="jelly_bean" />
 
     <TextView
-        android:text="Take a picture \nof smiling"
+        android:text="Take a picture of \nsmiling"
         android:textColor="#000000"
-        android:textSize="40sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"/>
+        android:layout_marginTop="20sp"
+        android:textSize="40sp"
+        android:textStyle="bold"/>
 
     <ImageView
         android:src="@drawable/cameradefault"
