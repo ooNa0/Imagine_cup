@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.imagincup.Constants;
 import com.example.imagincup.back.DTO.DTORecord;
+import com.example.imagincup.back.ProgressDialog;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -38,6 +39,9 @@ public class SelectAnswerExistThread extends Thread {
     @Override
     public void run() {
         try {
+            ProgressDialog progressDialog = ProgressDialog.getInstance();
+            //progressDialog.show(this);
+
             date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
             connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);

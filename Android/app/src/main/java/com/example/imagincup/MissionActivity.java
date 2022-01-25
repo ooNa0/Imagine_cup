@@ -50,7 +50,6 @@ public class MissionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         dtoPerson = (DTOPerson)(intent.getSerializableExtra("Person"));
-        Log.d("????야 너 미션 dtoperson 받아와짐?", String.valueOf(dtoPerson));
 
         init();
         Timer timer = new Timer();
@@ -65,7 +64,13 @@ public class MissionActivity extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             isClear = "1";
         }
-        Log.d(TAG, "isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
+        try {
+            Log.d("??????????????",  "이게 안돼? 진짜 말도안돼 너 왜 안됨");
+            Log.d("??????????????????넣을 곳에 있는데 안되나요", new UpdateMissionAsyncTask().execute(new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()), String.valueOf(dtoPerson.getPersonId())).get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.d(TAG, "onActivityResult isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
     }
 
     private void init(){
@@ -87,50 +92,45 @@ public class MissionActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if(!isSet){
-                        MissionState.getInstance().setIsSet(true);
-                        Random random = new Random();
-                        missionNumber = random.nextInt(4);
-                    }
-                    if(isDone){
-                        try {
-                            Log.d("??????????????????넣을 곳에 있는데 안되나요", new UpdateMissionAsyncTask().execute(new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()), String.valueOf(dtoPerson.getPersonId())).get());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        intent = new Intent(getApplicationContext(),MainActivity.class);
-                        intent.putExtra("Person", dtoPerson);
-                        startActivity(intent);
-                        return;
-                    }
-                    missionNumber  = 2;
-                    switch (missionNumber){
-                        case 0 :
-                            intent = new Intent(getApplicationContext(), Pedometer.class);
-                            intent.putExtra("is_done",isDone);
-                            startActivityForResult(intent,0000);
-                            break;
-                        case 1:
-                            intent = new Intent(getApplicationContext(),Camera.class);
-                            intent.putExtra("is_done",isDone);
-                            startActivityForResult(intent,1111);
-                            break;
+                if (!isSet) {
+                    MissionState.getInstance().setIsSet(true);
+                    Random random = new Random();
+                    missionNumber = random.nextInt(4);
+                }
+                if (isDone) {
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("Person", dtoPerson);
+                    startActivity(intent);
+                    return;
+                }
+                missionNumber = 2;
+                switch (missionNumber) {
+                    case 0:
+                        intent = new Intent(getApplicationContext(), Pedometer.class);
+                        intent.putExtra("is_done", isDone);
+                        startActivityForResult(intent, 0000);
+                        break;
+                    case 1:
+                        intent = new Intent(getApplicationContext(), Camera.class);
+                        intent.putExtra("is_done", isDone);
+                        startActivityForResult(intent, 1111);
+                        break;
 
-                        case 2:
-                            intent = new Intent(getApplicationContext(), Record.class);
-                            intent.putExtra("is_done",isDone);
-                            startActivityForResult(intent,2222);
-                            break;
+                    case 2:
+                        intent = new Intent(getApplicationContext(), Record.class);
+                        intent.putExtra("is_done", isDone);
+                        startActivityForResult(intent, 2222);
+                        break;
 
-                        case 3:
-                            intent = new Intent(getApplicationContext(), Music.class);
-                            intent.putExtra("is_done",isDone);
-                            startActivityForResult(intent,3333);
-                            break;
-                    }
+                    case 3:
+                        intent = new Intent(getApplicationContext(), Music.class);
+                        intent.putExtra("is_done", isDone);
+                        startActivityForResult(intent, 3333);
+                        break;
+                }
             }
-
         });
+
     }
 
     private TimerTask initState(){

@@ -8,11 +8,16 @@ import com.example.imagincup.R;
 
 public class ProgressDialog {
     private Dialog dialog;
-    private static ProgressDialog mInstance;
+    private static volatile ProgressDialog mInstance = null;
 
-    public static synchronized ProgressDialog getInstance() {
+    //  Bum 성능상의 이슈
+    public static ProgressDialog getInstance() {
         if (mInstance == null) {
-            mInstance = new ProgressDialog();
+            synchronized (ProgressDialog.class) {
+                if (mInstance == null) {
+                    mInstance = new ProgressDialog();
+                }
+            }
         }
         return mInstance;
     }

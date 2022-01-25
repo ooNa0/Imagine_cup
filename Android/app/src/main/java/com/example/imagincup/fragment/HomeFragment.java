@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -75,7 +74,6 @@ public class HomeFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
-        //args.putSerializable("Person", dtoPerson);
         fragment.setArguments(args);
         return fragment;
     }
@@ -84,14 +82,10 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         progressDialog = ProgressDialog.getInstance();
-        //dtoPerson = (DTOPerson) bundle.getSerializable(Constants.DATABASE_PERSON_TABLENAME);
         if (getArguments() != null) {
             dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            Log.d("이게 홈프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨", String.valueOf(dtoPerson));
-            Log.d("이게 홈프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨2", dtoPerson.getPersonDevice());
-            Log.d("이게 홈프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨3", String.valueOf(dtoPerson.getPersonId()));
             sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
             sumDepressionThread.start();
             try {
@@ -118,10 +112,10 @@ public class HomeFragment extends Fragment {
             character.setImageDrawable(getResources().getDrawable(R.drawable.happy));
         }
         else if(depressionScore <= 40){
-            character.setImageDrawable(getResources().getDrawable(R.drawable.middle));
+            character.setImageDrawable(getResources().getDrawable(R.drawable.areyousuremid));
         }
         else{
-            character.setImageDrawable(getResources().getDrawable(R.drawable.sad));
+            character.setImageDrawable(getResources().getDrawable(R.drawable.areyousuresad));
         }
         questionButton = view.findViewById(R.id.home_today_question_button);
         questionButton.setOnClickListener(new View.OnClickListener(){
@@ -139,8 +133,7 @@ public class HomeFragment extends Fragment {
                 }
                 dtoRecord = selectAnswerExistThread.getdtoRecord();
                 if(dtoRecord == null){
-                    intent.putExtra("isVisible", false); // 데베에 값이 존재하지 않을 경우
-                    // 해당 QuestioniD를 통해서 question값을 가져온다.
+                    intent.putExtra("isVisible", false);
                 }
                 else{
                     intent.putExtra(Constants.DATABASE_RECORD_TABLENAME, dtoRecord);
@@ -160,9 +153,5 @@ public class HomeFragment extends Fragment {
             }
         });
         return view;
-    }
-
-    public void SumDepression(){
-
     }
 }

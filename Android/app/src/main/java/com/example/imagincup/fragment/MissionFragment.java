@@ -80,9 +80,6 @@ public class MissionFragment extends Fragment implements View.OnClickListener{
             dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            Log.d("이게 미션프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨", String.valueOf(dtoPerson));
-            Log.d("이게 미션프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨2", dtoPerson.getPersonDevice());
-            Log.d("이게 미션프레그먼트에서 언크리에이트에서 가져온 널 포인트 오류가 뜨는 디티오 펄슨3", String.valueOf(dtoPerson.getPersonId()));
         }
 
         Button activeButton = view.findViewById(R.id.active_button);
