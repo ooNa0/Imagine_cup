@@ -27,7 +27,7 @@ protected String doInBackground(String... params) {
 
         connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);
 
-        query = "UPDATE Record SET Mission='0', Date='" + params[0] + "' WHERE PersonID='" + params[1] + "';";
+        query = "UPDATE Record SET Mission='0'" + " WHERE Date='" + params[0] + "' AND PersonID='" + params[1] + "';";
                 Log.d("============1111111111111111111111111", query);
 
         preparedStatement = connection.prepareStatement(query);
