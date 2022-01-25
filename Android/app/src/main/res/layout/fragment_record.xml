@@ -42,17 +42,6 @@
                 android:layout_marginStart="22dp">
             </Button>
 
-<!--            <TextView-->
-<!--                android:id="@+id/month"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:fontFamily="@font/bebasneue_regular"-->
-<!--                android:gravity="top"-->
-<!--                android:text="DECEMBER"-->
-<!--                android:textAppearance="@style/record"-->
-<!--                tools:targetApi="jelly_bean"-->
-<!--                android:layout_marginStart="22dp" />-->
-
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"

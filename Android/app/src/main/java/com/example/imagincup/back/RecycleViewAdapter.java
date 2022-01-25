@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imagincup.AnswerActivity;
@@ -58,10 +59,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         holder.question.setText(item.getQuestion()); // 질문
         holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
         if(item.getEmotion().equals("positive")){
-            cardView.setCardBackgroundColor(Color.parseColor("#CC82DBD7"));
+            cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.happy_day_record_card));
         }
         else if(item.getEmotion().equals("negative")){
-            cardView.setCardBackgroundColor(Color.parseColor("#FFD3CA"));
+            cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.sad_day_record_card));
         }
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,18 +70,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                 passRecordData(item);
             }
         });
-
-//        if(item.getAnswer() != null){
-//            holder.question.setText(item.getQuestion()); // 질문
-//            holder.content.setText(getEmotionStateIcon(item.getEmotion())); // 얼굴
-//            cardView.setCardBackgroundColor(Color.parseColor("#CC82DBD7"));
-//            cardView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    passRecordData(item);
-//                }
-//            });
-//        }
     }
 
     void passRecordData(DTORecord item){
@@ -98,7 +87,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         else if(emotionStateString.equals("negative")){
             return "😢";
         }
-        return "😶";
+        return "😐";
     }
 
     @Override

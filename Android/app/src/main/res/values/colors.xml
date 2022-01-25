@@ -18,4 +18,7 @@
     <color name="UpRED">#fa3423</color>
     <color name="brown">#5B2A0C</color>
     <color name="background">#FFFAF1</color>
+    <color name="happy_day_record_card">#FFD96B</color>
+    <color name="mid_day_record_card">#FFD8D1</color>
+    <color name="sad_day_record_card">#9CD9D2</color>
 </resources>

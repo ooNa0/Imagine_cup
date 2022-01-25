@@ -154,7 +154,7 @@ public class MonthRecordFragment extends Fragment {
         set1.setFillDrawable(drawable);
 
         lineChart.getRenderer().getPaintRender().setShader(
-                new LinearGradient(0, 10, 10, 10, Color.parseColor("#00cfcce3"), Color.parseColor("#99C5C4"), Shader.TileMode.CLAMP));
+                new LinearGradient(0, 10, 10, 10, Color.parseColor("#FFD279"), Color.parseColor("#5B2A0C"), Shader.TileMode.CLAMP));
         //barChart.getMeasuredWidth()
 
         lineChart.setViewPortOffsets(150, 10, 150, 0);
@@ -258,7 +258,7 @@ public class MonthRecordFragment extends Fragment {
         barData.setValueTextSize(140f);
 
         barChart.getRenderer().getPaintRender().setShader(
-                new LinearGradient(0, 0, 1000, 1000, Color.parseColor("#88BEB7"), Color.parseColor("#39655B"), Shader.TileMode.CLAMP));
+                new LinearGradient(0, 0, 1000, 1000, Color.parseColor("#F2B743"), Color.parseColor("#5B2A0C"), Shader.TileMode.CLAMP));
 
         barChart.setTouchEnabled(false); //확대 X
 
@@ -275,10 +275,6 @@ public class MonthRecordFragment extends Fragment {
         try {
             Calendar cal = Calendar.getInstance();
             date = dateFormat.parse(selectYear + "-" +selectMonth + "-" + selectDay);
-
-            //Log.d("**************22*********************----------- ", String.valueOf(selectYear + "-" +selectMonth + "-" + selectDay));
-            //Log.d("**************33*********************----------- ", String.valueOf(dateFormatInteger.format(date)));
-            //Log.d("**************33*********************----------- ", String.valueOf(dateFormatInteger.format(dateFormat.parse(selectYear + "-" +selectMonth + "-" + "01"))));
 
             endDate = String.valueOf(dateFormatInteger.format(dateFormat.parse(selectYear + "-" +selectMonth + "-" + selectDay))); // 지금 날짜
             midDate = String.valueOf(dateFormatInteger.format(dateFormat.parse(selectYear + "-" +selectMonth + "-" + "01"))); // 지금 날짜에서 01일로 세팅값
