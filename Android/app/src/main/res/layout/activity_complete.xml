@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.survey.CompleteActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <TextView
         android:gravity="center"
@@ -13,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="Complete"
         android:textSize="62sp"
-        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textColor="@color/brown"
         android:layout_marginTop="150sp"/>
 
     <ImageView
@@ -21,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="85sp"
         android:src="@drawable/complete"
+
         android:contentDescription="Complete" />
 
     <TextView
@@ -38,8 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
-        android:textColor="@color/white"
-        android:background="@drawable/survey_next_button"
+        android:textColor="@color/brown"
+        android:background="@drawable/button_background"
         android:paddingRight="105sp"
         android:paddingLeft="105sp"
         android:paddingTop="20dp"

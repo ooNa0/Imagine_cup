@@ -42,9 +42,10 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private ImageButton callButton;
-    private Button questionButton;
+    private ImageButton questionButton;
     private TextView scoreTextView;
     private ImageView character;
+    private TextView nickname;
 
     private DTOPerson dtoPerson;
     private DTORecord dtoRecord = null;
@@ -108,6 +109,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         character = view.findViewById(R.id.home_character);
         scoreTextView = view.findViewById(R.id.emotion_score);
+        nickname = view.findViewById(R.id.home_nickname);
         scoreTextView.setText(String.valueOf(dtoPerson.getPersonDepressionPercent()));
 
         depressionScore = dtoPerson.getPersonDepressionScore();

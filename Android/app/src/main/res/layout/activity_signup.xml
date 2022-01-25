@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/white"
+    android:background="@color/background"
     android:orientation="vertical">
 
 <!--    <ImageView-->
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="The value you enter will be your character name.">
+        android:text="Write a name for your character">
     </TextView>
 
 
@@ -42,7 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="next"
-        android:onClick="onclick">
+        android:onClick="onclick"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background">
 
     </Button>
 
