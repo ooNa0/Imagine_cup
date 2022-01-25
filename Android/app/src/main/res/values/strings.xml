@@ -13,10 +13,10 @@
     <string name="emergency_call">Emergency call</string>
     <string name="today_question">Today Question</string>
     <string name="check_internet_message">Check Your Internet Access!</string>
-    <string name="delete_account">_ Delete your Account</string>
-    <string name="re_fill_the_questionnaire">_ Re-fill the questionnaire</string>
-    <string name="to_leave">_ To Leave</string>
-    <string name="about_us">_ About Us</string>
+    <string name="delete_account"> Delete your Account</string>
+    <string name="re_fill_the_questionnaire"> Re-fill the questionnaire</string>
+    <string name="to_leave"> To Leave</string>
+    <string name="about_us"> About Us</string>
     <string name="my_page">My Page</string>
     <string name="step_count">Step Count :</string>
     <string name="question">12.20 Question</string>
