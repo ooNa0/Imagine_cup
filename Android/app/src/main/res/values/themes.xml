@@ -225,7 +225,7 @@
     </style>
     <style name="my_page_button_text">
         <item name="android:textSize">
-            22sp
+            20sp
         </item>
         <item name="android:textStyle">
             bold

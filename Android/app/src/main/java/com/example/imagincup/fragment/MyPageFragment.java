@@ -1,5 +1,6 @@
 package com.example.imagincup.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.example.imagincup.Constants;
 import com.example.imagincup.IntroActivity;
 import com.example.imagincup.R;
+import com.example.imagincup.activity.survey.CompleteActivity;
 import com.example.imagincup.activity.survey.SurveyActivity;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.task.person.DeletePersonThread;
@@ -47,6 +49,7 @@ public class MyPageFragment extends Fragment {
     private Integer depressionScore;
     private Button refillSurveyButton;
     private Button leaveButton;
+    private Button deleteUserButton;
     private DTOPerson dtoPerson;
     private DeletePersonThread deletePersonThread;
     private DeleteScoreThread deleteScoreThread;
@@ -92,10 +95,12 @@ public class MyPageFragment extends Fragment {
         imageView = view.findViewById(R.id.mypage_image_character);
         nameTextView = view.findViewById(R.id.mypage_text_name);
         scoreTextView = view.findViewById(R.id.mypage_text_score);
-        refillSurveyButton = view.findViewById(R.id.mypage_button_resign);
-        leaveButton = view.findViewById(R.id.mypage_button_survey);
 
-        refillSurveyButton.setOnClickListener(new View.OnClickListener() {
+        leaveButton = view.findViewById(R.id.mypage_button_leave);
+        refillSurveyButton = view.findViewById(R.id.mypage_button_survey);
+        deleteUserButton = view.findViewById(R.id.mypage_button_resign);
+
+        deleteUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 회원탈퇴
@@ -130,7 +135,7 @@ public class MyPageFragment extends Fragment {
             }
         });
 
-        leaveButton.setOnClickListener(new View.OnClickListener() {
+        refillSurveyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteScoreThread = new DeleteScoreThread(dtoPerson.getPersonId());
@@ -143,6 +148,15 @@ public class MyPageFragment extends Fragment {
                 intent = new Intent(getActivity(), SurveyActivity.class);
                 intent.putExtra("PersonID", String.valueOf(dtoPerson.getPersonId()));
                 startActivity(intent);
+            }
+        });
+
+        leaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Activity.finishAffinity();
+                System.runFinalization();
+                System.exit(0);
             }
         });
 
