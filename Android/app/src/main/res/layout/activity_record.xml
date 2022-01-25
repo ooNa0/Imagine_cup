@@ -66,8 +66,7 @@
     <Button
         android:layout_marginTop="80sp"
         android:drawableStart="@drawable/play"
-        android:background="@drawable/button_background"
-        android:backgroundTint="@color/brown"
+        android:background="@drawable/button_background2"
         android:id="@+id/record_button_play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +78,7 @@
         />
     <Button
         android:id="@+id/record_button_clear"
-        android:background="@drawable/button_background"
+        android:background="@drawable/button_background2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clear"
