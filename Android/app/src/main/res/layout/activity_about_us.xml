@@ -17,75 +17,82 @@
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="35dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:fontFamily="@font/bebasneue_regular"
         android:gravity="top"
         android:text="About Us"
         android:textAppearance="@style/mission"
         tools:targetApi="jelly_bean" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/about_us_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_weight="8"
         android:orientation="vertical"
-        android:paddingLeft="15sp"
-        >
+        android:paddingLeft="30sp"
+        android:paddingTop="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
             <TextView
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delevopr : Hyeon wook Kim" />
+                android:text="Delevopr : Hyeon wook Kim"
+                android:textStyle="bold" />
 
             <TextView
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email : gus70005319@gmail.com" />
+                android:text="Email : gus70005319@gmail.com"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="30dp">
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Delevopr : Hyeon wook Kim" />
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Email : gus70005319@gmail.com" />
+                android:text="Delevopr : Hyeon wook Kim"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email : gus70005319@gmail.com"
+                android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="30dp">
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Delevopr : Hyeon wook Kim" />
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Email : gus70005319@gmail.com" />
+                android:text="Delevopr : Hyeon wook Kim"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email : gus70005319@gmail.com"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
