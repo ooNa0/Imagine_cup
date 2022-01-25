@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingLeft="30sp"
     android:paddingRight="30sp"
-    android:backgroundTint="@color/gray"
+    android:backgroundTint="@color/background"
     >
 
     <TextView
@@ -42,7 +42,7 @@
         <Button
             android:drawableStart="@drawable/camera"
             android:background="@drawable/button_background"
-            android:backgroundTint="#0C6B66"
+            android:backgroundTint="@color/brown"
             android:id="@+id/camera_button_take_picture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:text="Clear"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="#0C6B66"
+        android:backgroundTint="@color/brown"
         android:textColor="@color/white"
         />
 </LinearLayout>

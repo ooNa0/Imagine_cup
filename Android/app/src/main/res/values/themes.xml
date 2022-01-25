@@ -12,7 +12,7 @@
             36sp
         </item>
         <item name="android:textColor">
-            #0C6B66
+            #5B2A0C
         </item>
     </style>
     <style name="record">
@@ -31,7 +31,7 @@
             0.01
         </item>
         <item name="android:textColor">
-            #00332D
+            @color/brown
         </item>
     </style>
     <style name="question_answer">
