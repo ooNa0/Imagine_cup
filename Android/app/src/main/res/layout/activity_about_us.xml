@@ -66,13 +66,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delevopr : Hyeon wook Kim"
+                android:text="Delevopr : Na Young Koo"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email : gus70005319@gmail.com"
+                android:text="Email : koonayoung51@sju.ac.kr"
                 android:textStyle="bold" />
         </LinearLayout>
 

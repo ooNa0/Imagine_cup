@@ -71,7 +71,7 @@
 
       <Button
           android:backgroundTint="@color/white_opacity"
-          android:text="@string/to_leave"
+          android:text="Exit"
           android:textAppearance="@style/my_page_button_text"
           android:drawableStart="@drawable/log_out"
           android:id="@+id/mypage_button_leave"
