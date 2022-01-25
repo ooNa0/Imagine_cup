@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.imagincup.Constants;
 import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.ProgressDialog;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -56,6 +57,8 @@ public class RecordFragment extends Fragment {
     private String selectYear;
     private String selectMonth;
 
+    private ProgressDialog progressDialog;
+
     private SimpleDateFormat monthDataFormat = new SimpleDateFormat("MMMM", Locale.US);
     private SimpleDateFormat monthIntegerFormat = new SimpleDateFormat("MM", Locale.US);
     private SimpleDateFormat dayDataFormat = new SimpleDateFormat("dd", Locale.US);
@@ -78,6 +81,8 @@ public class RecordFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        progressDialog = ProgressDialog.getInstance();
 
         selectYear = SetYear();
         selectMonth = SetMonth();
@@ -105,6 +110,7 @@ public class RecordFragment extends Fragment {
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
+                        progressDialog.show(getContext());
                         String convertDate = String.valueOf(year) + "-" + String.valueOf(month) + "-" + "12";
                         try {
                             selectYear = String.valueOf(year);
@@ -143,6 +149,7 @@ public class RecordFragment extends Fragment {
         changeDayMonthButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show(getContext());
                 if (isDay == true){
                     FragmentChange(dayRecordFragment);
                     changeDayMonthButton.setBackgroundResource(R.drawable.calendar);
@@ -174,6 +181,8 @@ public class RecordFragment extends Fragment {
         //Bundle putBundle = new Bundle();
         //putBundle.putSerializable("Person", dtoPerson);
         fragment.setArguments(bundle);
+
+        progressDialog.dismiss();
 
         getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
