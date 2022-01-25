@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.mission.Music"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/mission"
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="Clear"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="#0C6B66"
+        android:backgroundTint="@color/brown"
         android:textColor="@color/white"
         />
 

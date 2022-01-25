@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".activity.mission.Pedometer"
     android:orientation="vertical"
-    android:weightSum="10">
+    android:weightSum="10"
+    android:background="@color/background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/pedometer_toolbar"
