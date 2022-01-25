@@ -6,111 +6,111 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml
+8-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml
+9-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml
 10
 11    <uses-feature android:glEsVersion="0x00030000" />
-11-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:19:3-52
-11-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:19:17-49
+11-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:19:3-52
+11-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:19:17-49
 12    <uses-feature
-12-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:20:3-91
+12-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:20:3-91
 13        android:name="android.hardware.vulkan.version"
-13-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:20:17-63
+13-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:20:17-63
 14        android:required="false" />
-14-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:20:64-88
+14-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:20:64-88
 15    <uses-feature
-15-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:21:3-88
+15-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:21:3-88
 16        android:name="android.hardware.touchscreen"
-16-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:21:17-60
+16-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:21:17-60
 17        android:required="false" />
-17-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:21:61-85
+17-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:21:61-85
 18    <uses-feature
-18-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:22:3-99
+18-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:22:3-99
 19        android:name="android.hardware.touchscreen.multitouch"
-19-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:22:17-71
+19-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:22:17-71
 20        android:required="false" />
-20-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:22:72-96
+20-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:22:72-96
 21    <uses-feature
-21-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:23:3-108
+21-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:23:3-108
 22        android:name="android.hardware.touchscreen.multitouch.distinct"
-22-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:23:17-80
+22-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:23:17-80
 23        android:required="false" />
-23-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:23:81-105
+23-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:23:81-105
 24
 25    <application>
-25-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:4:3-18:17
+25-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:4:3-18:17
 26        <activity
-26-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:5-12:16
+26-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:5-12:16
 27            android:name="com.unity3d.player.UnityPlayerActivity"
-27-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:15-68
+27-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:15-68
 28            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-28-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:182-363
+28-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:182-363
 29            android:hardwareAccelerated="false"
-29-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:399-434
+29-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:399-434
 30            android:launchMode="singleTask"
-30-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:150-181
+30-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:150-181
 31            android:resizeableActivity="false"
-31-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:364-398
+31-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:364-398
 32            android:screenOrientation="fullSensor"
-32-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:111-149
+32-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:111-149
 33            android:theme="@style/UnityThemeSelector" >
-33-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:5:69-110
+33-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:5:69-110
 34            <intent-filter>
-34-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:6:7-9:23
+34-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:6:7-9:23
 35                <action android:name="android.intent.action.MAIN" />
-35-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:7:9-61
-35-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:7:17-58
+35-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:7:9-61
+35-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:7:17-58
 36
 37                <category android:name="android.intent.category.LAUNCHER" />
-37-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:8:9-69
-37-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:8:19-66
+37-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:8:9-69
+37-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:8:19-66
 38            </intent-filter>
 39
 40            <meta-data
-40-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:10:7-82
+40-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:10:7-82
 41                android:name="unityplayer.UnityActivity"
-41-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:10:18-58
+41-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:10:18-58
 42                android:value="true" />
-42-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:10:59-79
+42-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:10:59-79
 43            <meta-data
-43-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:11:7-78
+43-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:11:7-78
 44                android:name="android.notch_support"
-44-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:11:18-54
+44-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:11:18-54
 45                android:value="true" />
-45-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:11:55-75
+45-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:11:55-75
 46        </activity>
 47
 48        <meta-data
-48-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:13:5-69
+48-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:13:5-69
 49            android:name="unity.splash-mode"
-49-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:13:16-48
+49-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:13:16-48
 50            android:value="0" />
-50-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:13:49-66
+50-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:13:49-66
 51        <meta-data
-51-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:14:5-74
+51-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:14:5-74
 52            android:name="unity.splash-enable"
-52-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:14:16-50
+52-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:14:16-50
 53            android:value="True" />
-53-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:14:51-71
+53-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:14:51-71
 54        <meta-data
-54-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:15:5-84
+54-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:15:5-84
 55            android:name="unity.allow-resizable-window"
-55-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:15:16-59
+55-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:15:16-59
 56            android:value="False" />
-56-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:15:60-81
+56-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:15:60-81
 57        <meta-data
-57-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:16:5-81
+57-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:16:5-81
 58            android:name="notch.config"
-58-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:16:16-43
+58-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:16:16-43
 59            android:value="portrait|landscape" />
-59-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:16:44-78
+59-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:16:44-78
 60        <meta-data
-60-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:17:5-101
+60-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:17:5-101
 61            android:name="unity.build-id"
-61-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:17:16-45
+61-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:17:16-45
 62            android:value="a030f3b3-e29f-46a8-8942-2f51e5b98346" />
-62-->C:\Users\na0\Desktop\ImagineCup\Android\unityLibrary\src\main\AndroidManifest.xml:17:46-98
+62-->C:\Users\hyunjin\Desktop\ImagineCup\project\Android\unityLibrary\src\main\AndroidManifest.xml:17:46-98
 63    </application>
 64
 65</manifest>

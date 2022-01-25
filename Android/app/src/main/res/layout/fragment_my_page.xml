@@ -71,37 +71,38 @@
 
       <Button
           android:backgroundTint="@color/white_opacity"
-          android:text="Exit"
+          android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
-          android:drawableStart="@drawable/log_out"
+          android:background="@color/white_opacity"
+          android:text="Exit"
           android:id="@+id/mypage_button_leave"
           android:gravity="center_vertical"
           android:layout_width="match_parent"
           android:layout_height="65dp"/>
       <Button
+          android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
-          android:backgroundTint="@color/white_opacity"
-          android:text="@string/re_fill_the_questionnaire"
-          android:drawableStart="@drawable/edit"
+          android:background="@color/white_opacity"
+          android:text="Depression test again"
           android:id="@+id/mypage_button_survey"
           android:layout_width="match_parent"
           android:gravity="center_vertical"
           android:layout_height="65dp"/>
       <Button
+          android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
-          android:backgroundTint="@color/white_opacity"
-          android:text="@string/delete_account"
-          android:drawableStart="@drawable/user_minus"
+          android:background="@color/white_opacity"
+          android:text="Delete account"
           android:gravity="center_vertical"
           android:id="@+id/mypage_button_resign"
           android:layout_width="match_parent"
           android:layout_height="65dp"/>
       <Button
+          android:padding="20dp"
           android:gravity="center_vertical"
           android:textAppearance="@style/my_page_button_text"
-          android:backgroundTint="@color/white_opacity"
-          android:text="@string/about_us"
-          android:drawableStart="@drawable/help_circle_outline"
+          android:background="@color/white_opacity"
+          android:text="About us"
           android:id="@+id/mypage_button_about_us"
           android:layout_width="match_parent"
           android:layout_height="65dp"/>

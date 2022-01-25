@@ -14,38 +14,42 @@
 <!--        />-->
 
     <TextView
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="name">
-    </TextView>
+        android:text="NicName"
+        android:textSize="52sp"
+        android:textStyle="bold"
+        android:textColor="@color/brown"
+        android:layout_marginTop="100sp"/>
 
+    <ImageView
+        android:layout_marginTop="56sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/happy"
+
+        android:contentDescription="Complete" />
     <EditText
+        android:hint="      Enter your nickname"
         android:id="@+id/input_name"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:maxLength="8"
-        android:singleLine = "true">
+        android:singleLine = "true"
+        android:layout_margin="50dp">
     </EditText>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Write a name for your character">
-    </TextView>
-
-
     <Button
         android:id="@+id/start_save_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_height="wrap_content"
         android:text="next"
+        android:textColor="@color/white"
         android:onClick="onclick"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_background">
-
+        android:background="@drawable/button_background2">
     </Button>
 
 </LinearLayout>
