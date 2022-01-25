@@ -9,5 +9,4 @@
     <item name="android:windowIsTranslucent">true</item>
     <item name="android:windowBackground">@android:color/transparent</item>
 </style>
-    <string name="game_view_content_description">Game view</string>
 </resources>
