@@ -6,26 +6,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:weightSum="8"
     >
 
     <LinearLayout
         android:id="@+id/home_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
         android:orientation="vertical"
-        android:layout_weight="7"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:menu="@menu/bottom_nav_menu"
-        app:itemBackground="@color/gray"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
+        app:itemBackground="@color/brown"
+        app:itemIconTint="@color/background"
+        app:itemTextColor="@color/background"
         app:labelVisibilityMode="labeled"
+        android:backgroundTint="@color/brown"
+        android:background="@color/brown"
         android:layout_weight="1"
         >
 

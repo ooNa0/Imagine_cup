@@ -1,36 +1,28 @@
 package com.example.imagincup.fragment;
 
 
-import static androidx.core.content.ContextCompat.checkSelfPermission;
-
-import android.Manifest;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.imagincup.AnswerActivity;
-import com.example.imagincup.MainActivity;
+import com.example.imagincup.Constants;
 import com.example.imagincup.R;
-import com.example.imagincup.activity.survey.SurveyActivity;
 import com.example.imagincup.back.DTO.DTOPerson;
+import com.example.imagincup.back.DTO.DTORecord;
+import com.example.imagincup.back.ProgressDialog;
+import com.example.imagincup.back.task.SumDepressionThread;
+import com.example.imagincup.back.task.answer.SelectAnswerExistThread;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,11 +41,21 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private ImageButton callButton;
-    private Button questionButton;
+    private ImageButton questionButton;
+    private TextView scoreTextView;
+    private ImageView character;
+    private TextView nickname;
 
     private DTOPerson dtoPerson;
+    private DTORecord dtoRecord = null;
+    private SelectAnswerExistThread selectAnswerExistThread;
     private Bundle bundle;
+    private Integer resultSum;
+    private Integer depressionScore;
 
+    private ProgressDialog progressDialog;
+
+    private SumDepressionThread sumDepressionThread;
 
     public HomeFragment() {
     }
@@ -68,7 +70,6 @@ public class HomeFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
-
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -80,26 +81,66 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        bundle = getArguments();
-        dtoPerson = (DTOPerson) bundle.getSerializable("Person");
-
+        progressDialog = ProgressDialog.getInstance();
         if (getArguments() != null) {
+            dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
+            sumDepressionThread.start();
+            try {
+                sumDepressionThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            resultSum = sumDepressionThread.getSumScore();
+            dtoPerson.setPersonDepressionScore(resultSum);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        character = view.findViewById(R.id.home_character);
+        scoreTextView = view.findViewById(R.id.emotion_score);
+        nickname = view.findViewById(R.id.home_nickname);
+        scoreTextView.setText(String.valueOf(dtoPerson.getPersonDepressionPercent()));
+        nickname.setText(dtoPerson.getPersonName());
+
+        depressionScore = dtoPerson.getPersonDepressionScore();
+        if(depressionScore <= 20){
+            character.setImageDrawable(getResources().getDrawable(R.drawable.happy));
+        }
+        else if(depressionScore <= 40){
+            character.setImageDrawable(getResources().getDrawable(R.drawable.areyousuremid));
+        }
+        else{
+            character.setImageDrawable(getResources().getDrawable(R.drawable.areyousuresad));
+        }
         questionButton = view.findViewById(R.id.home_today_question_button);
         questionButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnswerActivity.class);
-                intent.putExtra("Person", dtoPerson);
+                progressDialog.show(getActivity());
+                // 데베 값이 존재하는지?
+                selectAnswerExistThread = new SelectAnswerExistThread(dtoPerson.getPersonId().toString(), dtoRecord);
+                selectAnswerExistThread.start();
+                try {
+                    selectAnswerExistThread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                dtoRecord = selectAnswerExistThread.getdtoRecord();
+                if(dtoRecord == null){
+                    intent.putExtra("isVisible", false);
+                }
+                else{
+                    intent.putExtra(Constants.DATABASE_RECORD_TABLENAME, dtoRecord);
+                    intent.putExtra("isVisible", true);
+                }
+                intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
+                progressDialog.dismiss();
                 startActivity(intent);
             }
         });
@@ -111,8 +152,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-    
         return view;
     }
 }

@@ -1,23 +1,18 @@
 package com.example.imagincup;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Message;
-import android.os.Parcelable;
 import android.provider.Settings;
-import android.util.Log;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.imagincup.activity.survey.SurveyActivity;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.IntroThread;
-import com.example.imagincup.back.PersonTableAsyncTask;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.concurrent.ExecutionException;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -42,22 +37,22 @@ public class IntroActivity extends AppCompatActivity {
                 introThread.start();
                 try {
                     introThread.join();
+                    result = introThread.getResult();
+                    if(result == Constants.DATABASE_EXIST) {
+                        // 인트로 실행 후 바로 MainActivity로 넘어감.
+                        dtoPerson = introThread.getResultDataSet();
+                        intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("Person", dtoPerson);
+                    }
+                    else {
+                        // 회원가입 페이지로 이동
+                        intent = new Intent(getApplicationContext(), SignupActivity.class);
+                    }
+                    startActivity(intent);
+                    finish();
                 } catch (InterruptedException exception) {
                     exception.printStackTrace();
                 }
-                result = introThread.getResult();
-                if(result == Constants.DATABASE_EXIST) {
-                    // 인트로 실행 후 바로 MainActivity로 넘어감.
-                    dtoPerson = introThread.getResultDataSet();
-                    intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("Person", dtoPerson);
-                }
-                else {
-                    // 회원가입 페이지로 이동
-                    intent = new Intent(getApplicationContext(), SignupActivity.class);
-                }
-                startActivity(intent);
-                finish();
             }
         },1000);
     }

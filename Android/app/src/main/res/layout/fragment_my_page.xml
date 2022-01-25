@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MyPageFragment">
+    tools:context=".fragment.MyPageFragment"
+    android:background="#FFFAF1">
 
   <LinearLayout
       android:layout_width="match_parent"
@@ -47,65 +48,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:textColor="#006064"
-          android:text="땅땅이"/>
+            android:textColor="@color/brown"
+          android:text="name"/>
         <TextView
             android:id="@+id/mypage_text_score"
             android:textStyle="bold"
             android:textSize="35dp"
-            android:textColor="#006064"
+            android:textColor="@color/brown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-          android:text="80/100"/>
+          android:text="0/100"/>
       </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
       <Button
-          android:textColor="#006064"
           android:backgroundTint="@color/white"
-          android:minHeight="0dp"
-          android:textStyle="bold"
           android:text="@string/to_leave"
+          android:textAppearance="@style/my_page_button_text"
           android:drawableStart="@drawable/log_out"
-          android:id="@+id/mypage_button_resign"
+          android:id="@+id/mypage_button_leave"
           android:gravity="center_vertical"
           android:layout_width="match_parent"
           android:layout_height="65dp"/>
       <Button
-          android:minHeight="0dp"
-          android:textColor="#006064"
+          android:textAppearance="@style/my_page_button_text"
           android:backgroundTint="@color/white"
           android:text="@string/re_fill_the_questionnaire"
           android:drawableStart="@drawable/edit"
           android:id="@+id/mypage_button_survey"
-          android:textStyle="bold"
           android:layout_width="match_parent"
           android:gravity="center_vertical"
           android:layout_height="65dp"/>
       <Button
-          android:textColor="#006064"
+          android:textAppearance="@style/my_page_button_text"
           android:backgroundTint="@color/white"
-          android:text="@string/setting_up_push_notifications"
-          android:textStyle="bold"
-          android:drawableStart="@drawable/alarm"
+          android:text="@string/delete_account"
+          android:drawableStart="@drawable/user_minus"
           android:gravity="center_vertical"
-          android:id="@+id/mypage_button_set_alert"
+          android:id="@+id/mypage_button_resign"
           android:layout_width="match_parent"
           android:layout_height="65dp"/>
       <Button
           android:gravity="center_vertical"
-          android:textColor="#006064"
+          android:textAppearance="@style/my_page_button_text"
           android:backgroundTint="@color/white"
-          android:textStyle="bold"
-          android:text="@string/set_answer_time"
-          android:drawableStart="@drawable/settings"
-          android:id="@+id/mypage_button_set_time"
+          android:text="@string/about_us"
+          android:drawableStart="@drawable/help_circle_outline"
+          android:id="@+id/mypage_button_about_us"
           android:layout_width="match_parent"
           android:layout_height="65dp"/>
     </LinearLayout>

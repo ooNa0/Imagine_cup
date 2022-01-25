@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnswerActivity">
+    tools:context=".AnswerActivity"
+    android:background="@color/background">
 
     <LinearLayout
     android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                     android:id="@+id/question_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12.20 Question"
+                    android:text="Question"
                     android:fontFamily="@font/recordfont"
                     android:textAppearance="@style/question"
                     />
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/recordfont"
-            android:text="오늘은 어떤 기분이 들었나요?"
+            android:text="Daily question"
             android:textAppearance="@style/question"
             />
 
@@ -64,8 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="100dp"
+            android:textStyle="normal"
             android:background="@null"
-            android:text="나는 오늘 너무 머리가 아팠다. 눈도 아프다 왜냐하면 아프기 때문이다. 선인장에 물 주지만 다시 뱉어버리는 구린장"
             android:textAppearance="@style/question_answer"
             android:fontFamily="@font/recordfont"
             />
@@ -78,7 +79,7 @@
             android:background="@null"
             android:textAppearance="@style/question_answer"
             android:ems="10"
-            android:hint="질문에 대한 답변"/>
+            android:hint="answers to questions"/>
 
         <Button
             android:id="@+id/save_answer"
@@ -151,7 +152,7 @@
                         android:id="@+id/check_misson"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/check_misson"
+                        android:text="-"
                         android:textAppearance="@style/check_misson"
                         app:layout_constraintBottom_toBottomOf="@+id/daily_mission_achievement_chart"
                         app:layout_constraintEnd_toEndOf="@+id/daily_mission_achievement_chart"
@@ -184,7 +185,6 @@
                         android:id="@+id/emotion_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="😀"
                         android:textAppearance="@style/emotion_icon"
                         app:layout_constraintBottom_toTopOf="@+id/emotion_parcent"
                         app:layout_constraintLeft_toLeftOf="@+id/daily_emotions_chart"
@@ -197,7 +197,6 @@
                         android:id="@+id/emotion_parcent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="90%"
                         android:textAppearance="@style/emotion_parcent"
                         app:layout_constraintBottom_toBottomOf="@+id/daily_emotions_chart"
                         app:layout_constraintLeft_toLeftOf="@+id/daily_emotions_chart"
@@ -240,7 +239,7 @@
             android:fontFamily="@font/recordfont"
             android:layout_margin="20dp"
             android:text="@string/go_misson"
-            android:textAppearance="@style/question"
+            android:textAppearance="@style/question_button"
             android:background="@drawable/go_misson_button_background"
             android:gravity="center"
             android:layout_gravity="bottom|center"
