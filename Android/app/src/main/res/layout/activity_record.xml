@@ -71,6 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Play your laughing Sound"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:textColor="@color/white"
         android:paddingLeft="50sp"
         android:paddingRight="50sp"

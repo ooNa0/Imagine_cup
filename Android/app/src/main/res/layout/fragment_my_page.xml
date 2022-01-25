@@ -72,16 +72,18 @@
       <Button
           android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
-          android:background="@color/white_opacity"
+          android:background="@drawable/button_background3"
           android:text="Exit"
           android:id="@+id/mypage_button_leave"
           android:gravity="center_vertical"
           android:layout_width="match_parent"
-          android:layout_height="65dp"/>
+          android:layout_height="65dp"
+          />
+
       <Button
           android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
-          android:background="@color/white_opacity"
+          android:background="@drawable/button_background3"
           android:text="Depression test again"
           android:id="@+id/mypage_button_survey"
           android:layout_width="match_parent"
@@ -90,7 +92,7 @@
       <Button
           android:padding="20dp"
           android:textAppearance="@style/my_page_button_text"
-          android:background="@color/white_opacity"
+          android:background="@drawable/button_background3"
           android:text="Delete account"
           android:gravity="center_vertical"
           android:id="@+id/mypage_button_resign"
@@ -100,7 +102,7 @@
           android:padding="20dp"
           android:gravity="center_vertical"
           android:textAppearance="@style/my_page_button_text"
-          android:background="@color/white_opacity"
+          android:background="@drawable/button_background3"
           android:text="About us"
           android:id="@+id/mypage_button_about_us"
           android:layout_width="match_parent"

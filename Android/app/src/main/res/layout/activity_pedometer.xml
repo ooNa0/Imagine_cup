@@ -76,6 +76,7 @@
         android:layout_height="70sp"
         android:background="@drawable/button_background2"
         android:text="Clear"
+        android:textColor="@color/white"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"

@@ -69,6 +69,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_background2"
             android:text="Start"
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"

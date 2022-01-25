@@ -116,6 +116,7 @@
                 android:layout_marginBottom="1dp"
                 android:gravity="center"
                 android:text="blarblar"
+                android:textSize="15sp"
                 android:textColor="#000000"
                 android:textStyle="bold" />
 

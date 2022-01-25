@@ -68,8 +68,7 @@
             android:textStyle="normal"
             android:background="@null"
             android:textAppearance="@style/question_answer"
-            android:fontFamily="@font/recordfont"
-            />
+            android:fontFamily="@font/recordfont" />
 
         <EditText
             android:id="@+id/question_answer_edit"
