@@ -68,47 +68,41 @@
         android:orientation="vertical">
 
       <Button
-          android:textColor="#006064"
           android:backgroundTint="@color/white"
-          android:minHeight="0dp"
-          android:textStyle="bold"
           android:text="@string/to_leave"
+          android:textAppearance="@style/my_page_button_text"
           android:drawableStart="@drawable/log_out"
           android:id="@+id/mypage_button_resign"
           android:gravity="center_vertical"
           android:layout_width="match_parent"
           android:layout_height="65dp"/>
       <Button
-          android:minHeight="0dp"
-          android:textColor="#006064"
+          android:textAppearance="@style/my_page_button_text"
           android:backgroundTint="@color/white"
           android:text="@string/re_fill_the_questionnaire"
           android:drawableStart="@drawable/edit"
           android:id="@+id/mypage_button_survey"
-          android:textStyle="bold"
           android:layout_width="match_parent"
           android:gravity="center_vertical"
           android:layout_height="65dp"/>
-<!--      <Button-->
-<!--          android:textColor="#006064"-->
-<!--          android:backgroundTint="@color/white"-->
-<!--          android:text="@string/setting_up_push_notifications"-->
-<!--          android:textStyle="bold"-->
-<!--          android:drawableStart="@drawable/alarm"-->
-<!--          android:gravity="center_vertical"-->
-<!--          android:id="@+id/mypage_button_set_alert"-->
-<!--          android:layout_width="match_parent"-->
-<!--          android:layout_height="65dp"/>-->
-<!--      <Button-->
-<!--          android:gravity="center_vertical"-->
-<!--          android:textColor="#006064"-->
-<!--          android:backgroundTint="@color/white"-->
-<!--          android:textStyle="bold"-->
-<!--          android:text="@string/set_answer_time"-->
-<!--          android:drawableStart="@drawable/settings"-->
-<!--          android:id="@+id/mypage_button_set_time"-->
-<!--          android:layout_width="match_parent"-->
-<!--          android:layout_height="65dp"/>-->
+      <Button
+          android:textAppearance="@style/my_page_button_text"
+          android:backgroundTint="@color/white"
+          android:text="@string/delete_account"
+          android:drawableStart="@drawable/user_minus"
+          android:gravity="center_vertical"
+          android:id="@+id/mypage_button_logout"
+          android:layout_width="match_parent"
+          android:layout_height="65dp"/>
+      <Button
+          android:gravity="center_vertical"
+          android:textAppearance="@style/my_page_button_text"
+          android:backgroundTint="@color/white"
+          android:text="@string/about_us"
+          android:drawableStart="@drawable/help_circle_outline"
+          android:id="@+id/mypage_button_about_us"
+          android:layout_width="match_parent"
+          android:layout_height="65dp"/>
     </LinearLayout>
 
     </LinearLayout>

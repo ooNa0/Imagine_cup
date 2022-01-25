@@ -2,6 +2,7 @@ package com.example.imagincup.fragment;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -104,7 +105,8 @@ public class RecordFragment extends Fragment {
         yearTextView = view.findViewById(R.id.record_year);
         recordButton = view.findViewById(R.id.month_button);
 
-        RackMonthPicker rackMonthPicker = new RackMonthPicker(container.getContext());
+        RackMonthPicker rackMonthPicker = new RackMonthPicker(getContext());
+        rackMonthPicker.setColorTheme(ContextCompat.getColor(getContext(), R.color.brown));
 
         rackMonthPicker.setLocale(Locale.ENGLISH)
                 .setPositiveButton(new DateMonthDialogListener() {

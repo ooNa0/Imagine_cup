@@ -283,12 +283,18 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         PieDataSet dataSet = new PieDataSet(yValues,"emotions");
         emotionIconTextView.setText(icon);
         emtionParcentTextView.setText(String.valueOf(parcent) + '%');
-        //ataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-        //dataSet.setColor(getResources().getColor(R.color.black));
-        //dataSet.setGradientColor(Color.parseColor("88BEB7"), Color.parseColor("26746C"));
-        dataSet.setColors(getResources().getColor(R.color.mission_button), getResources().getColor(R.color.white_gray));
-        PieData data = new PieData(dataSet);
 
+        if(icon.equals("😀")){
+            dataSet.setColors(getResources().getColor(R.color.happy_day_record_card), getResources().getColor(R.color.white_gray));
+        }
+        else if(icon.equals("😢")){
+            dataSet.setColors(getResources().getColor(R.color.sad_day_record_card), getResources().getColor(R.color.white_gray));
+        }
+        else{
+            dataSet.setColors(getResources().getColor(R.color.mid_day_record_card), getResources().getColor(R.color.white_gray));
+        }
+
+        PieData data = new PieData(dataSet);
 
         ArrayList<PieEntry> yValueMission = new ArrayList<PieEntry>();
         yValueMission.add(new PieEntry(100,""));

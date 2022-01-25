@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/recordfont"
-            android:text="오늘은 어떤 기분이 들었나요?"
+            android:text="Daily question"
             android:textAppearance="@style/question"
             />
 
@@ -79,7 +79,7 @@
             android:background="@null"
             android:textAppearance="@style/question_answer"
             android:ems="10"
-            android:hint="질문에 대한 답변"/>
+            android:hint="answers to questions"/>
 
         <Button
             android:id="@+id/save_answer"
@@ -239,7 +239,7 @@
             android:fontFamily="@font/recordfont"
             android:layout_margin="20dp"
             android:text="@string/go_misson"
-            android:textAppearance="@style/question"
+            android:textAppearance="@style/question_button"
             android:background="@drawable/go_misson_button_background"
             android:gravity="center"
             android:layout_gravity="bottom|center"

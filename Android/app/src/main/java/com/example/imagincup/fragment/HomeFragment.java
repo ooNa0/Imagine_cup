@@ -111,6 +111,7 @@ public class HomeFragment extends Fragment {
         scoreTextView = view.findViewById(R.id.emotion_score);
         nickname = view.findViewById(R.id.home_nickname);
         scoreTextView.setText(String.valueOf(dtoPerson.getPersonDepressionPercent()));
+        nickname.setText(dtoPerson.getPersonName());
 
         depressionScore = dtoPerson.getPersonDepressionScore();
         if(depressionScore <= 20){
