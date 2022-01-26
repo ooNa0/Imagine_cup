@@ -38,6 +38,8 @@
                     android:text="Question"
                     android:fontFamily="@font/recordfont"
                     android:textAppearance="@style/question_date"
+                    android:textFontWeight="@android:integer/status_bar_notification_info_maxnum"
+                    android:textStyle="bold"
                     />
 
             </androidx.appcompat.widget.Toolbar>
@@ -56,7 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/recordfont"
-            android:text="Daily question"
+            android:text="  Daily question  "
+            android:textColor="@color/brown"
             android:textAppearance="@style/question"
             />
 
@@ -68,15 +71,14 @@
             android:textStyle="normal"
             android:background="@null"
             android:textAppearance="@style/question_answer"
-            android:fontFamily="@font/recordfont"
-            />
+            android:fontFamily="@font/recordfont" />
 
         <EditText
             android:id="@+id/question_answer_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="100dp"
-            android:background="@null"
+            android:background="@drawable/button_background4"
             android:textAppearance="@style/question_answer"
             android:ems="10"
             android:hint="answers to questions"/>

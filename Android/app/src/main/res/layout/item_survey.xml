@@ -3,18 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="30dp">
+    android:layout_marginTop="5dp">
 <!--    버튼 클릭 시 색상 변경하려면 drawable/selector_survey_radio_button 수정하면 됨 -->
     <TextView
         android:id="@+id/survey_question"
         android:textColor="#222222"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="What did you not plan to do today and why?"
-        android:textSize="15sp"
-        android:layout_marginTop="20sp"/>
+        android:text="What did you do today?"
+        android:textSize="20sp"
+        android:layout_marginTop="2sp"/>
 
     <RadioGroup
         android:id="@+id/survey_radiogroup"
