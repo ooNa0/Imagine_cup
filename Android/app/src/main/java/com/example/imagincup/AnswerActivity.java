@@ -23,11 +23,13 @@ import com.example.imagincup.back.task.answer.SelectQuestionTextThread;
 import com.example.imagincup.back.task.answer.UpdatePersonAsyncTask;
 import com.example.imagincup.back.task.answer.UpdateSurveyScoreThread;
 import com.example.imagincup.back.task.record.InsertRecordDataAsyncTask;
+import com.example.imagincup.fragment.MissionFragment;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONObject;
 
@@ -132,17 +134,15 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         {
             case R.id.save_answer:
             {
-                //progressDialog.show();
                 ManageEmotionState();
-                // person QuesrionID 하나 증가하고 저장하기
-                // 우울 측정 알고리즘
-                // 해당 질문의 survey값 우울증 값 score로 넣기
-                //progressDialog.dismiss();
                 break;
             }
             case R.id.go_misson_button:
             {
-                Intent intent = new Intent(this, MissionActivity.class);
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("Person", dtoPerson);
+                intent.putExtra("fragment", R.id.tab_mission);
                 startActivity(intent);
                 finish();
                break;
@@ -156,7 +156,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             dayTextView.setText(this.dtoRecord.getRecordDay() + " Question");
         }
         else{
-            // person QiestionID 값에 qustion table 의 값 가져옴
             questionTextThread = new SelectQuestionTextThread(dtoPerson.getQuestionID(), surveyID, questionText);
             questionTextThread.start();
             try {
@@ -188,9 +187,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             updateSurveyScoreThread.start();
             updateSurveyScoreThread.join();
 
-            // 해당 감정에 대한 우울증 측정 알고리즘
-            // 해당 질문에 대한 우울증 값 넣기
-
             sumDepressionThread = new SumDepressionThread(dtoPerson.getPersonId());
             sumDepressionThread.start();
             sumDepressionThread.join();
@@ -198,10 +194,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             dtoPerson.setPersonDepressionScore(sumDepressionThread.getSumScore());
 
             new UpdatePersonAsyncTask().execute(dtoPerson.getPersonDepressionScore(), dtoPerson.getQuestionID()+1, dtoPerson.getPersonId());
-
-            // 다시 합산한거를 dtoperson우울증 스코어에 넣기
-            // 그 해당 값을 record에다가도 넣기
-            // personDTO에 우울증 값 반영(저장된 우울증 값에 따라)
 
             new InsertRecordDataAsyncTask().execute(dtoPerson.getPersonId().toString(), question, "1", answer, emotionState, emotionParcent, dtoPerson.getPersonDepressionScore().toString());
 
@@ -257,7 +249,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
                 goMissionButton.setVisibility(View.VISIBLE);
             }
             else{
-                goMissionButton.setVisibility(View.GONE);
+                if(dtoRecord.getMission().equals("-")) goMissionButton.setVisibility(View.VISIBLE);
+                else goMissionButton.setVisibility(View.GONE);
             }
         }
         else{
@@ -265,6 +258,7 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             saveButton.setVisibility(View.VISIBLE);
             answerTextView.setVisibility(View.GONE);
             resultLinearLayout.setVisibility(View.GONE);
+            goMissionButton.setVisibility(View.VISIBLE);
             goMissionButton.setVisibility(View.GONE);
         }
     }
@@ -272,7 +266,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
     public void PieCharManagement(String isMissionComplete, Double parcent, String icon){
 
         Integer parcentInt = parcent.intValue();
-        // data set
 
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
 
@@ -337,7 +330,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         //pieChart.setTouchEnabled(false);
 
         // 끝이 동그랗게?
-        //pieEmotionChart.setDrawRoundedSlices(true);
         pieChart.setDrawRoundedSlices(true);
 
         // 구멍 크기
