@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private DTOPerson dtoPerson;
     private Bundle bundle = new Bundle();
 
+    private int fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         dtoPerson = (DTOPerson)intent.getSerializableExtra("Person");
+        fragment = intent.getIntExtra("fragment", R.id.tab_home);
         bundle.putSerializable("Person", dtoPerson);
 
         init();
         SettingListener();
-        bottomNavigationView.setSelectedItemId(R.id.tab_home);
+        bottomNavigationView.setSelectedItemId(fragment);
 
     }
 
@@ -55,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class TabSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener{
-
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()){

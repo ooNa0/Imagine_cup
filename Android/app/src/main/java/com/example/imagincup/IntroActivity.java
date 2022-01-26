@@ -21,7 +21,6 @@ public class IntroActivity extends AppCompatActivity {
     private int result;
     private Intent intent;
     private DTOPerson dtoPerson;
-    private ResultSet resultSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,7 @@ public class IntroActivity extends AppCompatActivity {
                         dtoPerson = introThread.getResultDataSet();
                         intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("Person", dtoPerson);
+                        intent.putExtra("fragment", R.id.tab_home);
                     }
                     else {
                         // 회원가입 페이지로 이동
