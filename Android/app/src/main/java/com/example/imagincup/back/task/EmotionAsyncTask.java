@@ -71,11 +71,9 @@ public class EmotionAsyncTask extends AsyncTask<String, Void, JSONObject> {
             outputStream.write(jsonObject.toString().getBytes());
             Log.d("a", json.toString());
             outputStream.flush();
-            //outputStream.close();
 
             // 응답을 읽rl
             int responseStatusCode = httpURLConnection.getResponseCode();
-            Log.d("TAG", "POST response code - " + responseStatusCode);
 
             InputStream inputStream;
             if (responseStatusCode == HttpURLConnection.HTTP_OK) {

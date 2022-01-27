@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,13 +15,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.imagincup.activity.mission.Camera;
 import com.example.imagincup.activity.mission.Music;
 import com.example.imagincup.activity.mission.Pedometer;
 import com.example.imagincup.activity.mission.Record;
+import com.example.imagincup.activity.survey.SurveyActivity;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.task.UpdateMissionAsyncTask;
+import com.example.imagincup.back.task.person.DeletePersonThread;
+import com.example.imagincup.back.task.person.DeleteRecordThread;
+import com.example.imagincup.back.task.person.DeleteScoreThread;
 import com.example.imagincup.model.MissionState;
 
 import java.text.SimpleDateFormat;
@@ -108,44 +115,52 @@ public class MissionActivity extends AppCompatActivity {
             }
         }
         if (isDone) {
-            intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("Person", dtoPerson);
-            startActivity(intent);
-            return;
-        }
-
-        startButton = findViewById(R.id.mission_start_button);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                switch (missionNumber) {
-                    case 0:
-                        intent = new Intent(getApplicationContext(), Pedometer.class);
-                        intent.putExtra("is_done", isDone);
-                        startActivityForResult(intent, 0000);
-                        break;
-                    case 1:
-                        intent = new Intent(getApplicationContext(), Camera.class);
-                        intent.putExtra("is_done", isDone);
-                        startActivityForResult(intent, 1111);
-                        break;
-
-                    case 2:
-                        intent = new Intent(getApplicationContext(), Record.class);
-                        intent.putExtra("is_done", isDone);
-                        startActivityForResult(intent, 2222);
-                        break;
-
-                    case 3:
-                        intent = new Intent(getApplicationContext(), Music.class);
-                        intent.putExtra("is_done", isDone);
-                        startActivityForResult(intent, 3333);
-                        break;
+            AlertDialog.Builder alert = new AlertDialog.Builder(MissionActivity.this);
+            alert.setTitle("Alert");
+            alert.setMessage("You've already completed your mission today.\nYou go back to the main screen.");
+            alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    alert.create().show();
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("Person", dtoPerson);
+                    startActivity(intent);
                 }
-            }
-        });
+            });
+            alert.create().show(); //보이기
+        }
+        else{
+            startButton = findViewById(R.id.mission_start_button);
+            startButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    switch (missionNumber) {
+                        case 0:
+                            intent = new Intent(getApplicationContext(), Pedometer.class);
+                            intent.putExtra("is_done", isDone);
+                            startActivityForResult(intent, 0000);
+                            break;
+                        case 1:
+                            intent = new Intent(getApplicationContext(), Camera.class);
+                            intent.putExtra("is_done", isDone);
+                            startActivityForResult(intent, 1111);
+                            break;
+
+                        case 2:
+                            intent = new Intent(getApplicationContext(), Record.class);
+                            intent.putExtra("is_done", isDone);
+                            startActivityForResult(intent, 2222);
+                            break;
+
+                        case 3:
+                            intent = new Intent(getApplicationContext(), Music.class);
+                            intent.putExtra("is_done", isDone);
+                            startActivityForResult(intent, 3333);
+                            break;
+                    }
+                }
+            });
+        }
     }
 
     private TimerTask initState(){

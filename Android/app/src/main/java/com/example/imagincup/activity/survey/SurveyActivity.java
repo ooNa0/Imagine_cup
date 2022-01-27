@@ -72,7 +72,6 @@ public class SurveyActivity extends AppCompatActivity {
                     thread.start();
                     try {
                         thread.join();
-                        //progressDialog.dismiss();
                         Intent intent = new Intent(getApplicationContext(), CompleteActivity.class);
                         intent.putExtra("PersonID", personID);
                         startActivity(intent);
