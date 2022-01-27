@@ -249,8 +249,8 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
                 goMissionButton.setVisibility(View.VISIBLE);
             }
             else{
-                if(dtoRecord.getMission().equals("-")) goMissionButton.setVisibility(View.VISIBLE);
-                else goMissionButton.setVisibility(View.GONE);
+                //if(dtoRecord.getMission().equals("-")) goMissionButton.setVisibility(View.VISIBLE);
+                goMissionButton.setVisibility(View.GONE);
             }
         }
         else{
