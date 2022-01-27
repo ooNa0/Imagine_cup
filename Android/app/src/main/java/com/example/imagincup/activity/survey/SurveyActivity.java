@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,10 +14,14 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.imagincup.IntroActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.back.task.InsertSurveyThread;
+import com.example.imagincup.back.task.person.DeletePersonThread;
+import com.example.imagincup.back.task.person.DeleteRecordThread;
+import com.example.imagincup.back.task.person.DeleteScoreThread;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,19 +59,34 @@ public class SurveyActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //progressDialog = new ProgressDialog(SurveyActivity.this);
-                //progressDialog.show();
-                thread = new InsertSurveyThread(personID, surveyArrayList);
-                thread.start();
-                try {
-                    thread.join();
-                    //progressDialog.dismiss();
-                    Intent intent = new Intent(getApplicationContext(), CompleteActivity.class);
-                    intent.putExtra("PersonID", personID);
-                    startActivity(intent);
-                    finish();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+
+                if((surveyArrayList.get(0).getScore() != null) && (surveyArrayList.get(1).getScore() != null) && (surveyArrayList.get(2).getScore() != null)
+                        && (surveyArrayList.get(3).getScore() != null) && (surveyArrayList.get(4).getScore() != null) && (surveyArrayList.get(5).getScore() != null)
+                        && (surveyArrayList.get(6).getScore() != null) && (surveyArrayList.get(7).getScore() != null) && (surveyArrayList.get(8).getScore() != null)
+                        && (surveyArrayList.get(9).getScore() != null) && (surveyArrayList.get(10).getScore() != null) && (surveyArrayList.get(11).getScore() != null)
+                        && (surveyArrayList.get(12).getScore() != null) && (surveyArrayList.get(13).getScore() != null) && (surveyArrayList.get(14).getScore() != null)
+                        && (surveyArrayList.get(15).getScore() != null) && (surveyArrayList.get(16).getScore() != null) && (surveyArrayList.get(17).getScore() != null)
+                        && (surveyArrayList.get(18).getScore() != null) && (surveyArrayList.get(19).getScore() != null))
+                {
+                    thread = new InsertSurveyThread(personID, surveyArrayList);
+                    thread.start();
+                    try {
+                        thread.join();
+                        //progressDialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), CompleteActivity.class);
+                        intent.putExtra("PersonID", personID);
+                        startActivity(intent);
+                        finish();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SurveyActivity.this);
+                    builder.setTitle("Warning");
+                    builder.setMessage("Please answer all questions.");
+                    builder.setPositiveButton("OK",null);
+                    builder.create().show(); //보이기
                 }
             }
         });

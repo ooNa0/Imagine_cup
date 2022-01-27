@@ -16,8 +16,11 @@ import com.example.imagincup.MissionActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.task.SumDepressionThread;
+import com.example.imagincup.back.task.UpdateMissionAsyncTask;
 import com.unity3d.player.UnityPlayerActivity;
 import com.unity3d.player.UnityPlayerActivity;
+
+import java.text.SimpleDateFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,8 +39,6 @@ public class MissionFragment extends Fragment implements View.OnClickListener{
     private String mParam2;
 
     private View view;
-    private Button activebtn;
-    private Button gamebtn;
     private DTOPerson dtoPerson;
 
     public MissionFragment() {
@@ -96,13 +97,18 @@ public class MissionFragment extends Fragment implements View.OnClickListener{
         Button button = (Button) view;
         switch (button.getId()){
             case R.id.active_button:
-                Intent activeIntent =new Intent(getActivity(), MissionActivity.class);
+                Intent activeIntent = new Intent(getActivity(), MissionActivity.class);
                 activeIntent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
                 startActivity(activeIntent);
                 break;
 
             case R.id.game_button:
                 Intent intent = new Intent(getActivity(), UnityPlayerActivity.class);
+                try {
+                    new UpdateMissionAsyncTask().execute(new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()), String.valueOf(dtoPerson.getPersonId())).get();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 startActivity(intent);
                 break;
         }

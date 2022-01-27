@@ -2,18 +2,23 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="false">
         <shape android:shape="oval">
-            <solid android:color="#FFE7BB"/>
+            <solid android:color="#FADB87"/>
             <size
                 android:width="35sp"
                 android:height="35sp"/>
         </shape>
     </item>
     <item android:state_checked="true">
-        <shape android:shape="oval">
-            <solid android:color="@color/black"/>
-            <size
-                android:width="35sp"
-                android:height="35sp"/>
-        </shape>
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="#FADB87"/>
+                    <size
+                        android:width="48sp"
+                        android:height="48sp"/>
+                </shape>
+            </item>
+            <item android:drawable="@drawable/checked"/>
+        </layer-list>
     </item>
 </selector>

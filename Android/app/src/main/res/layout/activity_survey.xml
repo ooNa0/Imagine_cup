@@ -9,6 +9,7 @@
     android:weightSum="10">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
         android:id="@+id/survey_recyclerview"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
@@ -21,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="next"
-        android:textColor="@color/white"
-        android:background="@drawable/survey_next_button"
+        android:textColor="@color/brown"
+        android:background="@drawable/button_background"
         android:paddingRight="105sp"
         android:paddingLeft="105sp"
         android:paddingTop="20dp"

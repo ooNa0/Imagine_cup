@@ -67,8 +67,7 @@ public class MissionActivity extends AppCompatActivity {
             isClear = "1";
         }
         try {
-            Log.d("??????????????",  "이게 안돼? 진짜 말도안돼 너 왜 안됨");
-            Log.d("??????????????????넣을 곳에 있는데 안되나요", new UpdateMissionAsyncTask().execute(new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()), String.valueOf(dtoPerson.getPersonId())).get());
+            new UpdateMissionAsyncTask().execute(new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()), String.valueOf(dtoPerson.getPersonId())).get();
         } catch (Exception e) {
             e.printStackTrace();
         }

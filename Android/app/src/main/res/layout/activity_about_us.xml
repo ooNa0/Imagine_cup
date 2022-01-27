@@ -38,11 +38,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Delevopr : Hyeon wook Kim"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Email : gus70005319@gmail.com"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -56,13 +58,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delevopr : Hyeon wook Kim"
+                android:text="Delevopr : Na Young Koo"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email : gus70005319@gmail.com"
+                android:text="Email : koonayoung51@sju.ac.kr"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -74,14 +78,16 @@
 
             <TextView
                 android:layout_width="match_parent"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:text="Delevopr : Hyeon wook Kim"
+                android:text="Delevopr : Hyunjin Jo"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email : gus70005319@gmail.com"
+                android:textColor="@color/black"
+                android:text="Email : jhj981102@gmail.com"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
