@@ -83,6 +83,7 @@ public class MissionActivity extends AppCompatActivity {
         Log.d(TAG, "isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
         title = findViewById(R.id.mission_title);
         toolbar = findViewById(R.id.activity_mission_toolbar);
+        imageButton = findViewById(R.id.activity_mission_imageButton);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
@@ -92,15 +93,19 @@ public class MissionActivity extends AppCompatActivity {
             missionNumber = random.nextInt(4);
             if(missionNumber == 0){
                 title.setText("let's walk");
+                imageButton.setImageResource(R.drawable.pedometer);
             }
             else if(missionNumber == 1){
                 title.setText("Take a smiley face");
+                imageButton.setImageResource(R.drawable.cameramission);
             }
             else if(missionNumber == 2){
                 title.setText("Record your laughter");
+                imageButton.setImageResource(R.drawable.recordmission);
             }
             else if(missionNumber == 3){
                 title.setText("Watch the video");
+                imageButton.setImageResource(R.drawable.music);
             }
         }
         if (isDone) {
@@ -109,8 +114,6 @@ public class MissionActivity extends AppCompatActivity {
             startActivity(intent);
             return;
         }
-        imageButton = findViewById(R.id.activity_mission_imageButton);
-        imageButton.setImageResource(R.drawable.hamburger);
 
         startButton = findViewById(R.id.mission_start_button);
         startButton.setOnClickListener(new View.OnClickListener() {
