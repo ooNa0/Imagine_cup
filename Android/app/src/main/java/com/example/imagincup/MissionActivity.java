@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.imagincup.activity.mission.Camera;
 import com.example.imagincup.activity.mission.Music;
@@ -36,6 +37,7 @@ public class MissionActivity extends AppCompatActivity {
     private Boolean isDone;
     private Boolean isSet;
     private String isClear;
+    private TextView title;
 
     private int missionNumber;
     private Intent intent;
@@ -78,31 +80,45 @@ public class MissionActivity extends AppCompatActivity {
         isClear = "0";
 
         Log.d(TAG, "isDone : " + String.valueOf(isDone) + "isSet : " + isSet);
-
+        title = findViewById(R.id.mission_title);
         toolbar = findViewById(R.id.activity_mission_toolbar);
+        imageButton = findViewById(R.id.activity_mission_imageButton);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
-
-        imageButton = findViewById(R.id.activity_mission_imageButton);
-        imageButton.setImageResource(R.drawable.hamburger);
+        if (!isSet) {
+            MissionState.getInstance().setIsSet(true);
+            Random random = new Random();
+            missionNumber = random.nextInt(4);
+            if(missionNumber == 0){
+                title.setText("let's walk");
+                imageButton.setImageResource(R.drawable.pedometer);
+            }
+            else if(missionNumber == 1){
+                title.setText("Take a smiley face");
+                imageButton.setImageResource(R.drawable.cameramission);
+            }
+            else if(missionNumber == 2){
+                title.setText("Record your laughter");
+                imageButton.setImageResource(R.drawable.recordmission);
+            }
+            else if(missionNumber == 3){
+                title.setText("Watch the video");
+                imageButton.setImageResource(R.drawable.music);
+            }
+        }
+        if (isDone) {
+            intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("Person", dtoPerson);
+            startActivity(intent);
+            return;
+        }
 
         startButton = findViewById(R.id.mission_start_button);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSet) {
-                    MissionState.getInstance().setIsSet(true);
-                    Random random = new Random();
-                    missionNumber = random.nextInt(4);
-                }
-                if (isDone) {
-                    intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("Person", dtoPerson);
-                    startActivity(intent);
-                    return;
-                }
-                missionNumber = 2;
+
                 switch (missionNumber) {
                     case 0:
                         intent = new Intent(getApplicationContext(), Pedometer.class);
