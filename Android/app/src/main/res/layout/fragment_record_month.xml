@@ -31,9 +31,8 @@
                 android:autoSizeMinTextSize="14sp"
                 android:autoSizeMaxTextSize="100sp"
                 android:textAppearance="@style/depression_scale"
-                android:layout_marginHorizontal="15dp"
                 android:layout_gravity="center"
-                android:layout_weight="7.5"
+                android:layout_weight="7"
                 android:maxLines="1"
                 />
 
