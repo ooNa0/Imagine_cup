@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -26,10 +26,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/depression_scale_month"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="100sp"
                 android:textAppearance="@style/depression_scale"
                 android:layout_marginHorizontal="15dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 />
 
             <View
@@ -42,6 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30%"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="100sp"
                 android:textAppearance="@style/percent"
                 android:layout_gravity="center"
                 />
@@ -51,6 +57,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="↑↓"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="100sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/arrow"
                 android:layout_gravity="center"
