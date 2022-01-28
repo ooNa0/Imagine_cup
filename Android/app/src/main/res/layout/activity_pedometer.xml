@@ -12,7 +12,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/pedometer_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:layout_marginTop="50sp"
@@ -32,54 +32,56 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:layout_marginTop="50sp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="8"
-        android:paddingBottom="50dp"
-        android:weightSum="10"
-        >
-    <TextView
-        android:gravity="center"
-        android:fontFamily="@font/bebasneue_regular"
-        android:textAppearance="@style/mission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/step_count"
-        android:textSize="50sp"
-        android:layout_weight="2"/>
+        android:layout_marginTop="50sp"
+        android:layout_weight="8"
+        android:orientation="vertical"
+        android:paddingBottom="50dp"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:fontFamily="@font/bebasneue_regular"
+            android:gravity="center"
+            android:text="@string/step_count"
+            android:textAppearance="@style/mission"
+            android:textSize="50sp" />
+
         <TextView
             android:id="@+id/pedometer_count"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:gravity="center"
             android:text="0"
             android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:layout_weight="4"/>
+            android:textSize="50sp" />
+
         <TextView
             android:id="@+id/pedometer_complete_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="50sp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_weight="4"
             android:textAppearance="@style/mission"
-            />
+            android:textSize="50sp" />
 
     </LinearLayout>
+
     <Button
         android:id="@+id/pedometer_button"
         android:layout_width="match_parent"
-        android:layout_height="70sp"
+        android:layout_height="0dp"
         android:background="@drawable/button_background2"
         android:text="Clear"
         android:textColor="@color/white"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         />
 </LinearLayout>
