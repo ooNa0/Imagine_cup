@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:paddingLeft="30sp"
     android:paddingRight="30sp"
+    android:weightSum="6"
     android:backgroundTint="@color/background"
     >
 
