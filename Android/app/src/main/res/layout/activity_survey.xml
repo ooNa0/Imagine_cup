@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:text="next"
+        android:textSize="20dp"
         android:textColor="@color/white"
         android:background="@drawable/go_misson_button_background"
         android:paddingRight="105sp"
