@@ -9,33 +9,34 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:orientation="vertical">
+      android:orientation="vertical"
+      >
 
     <TextView
         android:id="@+id/mypage_title"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="35dp"
         android:fontFamily="@font/bebasneue_regular"
-        android:gravity="top"
+        android:gravity="center_vertical"
         android:text="@string/my_page"
         android:textAppearance="@style/mission"
         tools:targetApi="jelly_bean"
         android:layout_width="wrap_content"
-        android:layout_marginStart="22dp"/>
+        android:layout_weight="1"/>
 
     <LinearLayout
-        android:layout_marginTop="50dp"
         android:background="@drawable/mypage_background_box"
         android:layout_gravity="center"
         android:paddingLeft="20dp"
         android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="2.5">
       <ImageView
           android:id="@+id/mypage_image_character"
           android:layout_width="100dp"
-          android:layout_height="200dp"/>
+          android:layout_height="200dp"
+          android:layout_gravity="center_vertical"/>
       <LinearLayout
           android:paddingLeft="30dp"
           android:layout_gravity="center_vertical"
@@ -62,10 +63,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_weight="4"
         android:paddingTop="15dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
