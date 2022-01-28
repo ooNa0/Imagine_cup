@@ -23,8 +23,10 @@
         android:layout_marginStart="22dp"/>
 
     <TextView
+        android:autoSizeTextType="uniform"
         android:id="@+id/music_text_title"
         android:layout_width="match_parent"
+        android:paddingRight="30dp"
         android:layout_height="0dp"
         android:textSize="40sp"
         android:layout_weight="1"

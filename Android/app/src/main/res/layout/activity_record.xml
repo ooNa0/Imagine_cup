@@ -30,6 +30,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_width="match_parent"
+        android:autoSizeMaxTextSize="40dp"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
@@ -37,6 +38,8 @@
         android:layout_marginTop="40sp"
         android:textColor="@color/black"
         android:textSize="25sp"
+        android:autoSizeMinTextSize="25dp"
+        android:autoSizeMaxTextSize="25dp"
         android:textStyle="bold"
         android:gravity="center"
         android:id="@+id/record_title"
