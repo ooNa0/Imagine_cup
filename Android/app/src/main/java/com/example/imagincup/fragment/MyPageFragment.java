@@ -103,7 +103,6 @@ public class MyPageFragment extends Fragment {
         deleteUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 회원탈퇴
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Confirm Deletion");
                 builder.setMessage("Are you sure you want to delete your account?");
@@ -154,7 +153,6 @@ public class MyPageFragment extends Fragment {
         leaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Activity.finishAffinity();
                 System.runFinalization();
                 System.exit(0);
             }

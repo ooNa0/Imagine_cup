@@ -4,14 +4,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.imagincup.back.ConnectionSingleton;
-import com.example.imagincup.back.DTO.DTOPerson;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-//import java.util.Date;
-import java.util.List;
 
 public class InsertRecordDataAsyncTask extends AsyncTask<String,Void,String> {
     private Connection connection;
@@ -50,7 +47,6 @@ public class InsertRecordDataAsyncTask extends AsyncTask<String,Void,String> {
             if(preparedStatement != null){try { preparedStatement.close(); } catch(SQLException ex) {}}
             try { ConnectionSingleton.close(); } catch(SQLException ex) {}
         }
-        Log.d("============", resultMessage);
         return resultMessage;
     }
 

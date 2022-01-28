@@ -33,8 +33,7 @@ public class IntroThread extends Thread {
     public void run() {
         resultStateNumber = Constants.RUNNING;
         try {
-            connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);//ConnectionSingleton.getConnection();
-            //if(connection == null) { resultMessage = "Check Your Internet Access!"; }
+            connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);
             statement = connection.createStatement();
             resultSet = statement.executeQuery(Constants.QUERY_SELECT_PERSON_DATABASE);
             while (resultSet.next()){
@@ -57,7 +56,6 @@ public class IntroThread extends Thread {
             if (statement != null) try { statement.close(); } catch(SQLException ex) {}
             if (connection != null) try { connection.close(); } catch(SQLException ex) {}
         }
-        Log.d("?????????????????????????????????????????????????????", resultMessage);
     }
 
     public int getResult(){

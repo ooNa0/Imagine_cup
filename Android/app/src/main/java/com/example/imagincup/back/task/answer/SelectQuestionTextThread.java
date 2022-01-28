@@ -51,7 +51,6 @@ public class SelectQuestionTextThread extends Thread {
             }
         }
         catch(Exception exception){
-            Log.d("error11111111111111111111111111", exception.getMessage());
         }
         finally {
             if (resultSet != null) try { resultSet.close(); } catch(SQLException ex) {}

@@ -40,9 +40,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
     private Toolbar toolbar;
 
-    // progressdialog
-    private ProgressDialog progressDialog;
-
     // 텍스트
     private TextView dayTextView;
     private TextView questionTextView;
@@ -64,7 +61,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
     private String question;
     private String answer;
-    private String emotionIcon;
     private String emotionParcent;
     private DTORecord dtoRecord;
     private DTOPerson dtoPerson;
@@ -74,14 +70,12 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
     private Boolean isVisible = false;
     private Integer surveyID;
-    private Integer questionID;
     private String questionText;
 
     private SelectQuestionTextThread questionTextThread;
     private DTOQuestion dtoQuestion;
     private UpdateSurveyScoreThread updateSurveyScoreThread;
     private SumDepressionThread sumDepressionThread;
-    private UpdatePersonAsyncTask updatePersonAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +105,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
         saveButton.setOnClickListener(this);
         goMissionButton.setOnClickListener(this);
 
-        // progressDialog
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(true);
-        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal);
-
         // back
         toolbar = findViewById(R.id.activity_answer_toolbar);
         setSupportActionBar(toolbar);
@@ -139,7 +128,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
             }
             case R.id.go_misson_button:
             {
-
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("Person", dtoPerson);
                 intent.putExtra("fragment", R.id.tab_mission);
@@ -240,7 +228,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
 
     public void SwitchVisibility(boolean isExistText){
         if(isExistText){
-            // 만약에 텍스트가 존재한다면, editText가 보이지 말아야 한다면
             answerEditText.setVisibility(View.GONE);
             saveButton.setVisibility(View.INVISIBLE);
             answerTextView.setVisibility(View.VISIBLE);
@@ -249,7 +236,6 @@ public class AnswerActivity extends AppCompatActivity implements View.OnClickLis
                 goMissionButton.setVisibility(View.VISIBLE);
             }
             else{
-                //if(dtoRecord.getMission().equals("-")) goMissionButton.setVisibility(View.VISIBLE);
                 goMissionButton.setVisibility(View.GONE);
             }
         }

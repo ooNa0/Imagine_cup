@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.Calendar;
 
 public class SelectRecordWeekThread extends Thread {
@@ -62,19 +61,12 @@ public class SelectRecordWeekThread extends Thread {
                     + "' AND Date between '" + lastweekdate + "' AND '"
                     + startDate + "';";
             resultSet = statement.executeQuery(query);
-            Log.d("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", String.valueOf(query));
 
             while (resultSet.next()){
                 resultScore = resultSet.getInt("DepressionScore");
                 date = resultSet.getDate("Date");
                 cal.setTime(date);
                 weekDate(cal.get(Calendar.DAY_OF_WEEK), resultScore);
-                Log.d("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", String.valueOf(resultScore));
-                Log.d("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", resultSet.getString("Date"));
-                Log.d("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", String.valueOf(date));
-                //Log.d("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", String.valueOf(cal));
-                Log.d("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", String.valueOf(cal.get(Calendar.DAY_OF_WEEK)));
-
             }
         }
         catch(Exception exception){
@@ -91,31 +83,24 @@ public class SelectRecordWeekThread extends Thread {
         switch (dayOfWeek) {
             case 1:
                 this.weekdate1 = score;
-                //"일";
                 break;
             case 2:
                 this.weekdate2 = score;
-                // "월";
                 break;
             case 3:
                 this.weekdate3 = score;
-                // "화";
                 break;
             case 4:
                 this.weekdate4 = score;
-                // "수";
                 break;
             case 5:
                 this.weekdate5 = score;
-                // "목";
                 break;
             case 6:
                 this.weekdate6 = score;
-                // "금";
                 break;
             case 7:
                 this.weekdate7 = score;
-                // "토";
                 break;
         }
     }

@@ -1,12 +1,6 @@
 package com.example.imagincup.back.task;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-
-import com.android.volley.toolbox.HttpResponse;
-import com.example.imagincup.AnswerActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,32 +18,21 @@ public class EmotionAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
     public EmotionAsyncTask() {
         super();
-        //this.mContext = mContext;
     }
-
-    //ProgressDialog progressDialog;
-    public Context mContext;
-
-    // @Override protected Long doInBackground(URL... urls) { // 전달된 URL 사용 작업 return total; }
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        // doInBackground 에서 받아온 total 값 사용 장소
-
-        //progressDialog = ProgressDialog.show(mContext, mContext.getString(R.string.message_progress), null, true, true);
     }
 
     @Override
     protected JSONObject doInBackground(String... params) {
 
         String KEY = "e3fe5d90c4de453ea23e2af93e90cea5";
-        String ENDPOINT = "https://text-emotion.cognitiveservices.azure.com/"; // 따로 빼주기
+        String ENDPOINT = "https://text-emotion.cognitiveservices.azure.com/";
         JSONObject data = null;
 
         try {
-            // 2. HttpURLConnection 클래스를 사용하여 POST 방식으로 데이터를 전송
-            URL url = new URL(ENDPOINT + "/text/analytics/v3.0/sentiment"); // 주소가 저장된 변수
+            URL url = new URL(ENDPOINT + "/text/analytics/v3.0/sentiment");
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
@@ -66,18 +49,14 @@ public class EmotionAsyncTask extends AsyncTask<String, Void, JSONObject> {
             jsonArray.put(json);
             jsonObject.put("documents", jsonArray);
 
-            // Request Body에 데이터를 담기위한 OutputStream 객체 생성
             OutputStream outputStream = httpURLConnection.getOutputStream();
             outputStream.write(jsonObject.toString().getBytes());
-            Log.d("a", json.toString());
             outputStream.flush();
 
-            // 응답을 읽rl
             int responseStatusCode = httpURLConnection.getResponseCode();
 
             InputStream inputStream;
             if (responseStatusCode == HttpURLConnection.HTTP_OK) {
-                // 정상적인 응답 데이터
                 inputStream = httpURLConnection.getInputStream();
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
@@ -95,21 +74,11 @@ public class EmotionAsyncTask extends AsyncTask<String, Void, JSONObject> {
                 responseJson = new JSONObject(outResult.toString());
                 JSONArray emotions = responseJson.getJSONArray("documents");
                 data = emotions.getJSONObject(0);
-
-                Log.d("a", data.getString("sentiment"));
-                JSONObject parcent = data.getJSONObject("confidenceScores");
-                Log.d("double", String.valueOf(parcent.getDouble(data.getString("sentiment"))));
-
-                Log.d("TAG", "POST response - " + outResult.toString());
-
             } else {
                 // 에러 발생
                 inputStream = httpURLConnection.getErrorStream();
             }
-
-
         } catch (Exception e) {
-            Log.d("TAG", "InsertData: Error ", e);
         }
         return data;
     }

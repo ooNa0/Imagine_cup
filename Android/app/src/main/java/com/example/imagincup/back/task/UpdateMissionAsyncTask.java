@@ -28,7 +28,6 @@ protected String doInBackground(String... params) {
         connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);
 
         query = "UPDATE Record SET Mission='0'" + " WHERE Date='" + params[0] + "' AND PersonID='" + params[1] + "';";
-                Log.d("============1111111111111111111111111", query);
 
         preparedStatement = connection.prepareStatement(query);
 
@@ -41,7 +40,6 @@ protected String doInBackground(String... params) {
                 if(preparedStatement != null){try { preparedStatement.close(); } catch(SQLException ex) {}}
                 if (connection != null) try { connection.close(); } catch(SQLException ex) {}
         }
-        Log.d("============", resultMessage);
         return resultMessage;
         }
 

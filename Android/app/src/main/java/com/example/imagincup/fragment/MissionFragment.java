@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +14,7 @@ import com.example.imagincup.Constants;
 import com.example.imagincup.MissionActivity;
 import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
-import com.example.imagincup.back.task.SumDepressionThread;
 import com.example.imagincup.back.task.UpdateMissionAsyncTask;
-import com.unity3d.player.UnityPlayerActivity;
 import com.unity3d.player.UnityPlayerActivity;
 
 import java.text.SimpleDateFormat;
