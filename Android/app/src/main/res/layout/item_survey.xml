@@ -68,7 +68,6 @@
                 android:text="3-4 days"
                 />
 
-
             <RadioButton
                 android:id="@+id/survey_radiobutton_4"
                 android:layout_weight="1"
