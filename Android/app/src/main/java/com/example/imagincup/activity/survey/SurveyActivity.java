@@ -43,7 +43,6 @@ public class SurveyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
         personID = getIntent().getStringExtra("PersonID");
-        //Log.d("받은 값입니다.", personID);
 
         RecyclerView recyclerView =(RecyclerView) findViewById(R.id.survey_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

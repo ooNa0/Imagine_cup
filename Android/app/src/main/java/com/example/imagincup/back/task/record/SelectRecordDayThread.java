@@ -3,16 +3,13 @@ package com.example.imagincup.back.task.record;
 import android.util.Log;
 
 import com.example.imagincup.Constants;
-import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.DTO.DTORecord;
-import com.example.imagincup.back.IntroThread;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,7 +32,6 @@ public class SelectRecordDayThread extends Thread {
     private List<DTORecord> listRecord;
 
     private Date date;
-    private Integer monthInteger;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MMMM-dd", Locale.US);
     private SimpleDateFormat dateFormatInteger = new SimpleDateFormat("yyyyMMdd");
@@ -55,7 +51,7 @@ public class SelectRecordDayThread extends Thread {
 
             cal.setTime(date);
 
-            startDate = dateFormatInteger.format(cal.getTime());//selectYear + "-" + dateFormatInteger.format(date);
+            startDate = dateFormatInteger.format(cal.getTime());
             cal.add(Calendar.MONTH, 1);
             endDate = dateFormatInteger.format(cal.getTime());// selectYear + "-" + String.valueOf(Integer.parseInt(dateFormatInteger.format(date))-1);
 
@@ -66,12 +62,8 @@ public class SelectRecordDayThread extends Thread {
                     + "' AND Date between '" + startDate + "' AND '"
                     + endDate + "';";
             resultSet = statement.executeQuery(query);
-            //SELECT SUM(AMOUNT) FROM TIME WHERE REGDATE > "2018-05-02" AND REGDATE < "2018-06-15";
-            Log.d("***********************************----------- ", query);
 
             while (resultSet.next()){
-                Log.d("____________________________________", resultSet.getString("Emotion"));
-                Log.d("____________________________________", String.valueOf(resultSet.getFloat("EmotionScore")));
                 listRecord.add(new DTORecord(
                         resultSet.getInt("PersonID"), resultSet.getString("Question"),
                         resultSet.getInt("QuestionID"), resultSet.getString("Mission"),
@@ -80,11 +72,9 @@ public class SelectRecordDayThread extends Thread {
             }
         }
         catch(Exception exception){
-            Log.d("?????????????????????????????????????????????????????", exception.getMessage());
-            Log.d("error", exception.getMessage());
+            //Log.d("error", exception.getMessage());
         }
         finally {
-            // 시간 나면 코드 클래스로
             if (resultSet != null) try { resultSet.close(); } catch(SQLException ex) {}
             if (statement != null) try { statement.close(); } catch(SQLException ex) {}
             if (connection != null) try { connection.close(); } catch(SQLException ex) {}

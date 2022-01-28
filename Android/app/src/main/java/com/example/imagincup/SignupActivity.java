@@ -21,7 +21,6 @@ public class SignupActivity extends AppCompatActivity {
     private EditText editText;
     private String name;
     private String DeviceID;
-    private String entryTime;
     private Intent intent;
     private String resultPersonID;
 
@@ -43,11 +42,8 @@ public class SignupActivity extends AppCompatActivity {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-
-        //intent = new Intent(getApplicationContext(), IntroActivity.class);
         intent = new Intent(getApplicationContext(), SurveyActivity.class);
         intent.putExtra("PersonID", resultPersonID);
-        //Log.d("헤이 ,,,,,,,,,,,,,,,,,,", resultPersonID);
         startActivity(intent);
         finish();
     }

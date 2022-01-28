@@ -1,11 +1,8 @@
 package com.example.imagincup.back;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +18,6 @@ import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.DTO.DTORecord;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.CustomViewHolder> {

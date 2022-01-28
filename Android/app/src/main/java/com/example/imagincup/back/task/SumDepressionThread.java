@@ -1,7 +1,5 @@
 package com.example.imagincup.back.task;
 
-import android.util.Log;
-
 import com.example.imagincup.Constants;
 
 import java.sql.Connection;
@@ -37,10 +35,8 @@ public class SumDepressionThread  extends Thread {
 
         }
         catch(Exception exception){
-            Log.d(":::::::::??????????????::::::::::::::::", exception.getMessage());
         }
         finally {
-            // 시간 나면 코드 클래스로
             if (resultSet != null) try { resultSet.close(); } catch(SQLException ex) {}
             if (statement != null) try { statement.close(); } catch(SQLException ex) {}
             if (connection != null) try { connection.close(); } catch(SQLException ex) {}

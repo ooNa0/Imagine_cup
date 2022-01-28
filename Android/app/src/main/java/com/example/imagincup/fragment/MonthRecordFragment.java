@@ -155,23 +155,18 @@ public class MonthRecordFragment extends Fragment {
 
         lineChart.getRenderer().getPaintRender().setShader(
                 new LinearGradient(0, 10, 10, 10, Color.parseColor("#FFD279"), Color.parseColor("#5B2A0C"), Shader.TileMode.CLAMP));
-        //barChart.getMeasuredWidth()
 
         lineChart.setViewPortOffsets(150, 10, 150, 0);
 
-        //확대
         lineChart.setTouchEnabled(false);
 
         // xaxis
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
 
-        // 위아래 선이랑 숫자 안보이게 하는 것
         lineChart.getAxisLeft().setEnabled(false);
         lineChart.getAxisRight().setEnabled(false);
         lineChart.getXAxis().setDrawGridLines(false);
-        // 설명 숨기기
         lineChart.getDescription().setEnabled(false);
-        // 아래 색상 나타내는 거 숨기기
         lineChart.getLegend().setEnabled(false);
 
         lineChart.animateXY(0, 1000);
@@ -192,24 +187,15 @@ public class MonthRecordFragment extends Fragment {
 
         // Create a data set
         BarDataSet dataSet = new BarDataSet(points, "weekly");
-        // 막대 위의 값
 
         dataSet.setDrawIcons(false);
         dataSet.setDrawValues(false);
 
         BarData barData = new BarData(dataSet);
-        // 바 너비
         barData.setBarWidth(0.35f);
-        // 테이터 형식 백분율로
-        //barData.setValueFormatter(new PercentFormatter());
 
-        // barData.setDrawValues(true);
-        // barChart.setDrawValueAboveBar(true);
-
-        // 데이터 적용
         barChart.setData(barData);
 
-        // 레이블
         final ArrayList<String> xVals = new ArrayList<>();
         xVals.add("mon");
         xVals.add("tue");
@@ -219,7 +205,6 @@ public class MonthRecordFragment extends Fragment {
         xVals.add("sat");
         xVals.add("sun");
 
-        // 안차지하는 부분 회색, true도 고려해볼만함
         barChart.setDrawBarShadow(false);
 
         XAxis xl = barChart.getXAxis();
@@ -232,21 +217,15 @@ public class MonthRecordFragment extends Fragment {
         xl.setValueFormatter(xaxisFormatter1);
         xl.setGranularity(1);
 
-        // 최댓값
         barChart.getAxisLeft().setAxisMaximum(50);
 
-        // 왼에서 오로 애니메이션
         barChart.animateXY(1000, 1000);
-        // 막대안에 값 표시
         barChart.setDrawValueAboveBar(false);
 
-        // 위아래 선이랑 숫자 안보이게 하는 것
         barChart.getAxisLeft().setEnabled(false);
         barChart.getAxisRight().setEnabled(false);
         barChart.getXAxis().setDrawGridLines(false);
-        // 설명 숨기기
         barChart.getDescription().setEnabled(false);
-        // 아래 색상 나타내는 거 숨기기
         barChart.getLegend().setEnabled(false);
 
 
@@ -260,7 +239,7 @@ public class MonthRecordFragment extends Fragment {
         barChart.getRenderer().getPaintRender().setShader(
                 new LinearGradient(0, 0, 1000, 1000, Color.parseColor("#F2B743"), Color.parseColor("#5B2A0C"), Shader.TileMode.CLAMP));
 
-        barChart.setTouchEnabled(false); //확대 X
+        barChart.setTouchEnabled(false);
 
         barChart.invalidate();
         return view;
@@ -289,10 +268,6 @@ public class MonthRecordFragment extends Fragment {
             midDate = dateFormatInteger.format(cal.getTime());
             cal.add(Calendar.MONTH, -1);
             startDate = dateFormatInteger.format(cal.getTime());
-
-            Log.d("dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", startDate + "||" + midDate + "||" + endDate + "||" + weekDate);
-            //20211201||20220101||20220119
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -318,7 +293,6 @@ class RoundedHorizontalBarChartRenderer extends HorizontalBarChartRenderer {
 
         float phaseX = mAnimator.getPhaseX();
         float phaseY = mAnimator.getPhaseY();
-
 
         // initialize the buffer
         BarBuffer buffer = mBarBuffers[index];

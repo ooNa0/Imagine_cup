@@ -19,31 +19,17 @@ public class CreatePersonDataAsyncTask extends AsyncTask<String,Void,String> {
     private Connection connection;
     private ResultSet resultSet;
     private PreparedStatement preparedStatement;
-    private ProgressDialog asyncDialog;
     private String personID;
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-//        asyncDialog = new ProgressDialog(context, ProgressDialog.THEME_HOLO_DARK);
-//        //asyncDialog = new ProgressDialog(context, android.R.style.Theme_Holo);
-//
-//
-//        asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); //막대형태의 ProgressDialog 스타일 설정
-//        //asyncDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//        asyncDialog.setMessage(context.getResources().getString(R.string.txt_39));
-//        asyncDialog.setCancelable(false);
-//        asyncDialog.setCanceledOnTouchOutside(false); //ProgressDialog가 진행되는 동안 dialog의 바깥쪽을 눌러 종료하는 것을 금지
-
-        // show dialog
-//        asyncDialog.show();
     }
 
     @Override
     protected String doInBackground(String... params) {
         try {
-            connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);//ConnectionSingleton.getConnection();
-            //if(connection == null) { resultMessage = "Check Your Internet Access!"; }
+            connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);
             preparedStatement = connection.prepareStatement("insert into Person(PersonName, PersonDepressionScore, PersonDevice) values (?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, params[0]);
@@ -63,7 +49,6 @@ public class CreatePersonDataAsyncTask extends AsyncTask<String,Void,String> {
             if(preparedStatement != null){try { preparedStatement.close(); } catch(SQLException ex) {}}
             try { ConnectionSingleton.close(); } catch(SQLException ex) {}
         }
-        Log.d("============", resultMessage);
         return personID;
     }
 
@@ -75,9 +60,5 @@ public class CreatePersonDataAsyncTask extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-//        if (asyncDialog != null && asyncDialog.isShowing()) {
-//            asyncDialog.dismiss();
-//        }
-//        asyncDialog = null;
     }
 }

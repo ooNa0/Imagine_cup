@@ -4,20 +4,14 @@ import android.util.Log;
 
 import com.example.imagincup.Constants;
 import com.example.imagincup.back.DTO.DTORecord;
-import com.example.imagincup.back.ProgressDialog;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
 
 public class SelectAnswerExistThread extends Thread {
 
@@ -39,9 +33,6 @@ public class SelectAnswerExistThread extends Thread {
     @Override
     public void run() {
         try {
-            ProgressDialog progressDialog = ProgressDialog.getInstance();
-            //progressDialog.show(this);
-
             date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
             connection = DriverManager.getConnection(Constants.DATABASE_CONNECTION_URL);

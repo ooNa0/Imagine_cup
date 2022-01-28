@@ -1,7 +1,6 @@
 package com.example.imagincup.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.DTO.DTORecord;
 import com.example.imagincup.back.RecycleViewAdapter;
 import com.example.imagincup.back.task.record.SelectRecordDayThread;
-//import com.example.imagincup.back.RecycleViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +35,6 @@ public class DayRecordFragment extends Fragment{
     private RecycleViewAdapter adapter;
 
     public DayRecordFragment() { }
-
-    //private Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

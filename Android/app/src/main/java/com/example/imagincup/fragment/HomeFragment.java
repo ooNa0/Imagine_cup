@@ -20,7 +20,6 @@ import com.example.imagincup.Constants;
 import com.example.imagincup.R;
 import com.example.imagincup.back.DTO.DTOPerson;
 import com.example.imagincup.back.DTO.DTORecord;
-import com.example.imagincup.back.ProgressDialog;
 import com.example.imagincup.back.task.SumDepressionThread;
 import com.example.imagincup.back.task.answer.SelectAnswerExistThread;
 
@@ -53,8 +52,6 @@ public class HomeFragment extends Fragment {
     private Integer resultSum;
     private Integer depressionScore;
 
-    private ProgressDialog progressDialog;
-
     private SumDepressionThread sumDepressionThread;
 
     public HomeFragment() {
@@ -81,7 +78,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressDialog = ProgressDialog.getInstance();
         if (getArguments() != null) {
             dtoPerson = (DTOPerson) getArguments().getSerializable(Constants.DATABASE_PERSON_TABLENAME);
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -122,8 +118,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnswerActivity.class);
-                progressDialog.show(getActivity());
-                // 데베 값이 존재하는지?
                 selectAnswerExistThread = new SelectAnswerExistThread(dtoPerson.getPersonId().toString(), dtoRecord);
                 selectAnswerExistThread.start();
                 try {
@@ -140,7 +134,6 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("isVisible", true);
                 }
                 intent.putExtra(Constants.DATABASE_PERSON_TABLENAME, dtoPerson);
-                progressDialog.dismiss();
                 startActivity(intent);
             }
         });

@@ -43,7 +43,6 @@ public class UpdatePersonAsyncTask extends AsyncTask<Integer,Void,String> {
             if(preparedStatement != null){try { preparedStatement.close(); } catch(SQLException ex) {}}
             try { ConnectionSingleton.close(); } catch(SQLException ex) {}
         }
-        Log.d("============", resultMessage);
         return resultMessage;
     }
 
