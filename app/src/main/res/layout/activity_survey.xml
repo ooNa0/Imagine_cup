@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.survey.SurveyActivity"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:id="@+id/survey_recyclerview"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"/>
+
+    <Button
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:id="@+id/survey_next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="next"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/go_misson_button_background"
+        android:paddingRight="105sp"
+        android:paddingLeft="105sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20sp"
+        android:layout_marginBottom="50sp"
+        />
+</LinearLayout>

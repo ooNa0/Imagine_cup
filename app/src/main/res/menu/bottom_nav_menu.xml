@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_home"
+        android:enabled="true"
+        android:icon="@drawable/home_fill"
+        android:title="Home"/>
+    <item
+        android:id="@+id/tab_records"
+        android:enabled="true"
+        android:icon="@drawable/hamburger"
+        android:title="Records"/>
+    <item
+        android:id="@+id/tab_mission"
+        android:enabled="true"
+        android:icon="@drawable/mail"
+        android:title="Mission"/>
+    <item
+        android:id="@+id/tab_mypage"
+        android:enabled="true"
+        android:icon="@drawable/coolicon"
+        android:title="MyPage"/>
+
+</menu>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.survey.CompleteActivity"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:weightSum="5.5">
+
+    <TextView
+        android:gravity="center"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Complete"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/brown"/>
+
+    <ImageView
+        android:layout_weight="1.5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/complete"
+
+        android:contentDescription="Complete" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#9E8F8F"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Thank you for \n your participation"/>
+
+    <Button
+        android:layout_weight="0.7"
+        android:id="@+id/complete_button"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Done"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background2"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="30dp"
+        />
+</LinearLayout>

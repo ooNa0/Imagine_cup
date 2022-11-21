@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Megical</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mission">MISSION</string>
+    <string name="record">RECORD</string>
+    <string name="active">Active</string>
+    <string name="game">Game</string>
+    <string name="or">OR</string>
+    <string name="do_something">Do Something</string>
+    <string name="start_trial">Start Trial</string>
+    <string name="emotion_score">Emotion Score</string>
+    <string name="emergency_call">Emergency call</string>
+    <string name="today_question">Today Question</string>
+    <string name="check_internet_message">Check Your Internet Access!</string>
+    <string name="delete_account"> Delete your Account</string>
+    <string name="re_fill_the_questionnaire"> Re-fill the questionnaire</string>
+    <string name="to_leave"> To Leave</string>
+    <string name="about_us"> About Us</string>
+    <string name="my_page">My Page</string>
+    <string name="step_count">Step Count :</string>
+    <string name="question">12.20 Question</string>
+    <string name="go_misson">Go Mission</string>
+    <string name="this_day">This Day</string>
+    <string name="daily_mission_achievement">Mission</string>
+    <string name="emotion">Emotion</string>
+    <string name="depression_scale_month">Monthly depression scale</string>
+    <string name="depression_scale_day">Weekly depression scale</string>
+    <string name="check_misson">✔</string>
+    <string name="month_text_last">last month</string>
+    <string name="month_text_this">this month</string>
+    <string name="game_view_content_description">Game view</string>
+</resources>

@@ -1,0 +1,3 @@
+
+rootProject.name = "imagincup"
+include ':app',':unityLibrary'

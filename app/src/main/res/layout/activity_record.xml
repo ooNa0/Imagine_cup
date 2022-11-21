@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.mission.Record"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/mission"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/bebasneue_regular"
+        android:gravity="center_vertical"
+        android:text="@string/mission"
+        android:textAppearance="@style/mission"
+        tools:targetApi="jelly_bean"
+        android:layout_marginStart="22dp"/>
+
+    <Chronometer
+        android:id="@+id/record_chronometer"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:autoSizeMaxTextSize="40dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:autoSizeMinTextSize="25dp"
+        android:autoSizeMaxTextSize="25dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/record_title"
+        android:text="Smile for \n5 seconds"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <!--녹음 제어 레이아웃웃-->
+
+        <!--녹음 실행 및 중지 버튼-->
+        <ImageButton
+            android:layout_gravity="center"
+            android:id="@+id/audioRecordImageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:src="@drawable/mic"
+            app:tint="@color/black" />
+        <TextView
+            android:textSize="15sp"
+            android:textColor="#C9C9C9"
+            android:id="@+id/record_text_button_notice"
+            android:gravity="center"
+            android:text="When you complete the mission, \nButton will appear."
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    <Button
+        android:drawableStart="@drawable/play"
+        android:background="@drawable/button_background2"
+        android:id="@+id/record_button_play"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:text="Play your laughing Sound"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/white"
+        android:paddingLeft="50sp"
+        android:paddingRight="50sp"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:id="@+id/record_button_clear"
+        android:background="@drawable/button_background2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:text="Clear"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        />
+
+</LinearLayout>

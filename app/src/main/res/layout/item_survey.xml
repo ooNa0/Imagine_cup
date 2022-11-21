@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp">
+<!--    버튼 클릭 시 색상 변경하려면 drawable/selector_survey_radio_button 수정하면 됨 -->
+    <TextView
+        android:id="@+id/survey_question"
+        android:textColor="#222222"
+        android:layout_gravity="center"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="What did you do today?"
+        android:textSize="20sp"
+        android:layout_marginTop="2sp"/>
+
+    <RadioGroup
+        android:id="@+id/survey_radiogroup"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+
+            android:id="@+id/survey_radiobutton_1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layoutDirection="rtl"
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_survey_radio_button1"
+            android:text="0-1 day"
+
+             />
+
+            <RadioButton
+                android:id="@+id/survey_radiobutton_2"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/selector_survey_radio_button2"
+                android:gravity="center"
+                android:text="1-2 days"
+                />
+            <RadioButton
+                android:id="@+id/survey_radiobutton_3"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:drawableTop="@drawable/selector_survey_radio_button3"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:button="@null"
+                android:text="3-4 days"
+                />
+
+            <RadioButton
+                android:id="@+id/survey_radiobutton_4"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layoutDirection="rtl"
+                android:button="@null"
+                android:drawableTop="@drawable/selector_survey_radio_button4"
+                android:gravity="center"
+                android:text="5-7 days"
+                />
+    </RadioGroup>
+    <View
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:background="#E7E7E7"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        />
+</LinearLayout>

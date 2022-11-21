@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeFragment">
+<LinearLayout
+    android:background="#FFFAF1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="6">
+    <LinearLayout
+        android:background="#FFE7BB"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.8"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="0dp">
+
+        <ImageButton
+            android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:background="#FFE7BB"
+            android:id="@+id/home_emergency_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/phone"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/emergency_call" />
+        <TextView
+            android:layout_weight="8"
+            android:fontFamily="@font/elicedigitalbaeum_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:textColor="#595959"
+            android:text="Megical"/>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:id="@+id/relativelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/myImageView"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/heart" />
+
+            <TextView
+                android:id="@+id/emotion_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/myImageView"
+                android:layout_alignTop="@id/myImageView"
+                android:layout_alignRight="@id/myImageView"
+                android:layout_alignBottom="@id/myImageView"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+    </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/character_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="4"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/home_character"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center" />
+        <RelativeLayout
+            android:layout_marginTop="30dp"
+            android:id="@+id/relativelayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/myImageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/nickname" />
+
+            <TextView
+                android:id="@+id/home_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/myImageView2"
+                android:layout_alignTop="@id/myImageView2"
+                android:layout_alignRight="@id/myImageView2"
+                android:layout_alignBottom="@id/myImageView2"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="blarblar"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1">
+    <ImageButton
+        android:src="@drawable/home_button"
+        android:background="@null"
+        android:id="@+id/home_today_question_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+    </ImageButton>
+    </LinearLayout>
+
+</LinearLayout>
+</FrameLayout>

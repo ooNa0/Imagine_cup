@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="15dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context="fragment.MonthRecordFragment"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:weightSum="10.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/depression_month"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/depression_scale_month"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="14sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:textAppearance="@style/depression_scale"
+                android:layout_gravity="center"
+                android:layout_weight="7"
+                android:maxLines="1"
+                />
+
+
+
+            <TextView
+                android:id="@+id/percent"
+                android:layout_weight="2.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="30%"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:textAppearance="@style/percent"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/arrow"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="↑↓"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:textStyle="bold"
+                android:textAppearance="@style/arrow"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            card_view:cardCornerRadius="12dp"
+            card_view:cardElevation="5dp"
+            card_view:contentPadding="10dp"
+            android:elevation="15dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- Line -->
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="15dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/line_gradient"
+                    />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/monthly_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                </com.github.mikephil.charting.charts.LineChart>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/sads"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@drawable/color_line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/month_text_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month_text_last"
+                    android:layout_marginRight="80dp"
+                    android:textAppearance="@style/month_text"
+                    />
+
+                <TextView
+                    android:id="@+id/month_text_this"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month_text_this"
+                    android:textAppearance="@style/month_text"
+                    />
+            </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_day"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            card_view:cardCornerRadius="12dp"
+            card_view:cardElevation="5dp"
+            card_view:contentPadding="10dp"
+            android:elevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/depression_scale_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/depression_scale_day"
+                    android:textAppearance="@style/depression_scale"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/weekly_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp">
+
+                </com.github.mikephil.charting.charts.HorizontalBarChart>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
