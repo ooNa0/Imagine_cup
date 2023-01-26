@@ -34,12 +34,6 @@ https://techcommunity.microsoft.com/t5/student-developer-blog/meet-the-2022-imag
 
   <br>
   <img width="830" src="https://user-images.githubusercontent.com/69792693/214760899-ef5599b5-c4a8-4744-86db-fe9637434698.png">
-  Let me show you the demo live. 
-First, check the level of depression through a simple test. 
-This question is structured based on ces-d. 
-CES-D refers to the Center for Epidemiologic Studies Depression Scale.
-It is a standard mainly used around the world that measures the degree of depression.
-After this test, user can check user's score at main page.
   <br>
   <br>
   <img width="830" src="https://user-images.githubusercontent.com/69792693/214761016-03effaee-2f40-4677-ab30-bfc2ca88840f.png">
