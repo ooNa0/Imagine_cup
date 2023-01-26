@@ -3,6 +3,10 @@
 <br>
 https://techcommunity.microsoft.com/t5/student-developer-blog/meet-the-2022-imagine-cup-world-finalists/ba-p/3242062
 
+En#_Megical, Korea
+Health category
+En#_megical is a service that analyzes users' emotions through daily Q&A to calculate the degree of depression and treat depression. The user’s answer to a daily question is analyzed using an algorithm in the service and reflected in a depression score, and games are offered to treat depression.
+
 # Medical
 우울증 자가치유 서비스
 
